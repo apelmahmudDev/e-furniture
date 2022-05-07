@@ -13,6 +13,9 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import ElevationScroll from "../../../../utils/helper/ElevationScroll";
 import ChairIcon from "@mui/icons-material/Chair";
+import ScrollTopTrigger from "../../../../utils/helper/ScrollTopTrigger";
+import { Fab } from "@mui/material";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 const pages = ["Home", "Products", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -172,7 +175,14 @@ const Navbar = (props: any) => {
 					</Container>
 				</AppBar>
 			</ElevationScroll>
-			<Toolbar />
+			<Toolbar id="back-to-top-anchor" />
+
+			{/* scroll Back to Top */}
+			<ScrollTopTrigger {...props}>
+				<Fab color="secondary" size="small" aria-label="scroll back to top">
+					<KeyboardArrowUpIcon />
+				</Fab>
+			</ScrollTopTrigger>
 		</>
 	);
 };

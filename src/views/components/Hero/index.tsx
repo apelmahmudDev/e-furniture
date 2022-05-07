@@ -7,7 +7,7 @@ import {
 	Button,
 } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
+import { Pagination, Autoplay } from "swiper";
 import { useStyles } from "./styled";
 import { IMAGES } from "../../../constants/themeData";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -53,9 +53,13 @@ const Hero = () => {
 		>
 			<Container maxWidth="lg">
 				<Swiper
-					modules={[Pagination]}
+					modules={[Pagination, Autoplay]}
 					pagination={{
 						clickable: true,
+					}}
+					autoplay={{
+						delay: 5000,
+						disableOnInteraction: false,
 					}}
 					className={classes.mySwiper}
 				>
