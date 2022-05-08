@@ -8,19 +8,20 @@ import { useStyles } from "./styled";
 import { Box, Container, Grid } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import EventNoteIcon from "@mui/icons-material/EventNote";
+import Portion from "../../common/Portion";
+import { STYLES } from "../../../../styles/styles";
 
 const Blog = () => {
 	const classes = useStyles();
 	return (
-		<Box my={2}>
+		<Box my={5} component="section">
 			<Container>
-				<Typography variant="h5" gutterBottom>
-					Latest Blog
-				</Typography>
+				<Portion firstWord="Latest" lastWord="Blog" mb={4} />
+
 				<Grid container spacing={3}>
 					{[...Array(3)].map((item, idx) => (
 						<Grid key={idx} item xs={12} sm={6} md={4}>
-							<Card>
+							<Card sx={{ ...STYLES.boxShadow1 }}>
 								<CardMedia
 									component="img"
 									alt="green iguana"
