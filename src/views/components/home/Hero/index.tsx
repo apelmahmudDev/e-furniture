@@ -9,9 +9,9 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
 import { useStyles } from "./styled";
-import { IMAGES } from "../../../constants/themeData";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import StarIcon from "@mui/icons-material/Star";
+import { IMAGES } from "../../../../constants/themeData";
 
 // heroData
 const heroData = [
@@ -49,7 +49,7 @@ const Hero = () => {
 	return (
 		<Box
 			component="section"
-			sx={{ background: (theme) => theme.palette.secondary.light }}
+			sx={{ background: (theme) => theme.palette.secondary.main }}
 		>
 			<Container maxWidth="lg">
 				<Swiper

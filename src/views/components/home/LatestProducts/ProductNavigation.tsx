@@ -5,7 +5,7 @@ import { useStyles } from "./styled";
 const ProductNavigation = () => {
 	const classes = useStyles();
 	return (
-		<MenuList className={classes.root}>
+		<MenuList className={classes.navigationRoot}>
 			<Link to="/new_arrival">
 				<ListItem>
 					<ListItemText>New Arrival</ListItemText>

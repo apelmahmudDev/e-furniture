@@ -44,7 +44,7 @@ const Navbar = (props: any) => {
 			<ElevationScroll {...props}>
 				<AppBar
 					sx={{
-						bgcolor: (theme) => theme.palette.secondary.light,
+						bgcolor: (theme) => theme.palette.secondary.main,
 					}}
 				>
 					<Container>

@@ -1,5 +1,4 @@
 import { Container, Typography, Box, Avatar, Button } from "@mui/material";
-import FeaturedCard from "../common/FeaturedCard";
 import { useStyles } from "./styled";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";

@@ -1,4 +1,8 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { Theme } from "@mui/material/styles";
+declare module "@mui/styles/defaultTheme" {
+	interface DefaultTheme extends Theme {}
+}
 
 let theme = createTheme({
 	typography: {
@@ -31,8 +35,8 @@ let theme = createTheme({
 			dark: "#f08e10",
 		},
 		secondary: {
-			main: "#f1f0ff", // will be change
-			light: "#f1f0ff",
+			main: "#f1f0ff",
+			light: "#f6f7fb",
 		},
 		text: {
 			primary: "#333333",
