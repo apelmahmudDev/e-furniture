@@ -10,30 +10,34 @@ import {
 import { useStyles } from "./styled";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { STYLES } from "../../../../styles/styles";
 
 const LatestCard = () => {
 	const classes = useStyles();
 	return (
 		<Card className={classes.root}>
-			<CardMedia
-				component="img"
-				height="200"
-				image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc5TgTtMlAlU2AYy4MklhZO_kF02ieWvKeqA&usqp=CAU"
-				// image="https://www.picng.com/upload/sofa/png_sofa_49167.png"
-				alt="image of product"
-			/>
-			<Box className={classes.cardActions}>
-				<IconButton size="small">
-					<ShoppingCartIcon fontSize="small" />
-				</IconButton>
-				<IconButton size="small">
-					<FavoriteBorderIcon fontSize="small" />
-				</IconButton>
+			<Box className={classes.cardMediaWrapper}>
+				<CardMedia
+					component="img"
+					height="200"
+					image="https://www.freeiconspng.com/thumbs/chair-png/classic-chair-png-3.png"
+					alt="image of product"
+				/>
+				<Box className={classes.cardActions}>
+					<IconButton size="small" sx={{ ...STYLES.icon }}>
+						<ShoppingCartIcon fontSize="small" />
+					</IconButton>
+					<IconButton size="small" sx={{ ...STYLES.icon }}>
+						<FavoriteBorderIcon fontSize="small" />
+					</IconButton>
+				</Box>
 			</Box>
 
-			<CardContent sx={{ textAlign: "center" }}>
-				<Typography variant="body1">Comfort Handy Craft</Typography>
-				<Typography variant="body1">
+			<CardContent>
+				<Typography sx={{ textAlign: "left" }} variant="body1">
+					Comfort Handy Craft
+				</Typography>
+				<Typography sx={{ textAlign: "right" }} variant="body1">
 					$42.00 <span>$65.00</span>
 				</Typography>
 			</CardContent>

@@ -4,19 +4,22 @@ import {
 	Box,
 	Grid,
 	Avatar,
-	MenuList,
-	ListItem,
-	ListItemText,
 	Button,
 } from "@mui/material";
 import { useStyles } from "./styled";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 const UniqueProducts = () => {
 	const classes = useStyles();
 	return (
-		<Box my={2}>
+		<Box
+			my={5}
+			py={5}
+			component="section"
+			sx={{ bgcolor: (theme) => theme.palette.secondary.light }}
+		>
 			<Container>
-				<Grid container spacing={3}>
+				<Grid container spacing={3} alignItems="center">
 					<Grid item xs={12} md={6}>
 						<Avatar
 							className={classes.uniqueAvatar}
@@ -25,29 +28,25 @@ const UniqueProducts = () => {
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
-						<Typography variant="h4">
+						<Typography variant="h5" gutterBottom>
 							Unique Features Of latest & Trending Products
 						</Typography>
-						<MenuList>
-							<ListItem>
-								<ListItemText>
-									all frames constructed with hardwood solids and laminates
-								</ListItemText>
-							</ListItem>
-							<ListItem>
-								<ListItemText>
-									Reinforced with double wood dowels, glue, screw - nails corner
-									blocks and machine nails
-								</ListItemText>
-							</ListItem>
-							<ListItem>
-								<ListItemText>
-									Arms, blacks and seats are structurally reinforced
-								</ListItemText>
-							</ListItem>
-						</MenuList>
+						<ul className={classes.list}>
+							<li>All frames constructed with hardwood solids and laminates</li>
+							<li>
+								Reinforced with double wood dowels, glue, screw - nails corner
+								blocks and machine nails
+							</li>
+							<li>Arms, blacks and seats are structurally reinforced</li>
+						</ul>
 						<Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-							<Button variant="contained">Add To Cart</Button>
+							<Button
+								variant="contained"
+								sx={{ color: (theme) => theme.palette.secondary.light }}
+								endIcon={<ShoppingCartOutlinedIcon />}
+							>
+								Add To Cart
+							</Button>
 							<Typography variant="body2">
 								B&B China Safa <br /> $32.00
 							</Typography>

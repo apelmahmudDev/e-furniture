@@ -50,7 +50,7 @@ const LatestProducts = () => {
 					<TabPanel value={value} index={0}>
 						<Grid container spacing={3}>
 							{[...Array(6)].map((item, idx) => (
-								<Grid key={idx} item xs={12} md={3} lg={4}>
+								<Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
 									<LatestCard />
 								</Grid>
 							))}
