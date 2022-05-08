@@ -1,4 +1,5 @@
 import { makeStyles } from "@mui/styles";
+import { IMAGES } from "../../../../constants/themeData";
 
 export const useStyles = makeStyles((theme) => ({
 	sectionBg: {
@@ -16,9 +17,8 @@ export const useStyles = makeStyles((theme) => ({
 		alignItems: "center",
 		justifyContent: "center",
 
-		backgroundImage:
-			"url(https://img.freepik.com/free-photo/bright-cozy-modern-living-room-interior-have-sofa-lamp-with-white-wall_41470-1045.jpg?w=1060)",
 		height: 350,
+		backgroundImage: `url(${IMAGES.ParallaxBanner})`,
 		backgroundAttachment: "fixed",
 		backgroundPosition: "center",
 		backgroundRepeat: "no-repeat",

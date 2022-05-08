@@ -4,7 +4,6 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { useStyles } from "./styled";
 import { Box, Container, Grid } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import EventNoteIcon from "@mui/icons-material/EventNote";
@@ -12,7 +11,6 @@ import Portion from "../../common/Portion";
 import { STYLES } from "../../../../styles/styles";
 
 const Blog = () => {
-	const classes = useStyles();
 	return (
 		<Box my={5} component="section">
 			<Container>

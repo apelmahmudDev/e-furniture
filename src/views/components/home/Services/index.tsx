@@ -11,15 +11,15 @@ import MarkChatUnreadIcon from "@mui/icons-material/MarkChatUnread";
 import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import CallIcon from "@mui/icons-material/Call";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import Portion from "../../common/Portion";
 
 const Services = () => {
 	const classes = useStyles();
 	return (
-		<Box my={2}>
+		<Box my={5} component="section">
 			<Container>
-				<Typography variant="h5" gutterBottom>
-					Our Services
-				</Typography>
+				<Portion mb={4} firstWord="Our" lastWord="Services" />
+
 				<Grid container spacing={3}>
 					{[...Array(4)].map((item, idx) => (
 						<Grid key={idx} item xs={6} sm={4} md={3}>

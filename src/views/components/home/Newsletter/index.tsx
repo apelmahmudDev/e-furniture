@@ -4,7 +4,7 @@ import { useStyles } from "./styled";
 const Newsletter = () => {
 	const classes = useStyles();
 	return (
-		<Box my={2} component="section" className={classes.sectionBg}>
+		<Box my={5} component="section" className={classes.sectionBg}>
 			<Container maxWidth="sm">
 				<Typography variant="h5" gutterBottom textAlign="center">
 					Get Updates by <br /> Subscription email
