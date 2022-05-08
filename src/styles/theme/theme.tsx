@@ -26,7 +26,6 @@ let theme = createTheme({
 			fontFamily: "Titillium Web",
 		},
 	},
-
 	palette: {
 		mode: "light",
 		primary: {
