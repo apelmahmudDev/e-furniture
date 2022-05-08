@@ -40,7 +40,7 @@ export const useStyles = makeStyles((theme) => ({
 		padding: theme.spacing(0, 0, 5, 0),
 		"& .swiper-pagination-bullet": {
 			borderRadius: 0,
-			height: 5,
+			height: 3,
 		},
 		"& .swiper-pagination-bullet-active": {
 			background: theme.palette.primary.main,

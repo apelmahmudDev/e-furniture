@@ -18,7 +18,8 @@ const LatestCard = () => {
 			<CardMedia
 				component="img"
 				height="200"
-				image="https://k4j3j2s7.rocketcdn.me/furnob/wp-content/uploads/2022/01/banner-image-22.jpg"
+				image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc5TgTtMlAlU2AYy4MklhZO_kF02ieWvKeqA&usqp=CAU"
+				// image="https://www.picng.com/upload/sofa/png_sofa_49167.png"
 				alt="image of product"
 			/>
 			<Box className={classes.cardActions}>
