@@ -53,6 +53,21 @@ export let appTheme = createTheme(theme, {
 				},
 			},
 		},
+		MuiDialog: {
+			styleOverrides: {
+				root: {
+					"& .MuiPaper-root": {
+						margin: 16,
+						"& .MuiDialogTitle-root": {
+							padding: theme.spacing(2, 2, 1, 2),
+						},
+						"& .MuiDialogContent-root": {
+							padding: theme.spacing(2),
+						},
+					},
+				},
+			},
+		},
 	},
 });
 appTheme = responsiveFontSizes(appTheme);

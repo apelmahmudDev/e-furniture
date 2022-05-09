@@ -8,8 +8,9 @@ export const useStyles = makeStyles((theme) => ({
 		"& .MuiAvatar-root": {
 			margin: "0 auto",
 			marginTop: 16,
-			height: "95px !important",
-			width: "95px !important",
+			height: "65px !important",
+			width: "65px !important",
+			borderRadius: "0 !important",
 
 			"& .MuiSvgIcon-root": {
 				height: 45,

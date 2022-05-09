@@ -20,13 +20,13 @@ const WishAndCardView = () => {
 
 	return (
 		<Box classes={5} className={classes.root}>
-			<IconButton aria-label="cart" sx={{ ...STYLES.icon }}>
+			<IconButton aria-label="cart" sx={{ ...STYLES.icon }} size="small">
 				<StyledBadge badgeContent={4} color="secondary">
 					<ShoppingCartOutlinedIcon />
 				</StyledBadge>
 			</IconButton>
-			<IconButton aria-label="wish" sx={{ ...STYLES.icon }}>
-				<StyledBadge badgeContent={4} color="secondary">
+			<IconButton aria-label="wish" sx={{ ...STYLES.icon }} size="small">
+				<StyledBadge badgeContent={1} color="secondary">
 					<FavoriteBorderOutlinedIcon />
 				</StyledBadge>
 			</IconButton>
