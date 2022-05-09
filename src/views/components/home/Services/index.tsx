@@ -22,7 +22,7 @@ const Services = () => {
 
 				<Grid container spacing={3}>
 					{[...Array(4)].map((item, idx) => (
-						<Grid key={idx} item xs={6} sm={4} md={3}>
+						<Grid key={idx} item xs={12} sm={6} md={3}>
 							<Card className={classes.root}>
 								<Avatar>
 									<MarkChatUnreadIcon />
