@@ -5,7 +5,7 @@ export const useStyles = makeStyles({
 		position: "fixed",
 		right: 16,
 		top: "50%",
-		zIndex: 9999,
+		zIndex: 5,
 		opacity: 0.8,
 		padding: 5,
 

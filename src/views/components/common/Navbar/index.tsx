@@ -16,8 +16,9 @@ import ChairIcon from "@mui/icons-material/Chair";
 import ScrollTopTrigger from "../../../../utils/helper/ScrollTopTrigger";
 import { Fab } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 
-const pages = ["Home", "Products", "Blog"];
+const pages = ["Home", "Shop", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = (props: any) => {
@@ -140,14 +141,23 @@ const Navbar = (props: any) => {
 							</Box>
 
 							<Box sx={{ flexGrow: 0 }}>
-								<Tooltip title="Open settings">
-									<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-										<Avatar
-											alt="Remy Sharp"
-											src="/static/images/avatar/2.jpg"
-										/>
-									</IconButton>
-								</Tooltip>
+								{false ? (
+									<Tooltip title="Open settings">
+										<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+											<Avatar
+												alt="Memy Sharp"
+												src="/static/images/avatar/2.jpg"
+											/>
+										</IconButton>
+									</Tooltip>
+								) : (
+									<Button
+										sx={{ color: (theme) => theme.palette.text.primary }}
+										endIcon={<PermIdentityOutlinedIcon />}
+									>
+										Login
+									</Button>
+								)}
 								<Menu
 									sx={{ mt: "45px" }}
 									id="menu-appbar"

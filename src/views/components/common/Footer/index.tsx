@@ -9,6 +9,7 @@ const Footer = () => {
 				p: 2,
 				height: 300,
 				bgcolor: "#1f1f21",
+				mt: "auto",
 			}}
 		>
 			<Container>

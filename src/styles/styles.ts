@@ -4,6 +4,11 @@ export const STYLES = {
 		bgcolor: (theme: Theme) => theme.palette.secondary.light,
 		color: (theme: Theme) => theme.palette.primary.main,
 	},
+	pressDownFooter: {
+		minHeight: "100vh",
+		display: "flex",
+		flexDirection: "column",
+	},
 	boxShadow1: {
 		boxShadow: "rgb(149 157 165 / 20%) 0px 8px 24px !important",
 	},
