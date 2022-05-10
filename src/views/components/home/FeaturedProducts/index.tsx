@@ -9,6 +9,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { STYLES } from "../../../../styles/styles";
 import { useDispatch } from "react-redux";
 import { handleProductDetails } from "../../../../store/slice/productSlice";
+import ZoomOutMapOutlinedIcon from "@mui/icons-material/ZoomOutMapOutlined";
 
 const FeaturedProducts = () => {
 	const classes = useStyles();
@@ -44,11 +45,7 @@ const FeaturedProducts = () => {
 				>
 					{[...Array(5)].map((item, idx) => (
 						<SwiperSlide key={idx}>
-							<Card
-								sx={{ maxWidth: 280 }}
-								className={classes.root}
-								onClick={() => dispatch(handleProductDetails(true))}
-							>
+							<Card sx={{ maxWidth: 280 }} className={classes.root}>
 								<Box sx={{ bgcolor: (theme) => theme.palette.secondary.light }}>
 									<CardMedia
 										component="img"
@@ -73,6 +70,13 @@ const FeaturedProducts = () => {
 												}}
 											>
 												<FavoriteBorderIcon fontSize="small" />
+											</IconButton>
+											<IconButton
+												onClick={() => dispatch(handleProductDetails(true))}
+												size="small"
+												sx={{ ...STYLES.icon }}
+											>
+												<ZoomOutMapOutlinedIcon fontSize="small" />
 											</IconButton>
 										</Stack>
 									</Box>

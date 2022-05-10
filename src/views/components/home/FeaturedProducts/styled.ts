@@ -4,7 +4,6 @@ export const useStyles = makeStyles((theme) => ({
 	root: {
 		position: "relative",
 		margin: "0 auto",
-		cursor: "pointer",
 		borderRadius: "0 !important",
 		boxShadow: "rgb(149 157 165 / 20%) 0px 8px 24px !important",
 

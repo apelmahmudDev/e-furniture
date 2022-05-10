@@ -12,16 +12,14 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { STYLES } from "../../../../styles/styles";
 import { handleProductDetails } from "../../../../store/slice/productSlice";
 import { useDispatch } from "react-redux";
+import ZoomOutMapOutlinedIcon from "@mui/icons-material/ZoomOutMapOutlined";
 
 const LatestCard = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 
 	return (
-		<Card
-			className={classes.root}
-			onClick={() => dispatch(handleProductDetails(true))}
-		>
+		<Card className={classes.root}>
 			<Box className={classes.cardMediaWrapper}>
 				<CardMedia
 					component="img"
@@ -35,6 +33,13 @@ const LatestCard = () => {
 					</IconButton>
 					<IconButton size="small" sx={{ ...STYLES.icon }}>
 						<FavoriteBorderIcon fontSize="small" />
+					</IconButton>
+					<IconButton
+						onClick={() => dispatch(handleProductDetails(true))}
+						size="small"
+						sx={{ ...STYLES.icon }}
+					>
+						<ZoomOutMapOutlinedIcon fontSize="small" />
 					</IconButton>
 				</Box>
 			</Box>

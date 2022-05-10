@@ -2,7 +2,6 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles((theme) => ({
 	root: {
-		cursor: "pointer",
 		boxShadow:
 			"rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px !important",
 		"& .MuiCardMedia-root": {
@@ -36,7 +35,7 @@ export const useStyles = makeStyles((theme) => ({
 			background: theme.palette.common.white,
 			"& .MuiBox-root": {
 				position: "absolute",
-				top: "45%",
+				bottom: 16,
 				left: 5,
 				display: "flex",
 				flexDirection: "column",
