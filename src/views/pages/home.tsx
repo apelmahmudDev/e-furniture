@@ -1,3 +1,4 @@
+import AppDrawer from "../components/common/AppDrawer";
 import Footer from "../components/common/Footer";
 import Navbar from "../components/common/Navbar";
 import ProductDetails from "../components/common/ProductDetails";
@@ -26,6 +27,7 @@ const Home = () => {
 			<Footer />
 			<WishAndCardView /> {/* global components */}
 			<ProductDetails /> {/* global components */}
+			<AppDrawer /> {/* global components */}
 		</>
 	);
 };

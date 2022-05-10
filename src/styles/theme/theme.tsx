@@ -68,6 +68,19 @@ export let appTheme = createTheme(theme, {
 				},
 			},
 		},
+		MuiDrawer: {
+			styleOverrides: {
+				root: {
+					"& .MuiDrawer-paper": {
+						minWidth: 345,
+						[theme.breakpoints.down(367)]: {
+							width: "100%",
+							minWidth: "100%",
+						},
+					},
+				},
+			},
+		},
 	},
 });
 appTheme = responsiveFontSizes(appTheme);

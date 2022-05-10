@@ -5,6 +5,8 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { styled } from "@mui/material/styles";
 import { STYLES } from "../../../../styles/styles";
+import { useAppDispatch } from "../../../../store";
+import { toggleDrawer } from "../../../../store/slice/cartSlice";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 	"& .MuiBadge-badge": {
@@ -17,15 +19,26 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 
 const WishAndCardView = () => {
 	const classes = useStyles();
+	const dispatch = useAppDispatch();
 
 	return (
 		<Box classes={5} className={classes.root}>
-			<IconButton aria-label="cart" sx={{ ...STYLES.icon }} size="small">
+			<IconButton
+				onClick={() => dispatch(toggleDrawer({ open: true, isCart: true }))}
+				aria-label="cart"
+				sx={{ ...STYLES.icon }}
+				size="small"
+			>
 				<StyledBadge badgeContent={4} color="secondary">
 					<ShoppingCartOutlinedIcon />
 				</StyledBadge>
 			</IconButton>
-			<IconButton aria-label="wish" sx={{ ...STYLES.icon }} size="small">
+			<IconButton
+				onClick={() => dispatch(toggleDrawer({ open: true }))}
+				aria-label="wish"
+				sx={{ ...STYLES.icon }}
+				size="small"
+			>
 				<StyledBadge badgeContent={1} color="secondary">
 					<FavoriteBorderOutlinedIcon />
 				</StyledBadge>
