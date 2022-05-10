@@ -1,9 +1,11 @@
 import Drawer from "@mui/material/Drawer";
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../store";
 import { toggleDrawer } from "../../../../store/slice/cartSlice";
+import DrawerCart from "../DrawerCart";
+import Wishlist from "../Wishlist";
 
 const AppDrawer = () => {
 	const dispatch = useDispatch();
@@ -15,8 +17,19 @@ const AppDrawer = () => {
 			open={cart.drawer_open}
 			onClose={() => dispatch(toggleDrawer({ open: false }))}
 		>
-			<AppBar position="static">
-				<Toolbar>
+			<AppBar
+				position="static"
+				sx={{
+					bgcolor: (theme) => theme.palette.secondary.main,
+					boxShadow: 0,
+				}}
+			>
+				<Toolbar
+					sx={{
+						pl: "16px !important",
+						pr: "16px !important",
+					}}
+				>
 					<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 						{cart.isCart ? "Shopping Cart" : "Wish list"}
 					</Typography>
@@ -24,12 +37,13 @@ const AppDrawer = () => {
 						onClick={() => dispatch(toggleDrawer({ open: false }))}
 						color="inherit"
 						aria-label="menu"
+						size="small"
 					>
 						<CloseIcon />
 					</IconButton>
 				</Toolbar>
 			</AppBar>
-			{/* <Box></Box> */}
+			<Box p={2}>{cart.isCart ? <DrawerCart /> : <Wishlist />}</Box>
 		</Drawer>
 	);
 };
