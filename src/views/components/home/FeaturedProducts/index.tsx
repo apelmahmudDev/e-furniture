@@ -7,9 +7,13 @@ import { Card, CardContent, CardMedia, IconButton } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { STYLES } from "../../../../styles/styles";
+import { useDispatch } from "react-redux";
+import { handleProductDetails } from "../../../../store/slice/productSlice";
 
 const FeaturedProducts = () => {
 	const classes = useStyles();
+	const dispatch = useDispatch();
+
 	return (
 		<Box py={5} component="section">
 			<Container>
@@ -40,7 +44,11 @@ const FeaturedProducts = () => {
 				>
 					{[...Array(5)].map((item, idx) => (
 						<SwiperSlide key={idx}>
-							<Card sx={{ maxWidth: 280 }} className={classes.root}>
+							<Card
+								sx={{ maxWidth: 280 }}
+								className={classes.root}
+								onClick={() => dispatch(handleProductDetails(true))}
+							>
 								<Box sx={{ bgcolor: (theme) => theme.palette.secondary.light }}>
 									<CardMedia
 										component="img"

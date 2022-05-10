@@ -1,7 +1,6 @@
 import {
 	Box,
 	Typography,
-	Container,
 	Card,
 	CardContent,
 	CardMedia,
@@ -11,11 +10,18 @@ import { useStyles } from "./styled";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { STYLES } from "../../../../styles/styles";
+import { handleProductDetails } from "../../../../store/slice/productSlice";
+import { useDispatch } from "react-redux";
 
 const LatestCard = () => {
 	const classes = useStyles();
+	const dispatch = useDispatch();
+
 	return (
-		<Card className={classes.root}>
+		<Card
+			className={classes.root}
+			onClick={() => dispatch(handleProductDetails(true))}
+		>
 			<Box className={classes.cardMediaWrapper}>
 				<CardMedia
 					component="img"
