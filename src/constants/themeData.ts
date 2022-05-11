@@ -12,7 +12,13 @@ import ChatIcon from "../assets/icon/services/chat.png";
 import FastDeliveryIcon from "../assets/icon/services/fast-delivery.png";
 import GiftIcon from "../assets/icon/services/price-tag.png";
 
+// auth
+import AuthBg from "../assets/images/banner/auth-bg.png";
+import AutImg from "../assets/images/auth-img.png";
+
 const IMAGES = {
+	AuthBg,
+	AutImg,
 	HeroOneImg,
 	HeroTwoImg,
 	HeroThreeImg,
