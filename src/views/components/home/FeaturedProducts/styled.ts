@@ -18,12 +18,12 @@ export const useStyles = makeStyles((theme) => ({
 			"& .MuiCardContent-root": {
 				color: theme.palette.common.white,
 				backgroundColor: theme.palette.primary.main,
+				transition: "background-color 300ms",
 			},
 
 			"& .MuiBox-root": {
 				display: "block",
 			},
-			transition: "all 0.5s easy",
 		},
 	},
 

@@ -19,8 +19,8 @@ function App() {
 					element={
 						<>
 							<ThemeProvider theme={appTheme}>
-								{/* <Home /> */}
-								<Auth />
+								<Home />
+								{/* <Auth /> */}
 							</ThemeProvider>
 						</>
 					}
