@@ -28,4 +28,5 @@ const IMAGES = {
 	FastDeliveryIcon,
 	GiftIcon,
 };
+
 export { IMAGES };

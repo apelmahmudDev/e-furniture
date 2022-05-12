@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./views/pages/home";
 import Auth from "./views/pages/auth";
+import Admin from "./views/pages/admin";
 
 function App() {
 	return (
@@ -19,8 +20,9 @@ function App() {
 					element={
 						<>
 							<ThemeProvider theme={appTheme}>
-								<Home />
+								{/* <Home /> */}
 								{/* <Auth /> */}
+								<Admin />
 							</ThemeProvider>
 						</>
 					}
