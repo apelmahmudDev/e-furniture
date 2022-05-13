@@ -52,11 +52,11 @@ const ProductSalesChart = () => {
 				},
 			},
 			title: {
-				text: "Forecast",
+				text: "Product Sales",
 				align: "left",
 				style: {
 					fontSize: "16px",
-					color: "#666",
+					color: "#5f6368",
 				},
 			},
 			fill: {
@@ -75,6 +75,17 @@ const ProductSalesChart = () => {
 				min: -10,
 				max: 40,
 			},
+
+			// responsive: [
+			// 	{
+			// 		breakpoint: 600,
+			// 		options: {
+			// 			chart: {
+			// 				width: "100%",
+			// 			},
+			// 		},
+			// 	},
+			// ],
 		},
 	};
 
@@ -82,6 +93,7 @@ const ProductSalesChart = () => {
 		<Card sx={{ ...STYLES.boxShadow1 }}>
 			<CardContent>
 				<Chart
+					style={{ marginLeft: "-8px" }}
 					options={chart.options}
 					series={chart.series}
 					type="line"

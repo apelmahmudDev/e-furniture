@@ -14,6 +14,16 @@ const OrderChart = () => {
 				horizontalAlign: "center",
 			},
 			labels: ["Orders", "Pending", "Delivered"],
+			responsive: [
+				{
+					breakpoint: 600,
+					options: {
+						chart: {
+							width: "100%",
+						},
+					},
+				},
+			],
 		},
 		series: [44, 55, 13],
 	};

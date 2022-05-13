@@ -111,12 +111,12 @@ const CustomerTable = () => {
 	};
 
 	return (
-		<Paper sx={{ width: "100%", overflow: "hidden", ...STYLES.boxShadow1 }}>
+		<Paper sx={{ overflow: "hidden", ...STYLES.boxShadow1 }}>
 			<TableContainer sx={{ maxHeight: 440 }}>
-				<Table stickyHeader aria-label="sticky table">
+				<Table size="small" stickyHeader aria-label="sticky table">
 					<TableHead>
 						<TableRow>
-							{/* {columns.map((column) => (
+							{columns.map((column) => (
 								<TableCell
 									key={column.id}
 									align={column.align}
@@ -124,19 +124,19 @@ const CustomerTable = () => {
 								>
 									{column.label}
 								</TableCell>
-							))} */}
+							))}
 
-							<TableCell>No.</TableCell>
+							{/* <TableCell>No.</TableCell>
 							<TableCell>Products</TableCell>
 							<TableCell>Customer</TableCell>
 							<TableCell>Country</TableCell>
 							<TableCell>Quantity</TableCell>
 							<TableCell>Status</TableCell>
-							<TableCell>Actions</TableCell>
+							<TableCell>Actions</TableCell> */}
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{/* {rows
+						{rows
 							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 							.map((row) => {
 								return (
@@ -153,14 +153,15 @@ const CustomerTable = () => {
 										})}
 									</TableRow>
 								);
-							})} */}
-						<TableRow hover role="checkbox" tabIndex={-1}>
+							})}
+						{/* <TableRow hover role="checkbox" tabIndex={-1}>
 							<TableCell>1</TableCell>
 							<TableCell
 								sx={{
 									display: "flex",
 									alignItems: "center",
 									gap: 1,
+									whiteSpace: "noWrap",
 								}}
 							>
 								<Avatar
@@ -170,7 +171,7 @@ const CustomerTable = () => {
 								/>
 								Lorem ipsum dolor sit.
 							</TableCell>
-							<TableCell>Apel Mahmud</TableCell>
+							<TableCell sx={{ whiteSpace: "noWrap" }}>Apel Mahmud</TableCell>
 							<TableCell>Bangladesh</TableCell>
 							<TableCell>1</TableCell>
 							<TableCell>
@@ -183,7 +184,7 @@ const CustomerTable = () => {
 									<DeleteOutlined />
 								</IconButton>
 							</TableCell>
-						</TableRow>
+						</TableRow> */}
 					</TableBody>
 				</Table>
 			</TableContainer>

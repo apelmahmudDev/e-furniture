@@ -1,11 +1,7 @@
 import AdminDashboard from "../../components/admin/Dashboard";
 
 const Dashboard = () => {
-	return (
-		<>
-			<AdminDashboard />
-		</>
-	);
+	return <AdminDashboard />;
 };
 
 export default Dashboard;

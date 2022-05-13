@@ -15,7 +15,7 @@ const Dashboard = () => {
 	return (
 		<>
 			{/* dashboard top section - card*/}
-			<Box>
+			{/* <Box>
 				<Grid container spacing={2}>
 					{[
 						{ title: "Order Receive", amount: 393 },
@@ -51,10 +51,10 @@ const Dashboard = () => {
 						</Grid>
 					))}
 				</Grid>
-			</Box>
+			</Box> */}
 
 			{/* dashboard middle section - chart*/}
-			<Box my={2}>
+			{/* <Box my={2}>
 				<Grid container spacing={2}>
 					<Grid item xs={12} md={7}>
 						<ProductSalesChart />
@@ -63,7 +63,8 @@ const Dashboard = () => {
 						<OrderChart />
 					</Grid>
 				</Grid>
-			</Box>
+			</Box> */}
+
 			{/* dashboard footer section - customer data*/}
 			<Box>
 				<CustomerTable />
