@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Paper from "@mui/material/Paper";
+import { Box, Paper, Stack, Typography } from "@mui/material";
+import { STYLES } from "../../../../styles/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,18 +7,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { STYLES } from "../../../../styles/styles";
-import { Avatar, IconButton, Typography } from "@mui/material";
+import { Avatar, IconButton } from "@mui/material";
 import { IMAGES } from "../../../../constants/themeData";
-import { StyledTableCell } from "./styledComponents/StyledTableCell";
-import { makeStyles } from "@mui/styles";
-import { DeleteOutlined } from "@mui/icons-material";
-
-const useStyles = makeStyles((theme) => ({
-	tableCellBg: (props: any) => ({
-		backgroundColor: props.bgColor,
-	}),
-}));
+import { DeleteOutlined, Visibility, Edit } from "@mui/icons-material";
+import { useStyles } from "./styled";
+import { useState } from "react";
 
 interface Column {
 	id: "name" | "code" | "population" | "size" | "density";
@@ -90,11 +83,8 @@ const rows = [
 	createData("Brazil", "BR", 210147125, 8515767),
 ];
 
-const CustomerTable = () => {
-	const props = {
-		bgColor: "#f7622e",
-	};
-	const classes = useStyles(props);
+const ProductTable = () => {
+	const classes = useStyles();
 
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -109,11 +99,10 @@ const CustomerTable = () => {
 		setRowsPerPage(+event.target.value);
 		setPage(0);
 	};
-
 	return (
-		<Paper sx={{ overflow: "hidden", ...STYLES.boxShadow1 }}>
-			<Typography sx={{ p: 2 }} variant="h6">
-				Customer Data
+		<Paper sx={{ p: 2, ...STYLES.boxShadow1 }}>
+			<Typography gutterBottom variant="h6">
+				Product List
 			</Typography>
 			<TableContainer sx={{ maxHeight: 440 }}>
 				<Table size="small" stickyHeader aria-label="sticky table">
@@ -135,7 +124,7 @@ const CustomerTable = () => {
 							<TableCell>Country</TableCell>
 							<TableCell>Quantity</TableCell>
 							<TableCell>Status</TableCell>
-							<TableCell>Actions</TableCell>
+							<TableCell align="right">Actions</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
@@ -177,15 +166,19 @@ const CustomerTable = () => {
 							<TableCell sx={{ whiteSpace: "noWrap" }}>Apel Mahmud</TableCell>
 							<TableCell>Bangladesh</TableCell>
 							<TableCell>1</TableCell>
-							<TableCell>
-								<StyledTableCell className={classes.tableCellBg}>
-									Pending
-								</StyledTableCell>
-							</TableCell>
-							<TableCell>
-								<IconButton size="small" sx={{ ...STYLES.icon }}>
-									<DeleteOutlined />
-								</IconButton>
+							<TableCell>Pending</TableCell>
+							<TableCell align="right">
+								<Stack spacing={1} direction="row" justifyContent="flex-end">
+									<IconButton size="small" sx={{ ...STYLES.icon }}>
+										<Visibility />
+									</IconButton>
+									<IconButton size="small" sx={{ ...STYLES.icon }}>
+										<Edit />
+									</IconButton>
+									<IconButton size="small" sx={{ ...STYLES.icon }}>
+										<DeleteOutlined />
+									</IconButton>
+								</Stack>
 							</TableCell>
 						</TableRow>
 					</TableBody>
@@ -204,4 +197,4 @@ const CustomerTable = () => {
 	);
 };
 
-export default CustomerTable;
+export default ProductTable;

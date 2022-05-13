@@ -81,6 +81,23 @@ export let appTheme = createTheme(theme, {
 				},
 			},
 		},
+		MuiFilledInput: {
+			styleOverrides: {
+				root: {
+					border: `1px solid ${theme.palette.primary.main}`,
+					borderRadius: 8,
+					"&:hover:not(.Mui-disabled):before": {
+						borderBottom: 0,
+					},
+					"&::before": {
+						borderBottom: 0,
+					},
+					"&::after": {
+						borderBottom: 0,
+					},
+				},
+			},
+		},
 	},
 });
 appTheme = responsiveFontSizes(appTheme);

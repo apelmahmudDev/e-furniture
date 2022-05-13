@@ -24,6 +24,7 @@ import { useState } from "react";
 import Dashboard from "./dashboard";
 import AppLogo from "../../components/common/AppLogo";
 import { ReactComponent as DashboardSvg } from "../../../assets/svg/ideas.svg";
+import Product from "./product";
 
 const drawerWidth = 230;
 
@@ -157,7 +158,8 @@ const Admin = (props: Props) => {
 				}}
 			>
 				<Toolbar />
-				<Dashboard />
+				{/* <Dashboard /> */}
+				<Product />
 			</Box>
 		</Box>
 	);
