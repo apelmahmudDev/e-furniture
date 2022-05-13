@@ -8,7 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { STYLES } from "../../../../styles/styles";
-import { Avatar, IconButton } from "@mui/material";
+import { Avatar, IconButton, Typography } from "@mui/material";
 import { IMAGES } from "../../../../constants/themeData";
 import { StyledTableCell } from "./styledComponents/StyledTableCell";
 import { makeStyles } from "@mui/styles";
@@ -112,11 +112,14 @@ const CustomerTable = () => {
 
 	return (
 		<Paper sx={{ overflow: "hidden", ...STYLES.boxShadow1 }}>
+			<Typography sx={{ p: 2 }} variant="h6">
+				Customer Data
+			</Typography>
 			<TableContainer sx={{ maxHeight: 440 }}>
 				<Table size="small" stickyHeader aria-label="sticky table">
 					<TableHead>
 						<TableRow>
-							{columns.map((column) => (
+							{/* {columns.map((column) => (
 								<TableCell
 									key={column.id}
 									align={column.align}
@@ -124,19 +127,19 @@ const CustomerTable = () => {
 								>
 									{column.label}
 								</TableCell>
-							))}
+							))} */}
 
-							{/* <TableCell>No.</TableCell>
+							<TableCell>No.</TableCell>
 							<TableCell>Products</TableCell>
 							<TableCell>Customer</TableCell>
 							<TableCell>Country</TableCell>
 							<TableCell>Quantity</TableCell>
 							<TableCell>Status</TableCell>
-							<TableCell>Actions</TableCell> */}
+							<TableCell>Actions</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{rows
+						{/* {rows
 							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 							.map((row) => {
 								return (
@@ -153,8 +156,8 @@ const CustomerTable = () => {
 										})}
 									</TableRow>
 								);
-							})}
-						{/* <TableRow hover role="checkbox" tabIndex={-1}>
+							})} */}
+						<TableRow hover role="checkbox" tabIndex={-1}>
 							<TableCell>1</TableCell>
 							<TableCell
 								sx={{
@@ -184,7 +187,7 @@ const CustomerTable = () => {
 									<DeleteOutlined />
 								</IconButton>
 							</TableCell>
-						</TableRow> */}
+						</TableRow>
 					</TableBody>
 				</Table>
 			</TableContainer>

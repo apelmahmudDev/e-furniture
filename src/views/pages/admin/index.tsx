@@ -22,6 +22,8 @@ import { Avatar } from "@mui/material";
 import { STYLES } from "../../../styles/styles";
 import { useState } from "react";
 import Dashboard from "./dashboard";
+import AppLogo from "../../components/common/AppLogo";
+import { ReactComponent as DashboardSvg } from "../../../assets/svg/ideas.svg";
 
 const drawerWidth = 230;
 
@@ -90,24 +92,23 @@ const Admin = (props: Props) => {
 				}}
 			>
 				<Toolbar>
-					<IconButton
-						color="inherit"
-						aria-label="open drawer"
-						edge="start"
-						onClick={handleDrawerToggle}
-						sx={{ mr: 2, display: { sm: "none" } }}
-					>
-						<MenuIcon />
-					</IconButton>
-					<Typography variant="h6" noWrap component="div">
-						Responsive drawer
-					</Typography>
+					<Box sx={{ flex: 1 }}>
+						<IconButton
+							color="inherit"
+							aria-label="open drawer"
+							edge="start"
+							onClick={handleDrawerToggle}
+							sx={{ mr: 2, display: { sm: "none" } }}
+						>
+							<MenuIcon />
+						</IconButton>
+					</Box>
+					<AppLogo />
 				</Toolbar>
 			</AppBar>
 			<Box
 				component="nav"
 				sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-				aria-label="mailbox folders"
 			>
 				{/* The implementation can be swapped with js to avoid SEO duplication of links. */}
 				<Drawer
@@ -128,6 +129,7 @@ const Admin = (props: Props) => {
 					}}
 				>
 					{drawer}
+					<DashboardSvg />
 				</Drawer>
 				<Drawer
 					variant="permanent"
@@ -142,8 +144,10 @@ const Admin = (props: Props) => {
 					open
 				>
 					{drawer}
+					<DashboardSvg />
 				</Drawer>
 			</Box>
+			{/* admin body content */}
 			<Box
 				component="main"
 				sx={{
