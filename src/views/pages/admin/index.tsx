@@ -21,10 +21,9 @@ import PowerIcon from "@mui/icons-material/PowerSettingsNew";
 import { Avatar } from "@mui/material";
 import { STYLES } from "../../../styles/styles";
 import { useState } from "react";
-import Dashboard from "./dashboard";
 import AppLogo from "../../components/common/AppLogo";
 import { ReactComponent as DashboardSvg } from "../../../assets/svg/ideas.svg";
-import Product from "./product";
+import { Outlet } from "react-router-dom";
 
 const drawerWidth = 230;
 
@@ -158,8 +157,8 @@ const Admin = (props: Props) => {
 				}}
 			>
 				<Toolbar />
-				{/* <Dashboard /> */}
-				<Product />
+				{/* route page */}
+				<Outlet />
 			</Box>
 		</Box>
 	);
