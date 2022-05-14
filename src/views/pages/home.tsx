@@ -1,6 +1,4 @@
 import AppDrawer from "../components/common/AppDrawer";
-import Footer from "../components/common/Footer";
-import Navbar from "../components/common/Navbar";
 import ProductDetails from "../components/common/ProductDetails";
 import WishAndCardView from "../components/common/WishAndCardView";
 import Blog from "../components/home/Blog";
@@ -15,7 +13,6 @@ import UniqueProducts from "../components/home/UniqueProducts";
 const Home = () => {
 	return (
 		<>
-			<Navbar />
 			<Hero />
 			<FeaturedProducts />
 			<LatestProducts />
@@ -24,7 +21,6 @@ const Home = () => {
 			<Blog />
 			<Services />
 			<Newsletter />
-			<Footer />
 			<WishAndCardView /> {/* global components */}
 			<ProductDetails /> {/* global components */}
 			<AppDrawer /> {/* global components */}

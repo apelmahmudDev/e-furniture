@@ -85,7 +85,7 @@ export let appTheme = createTheme(theme, {
 			styleOverrides: {
 				root: {
 					border: `1px solid ${theme.palette.primary.main}`,
-					borderRadius: 8,
+					borderRadius: 4,
 					"&:hover:not(.Mui-disabled):before": {
 						borderBottom: 0,
 					},
