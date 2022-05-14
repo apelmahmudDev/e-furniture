@@ -13,20 +13,28 @@ import { styled } from "@mui/material/styles";
 
 const categories = [
 	{
-		value: "Chair",
-		label: "Chair",
-	},
-	{
 		value: "Sofa",
 		label: "Sofa",
 	},
 	{
-		value: "Bed",
-		label: "Bed",
+		value: "Chairs",
+		label: "Chairs",
 	},
 	{
-		value: "book_shelf",
-		label: "Book Self",
+		value: "Desks",
+		label: "Desks",
+	},
+	{
+		value: "Dressers",
+		label: "Dressers",
+	},
+	{
+		value: "Cupboards",
+		label: "Cupboards",
+	},
+	{
+		value: "Book_self",
+		label: "Book self",
 	},
 ];
 
