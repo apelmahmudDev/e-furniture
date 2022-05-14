@@ -1,5 +1,6 @@
 import { ROUTING_TREE } from "../constants/siteUrls";
 import MainLayout from "../views/layout/MainLayout";
+import NotFound from "../views/pages/404";
 import Admin from "../views/pages/admin";
 import Dashboard from "../views/pages/admin/dashboard";
 import Product from "../views/pages/admin/product";
@@ -34,6 +35,10 @@ const routes = [
 				element: <Product />,
 			},
 		],
+	},
+	{
+		element: <NotFound />,
+		path: "*",
 	},
 ];
 

@@ -17,9 +17,10 @@ import ScrollTopTrigger from "../../../../utils/helper/ScrollTopTrigger";
 import { Fab } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
+import { Link } from "react-router-dom";
 
-const pages = ["Home", "Shop", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["Home", "Shop", "About Us", "Blog"];
 
 const Navbar = (props: any) => {
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -141,7 +142,7 @@ const Navbar = (props: any) => {
 							</Box>
 
 							<Box sx={{ flexGrow: 0 }}>
-								{false ? (
+								{true ? (
 									<Tooltip title="Open settings">
 										<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
 											<Avatar
@@ -151,12 +152,14 @@ const Navbar = (props: any) => {
 										</IconButton>
 									</Tooltip>
 								) : (
-									<Button
-										sx={{ color: (theme) => theme.palette.text.primary }}
-										endIcon={<PermIdentityOutlinedIcon />}
-									>
-										Login
-									</Button>
+									<Link to={ROUTING_TREE.AUTH.LOGIN}>
+										<Button
+											sx={{ color: (theme) => theme.palette.text.primary }}
+											endIcon={<PermIdentityOutlinedIcon />}
+										>
+											Login
+										</Button>
+									</Link>
 								)}
 								<Menu
 									sx={{ mt: "45px" }}
@@ -174,11 +177,22 @@ const Navbar = (props: any) => {
 									open={Boolean(anchorElUser)}
 									onClose={handleCloseUserMenu}
 								>
-									{settings.map((setting) => (
-										<MenuItem key={setting} onClick={handleCloseUserMenu}>
-											<Typography textAlign="center">{setting}</Typography>
+									<MenuItem onClick={handleCloseUserMenu}>
+										<Typography textAlign="center">Profile</Typography>
+									</MenuItem>
+									<MenuItem onClick={handleCloseUserMenu}>
+										<Typography textAlign="center">Account</Typography>
+									</MenuItem>
+									<Link
+										to={`${ROUTING_TREE.ADMIN.ADMIN}/${ROUTING_TREE.ADMIN.DASHBOARD}`}
+									>
+										<MenuItem onClick={handleCloseUserMenu}>
+											<Typography textAlign="center">Dashboard</Typography>
 										</MenuItem>
-									))}
+									</Link>
+									<MenuItem onClick={handleCloseUserMenu}>
+										<Typography textAlign="center">Logout</Typography>
+									</MenuItem>
 								</Menu>
 							</Box>
 						</Toolbar>

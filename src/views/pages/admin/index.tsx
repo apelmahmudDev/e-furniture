@@ -23,7 +23,8 @@ import { STYLES } from "../../../styles/styles";
 import { useState } from "react";
 import AppLogo from "../../components/common/AppLogo";
 import { ReactComponent as DashboardSvg } from "../../../assets/svg/ideas.svg";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import { ROUTING_TREE } from "../../../constants/siteUrls";
 
 const drawerWidth = 230;
 
@@ -57,21 +58,25 @@ const Admin = (props: Props) => {
 			</Box>
 			<Divider />
 			<List>
-				{[
-					{ item: "Dashboard", icon: <DashboardIcon color="primary" /> },
-					{ item: "Orders", icon: <MallIcon color="primary" /> },
-					{ item: "Products", icon: <InventoryIcon color="primary" /> },
-					{ item: "Earning Status", icon: <AutorenewIcon color="primary" /> },
-					{ item: "Settings", icon: <SettingsIcon color="primary" /> },
-					{ item: "Logout", icon: <PowerIcon color="primary" /> },
-				].map((item, index) => (
-					<ListItem key={index} disablePadding>
-						<ListItemButton>
-							<ListItemIcon>{item.icon}</ListItemIcon>
-							<ListItemText primary={item.item} />
-						</ListItemButton>
-					</ListItem>
+				{adminItems.map((item, index) => (
+					<Link to={item.link}>
+						<ListItem key={index} disablePadding>
+							<ListItemButton>
+								<ListItemIcon>{item.icon}</ListItemIcon>
+								<ListItemText primary={item.item} />
+							</ListItemButton>
+						</ListItem>
+					</Link>
 				))}
+				{/* logout item */}
+				<ListItem disablePadding>
+					<ListItemButton>
+						<ListItemIcon>
+							<PowerIcon color="primary" />
+						</ListItemIcon>
+						<ListItemText primary="Logout" />
+					</ListItemButton>
+				</ListItem>
 			</List>
 		</div>
 	);
@@ -103,7 +108,9 @@ const Admin = (props: Props) => {
 							<MenuIcon />
 						</IconButton>
 					</Box>
-					<AppLogo />
+					<Link to={ROUTING_TREE.HOME.HOME}>
+						<AppLogo />
+					</Link>
 				</Toolbar>
 			</AppBar>
 			<Box
@@ -164,3 +171,31 @@ const Admin = (props: Props) => {
 	);
 };
 export default Admin;
+
+const adminItems = [
+	{
+		item: "Dashboard",
+		icon: <DashboardIcon color="primary" />,
+		link: ROUTING_TREE.ADMIN.DASHBOARD,
+	},
+	{
+		item: "Orders",
+		icon: <MallIcon color="primary" />,
+		link: "",
+	},
+	{
+		item: "Products",
+		icon: <InventoryIcon color="primary" />,
+		link: ROUTING_TREE.ADMIN.PRODUCTS,
+	},
+	{
+		item: "Earning Status",
+		icon: <AutorenewIcon color="primary" />,
+		link: "",
+	},
+	{
+		item: "Settings",
+		icon: <SettingsIcon color="primary" />,
+		link: "",
+	},
+];

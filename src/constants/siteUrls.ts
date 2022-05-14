@@ -9,6 +9,9 @@ export const ROUTING_TREE = {
 	ADMIN: {
 		ADMIN: "admin",
 		DASHBOARD: "dashboard",
+		ORDERS: "orders",
 		PRODUCTS: "products",
+		EARNING_STATUS: "earning-status",
+		SETTINGS: "settings",
 	},
 };

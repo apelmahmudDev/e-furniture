@@ -20,6 +20,8 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 import { ReactComponent as EncryptionSvg } from "../../../assets/svg/encryption.svg";
+import { Link } from "react-router-dom";
+import { ROUTING_TREE } from "../../../constants/siteUrls";
 
 interface State {
 	email: string;
@@ -72,9 +74,13 @@ const Login = () => {
 							<Grid item xs={12} sm={7}>
 								<Box sx={{ mb: 2, display: "flex", alignItems: "center" }}>
 									<Box sx={{ flexGrow: 1 }}>
-										<AppLogo />
+										<Link to={ROUTING_TREE.HOME.HOME}>
+											<AppLogo />
+										</Link>
 									</Box>
-									<Button>Sign Up</Button>
+									<Link to={"/" + ROUTING_TREE.AUTH.SIGNUP}>
+										<Button>Sign Up</Button>
+									</Link>
 								</Box>
 								{/* form */}
 								<Box
