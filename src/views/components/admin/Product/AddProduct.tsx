@@ -10,6 +10,7 @@ import {
 import { useState } from "react";
 import { STYLES } from "../../../../styles/styles";
 import { styled } from "@mui/material/styles";
+import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 
 const categories = [
 	{
@@ -47,6 +48,24 @@ const AddProduct = () => {
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setCategory(event.target.value);
+	};
+
+	// handle product image upload
+	const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (event.target.files) {
+			const formData = new FormData();
+			formData.append("image", event.target.files[0]);
+
+			fetch(
+				`https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMAGE_API_KEY}`,
+				{
+					method: "POST",
+					body: formData,
+				}
+			)
+				.then((result) => console.log(result))
+				.catch((error) => console.log("error", error));
+		}
 	};
 
 	return (
@@ -105,6 +124,7 @@ const AddProduct = () => {
 						</TextField>
 						<label htmlFor="contained-button-file">
 							<Input
+								onChange={handleImageUpload}
 								required
 								accept="image/*"
 								id="contained-button-file"
@@ -112,7 +132,14 @@ const AddProduct = () => {
 								type="file"
 							/>
 							<Button
-								sx={{ mt: 1 }}
+								startIcon={<PhotoCameraIcon />}
+								sx={{
+									mt: 1,
+									bgcolor: (theme) => theme.palette.secondary.main,
+									"&:hover": {
+										bgcolor: (theme) => theme.palette.secondary.light,
+									},
+								}}
 								fullWidth
 								variant="contained"
 								component="span"
