@@ -1,4 +1,5 @@
 import {
+	Avatar,
 	Box,
 	Button,
 	Grid,
@@ -11,6 +12,8 @@ import { useState } from "react";
 import { STYLES } from "../../../../styles/styles";
 import { styled } from "@mui/material/styles";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+import CircularProgress from "@mui/material/CircularProgress";
+import { useStyles } from "./styled";
 
 const categories = [
 	{
@@ -44,7 +47,10 @@ const Input = styled("input")({
 });
 
 const AddProduct = () => {
+	const classes = useStyles();
 	const [category, setCategory] = useState("Chair");
+	const [imgUploading, setImgUploading] = useState(false);
+	const [productImg, setProductImg] = useState();
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setCategory(event.target.value);
@@ -56,6 +62,7 @@ const AddProduct = () => {
 			const formData = new FormData();
 			formData.append("image", event.target.files[0]);
 
+			setImgUploading(true);
 			fetch(
 				`https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMAGE_API_KEY}`,
 				{
@@ -63,11 +70,15 @@ const AddProduct = () => {
 					body: formData,
 				}
 			)
-				.then((result) => console.log(result))
+				.then((res) => res.json())
+				.then((res) => {
+					setImgUploading(false);
+					setProductImg(res.data.image.url);
+				})
 				.catch((error) => console.log("error", error));
 		}
 	};
-
+	console.log(productImg);
 	return (
 		<Paper sx={{ p: 2, ...STYLES.boxShadow1 }}>
 			<Typography variant="h6" gutterBottom>
@@ -122,31 +133,41 @@ const AddProduct = () => {
 								</MenuItem>
 							))}
 						</TextField>
-						<label htmlFor="contained-button-file">
-							<Input
-								onChange={handleImageUpload}
-								required
-								accept="image/*"
-								id="contained-button-file"
-								multiple
-								type="file"
-							/>
-							<Button
-								startIcon={<PhotoCameraIcon />}
-								sx={{
-									mt: 1,
-									bgcolor: (theme) => theme.palette.secondary.main,
-									"&:hover": {
-										bgcolor: (theme) => theme.palette.secondary.light,
-									},
-								}}
-								fullWidth
-								variant="contained"
-								component="span"
-							>
-								Upload Product Image
-							</Button>
-						</label>
+						<Box>
+							<Grid container spacing={1}>
+								<Grid item xs={12} sm={2}>
+									<Avatar
+										sx={{ borderRadius: 0, mt: 0.8 }}
+										src={productImg && productImg}
+										alt="product-image"
+									/>
+								</Grid>
+								<Grid item xs={12} sm={10}>
+									<label htmlFor="contained-button-file">
+										<Input
+											onChange={handleImageUpload}
+											required
+											disabled={imgUploading}
+											accept="image/*"
+											id="contained-button-file"
+											multiple
+											type="file"
+										/>
+										<Button
+											className={classes.uploadBtn}
+											startIcon={<PhotoCameraIcon />}
+											disabled={imgUploading}
+											endIcon={imgUploading && <CircularProgress />}
+											fullWidth
+											variant="contained"
+											component="span"
+										>
+											Upload Image
+										</Button>
+									</label>
+								</Grid>
+							</Grid>
+						</Box>
 					</Grid>
 				</Grid>
 				<Button sx={{ mt: { xs: 1, md: 0 } }} type="submit" variant="outlined">
