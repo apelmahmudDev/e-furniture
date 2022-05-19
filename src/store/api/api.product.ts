@@ -8,7 +8,7 @@ export const productApi = createApi({
 		getProducts: builder.query<ProductInterface, void>({
 			query: () => `/products`,
 		}),
-		addProducts: builder.mutation<ProductInterface, void>({
+		addProducts: builder.mutation<any, any>({
 			query: (body) => ({
 				url: `/products`,
 				method: "POST",

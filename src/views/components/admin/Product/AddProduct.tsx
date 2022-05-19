@@ -14,6 +14,7 @@ import { styled } from "@mui/material/styles";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useStyles } from "./styled";
+import { useAddProductsMutation } from "../../../../store/api/api.product";
 
 const categories = [
 	{
@@ -67,13 +68,13 @@ const Input = styled("input")({
 const AddProduct = () => {
 	const classes = useStyles();
 	const [imgUploading, setImgUploading] = useState(false);
-	const [productImg, setProductImg] = useState();
 	const [values, setValues] = useState({
 		name: "",
 		price: "",
 		description: "",
 		category: "",
 		subCategory: "",
+		image: "",
 	});
 
 	// handle input change
@@ -83,8 +84,6 @@ const AddProduct = () => {
 	) => {
 		setValues({ ...values, [prop]: event.target.value });
 	};
-
-	console.log(values);
 
 	// handle product image upload
 	const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -103,18 +102,26 @@ const AddProduct = () => {
 				.then((res) => res.json())
 				.then((res) => {
 					setImgUploading(false);
-					setProductImg(res.data.image.url);
+					setValues({ ...values, image: res.data.image.url });
 				})
 				.catch((error) => console.log("error", error));
 		}
 	};
-	console.log(productImg);
+
+	// add products to db
+	const [addProducts, { data, isLoading }] = useAddProductsMutation();
+
+	const handleSubmitForm = (e: React.SyntheticEvent) => {
+		e.preventDefault();
+		addProducts(values);
+	};
+
 	return (
 		<Paper sx={{ p: 2, ...STYLES.boxShadow1 }}>
 			<Typography variant="h6" gutterBottom>
 				Add new product
 			</Typography>
-			<Box component="form" autoComplete="off">
+			<Box component="form" autoComplete="off" onSubmit={handleSubmitForm}>
 				<Grid container spacing={{ xs: 0, md: 2 }}>
 					<Grid item xs={12} md={6}>
 						<TextField
@@ -187,7 +194,7 @@ const AddProduct = () => {
 								<Grid item xs={12} sm={3}>
 									<Avatar
 										sx={{ borderRadius: 1, mt: 0.5 }}
-										src={productImg && productImg}
+										src={values.image && values.image}
 										alt="product-image"
 									/>
 								</Grid>

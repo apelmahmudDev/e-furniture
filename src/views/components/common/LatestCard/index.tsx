@@ -14,18 +14,28 @@ import { handleProductDetails } from "../../../../store/slice/productSlice";
 import { useDispatch } from "react-redux";
 import ZoomOutMapOutlinedIcon from "@mui/icons-material/ZoomOutMapOutlined";
 
-const LatestCard = () => {
+interface ProductInterface {
+	product: {
+		id: string;
+		name: "string";
+		price: string | number;
+		description: "string";
+		image: string;
+		category: "string";
+	};
+}
+
+const LatestCard = ({ product }: ProductInterface) => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
-
 	return (
 		<Card className={classes.root}>
 			<Box className={classes.cardMediaWrapper}>
 				<CardMedia
 					component="img"
 					height="200"
-					image="https://www.freeiconspng.com/thumbs/chair-png/classic-chair-png-3.png"
-					alt="image of product"
+					image={product.image}
+					alt="product.name"
 				/>
 				<Box className={classes.cardActions}>
 					<IconButton size="small" sx={{ ...STYLES.icon }}>
@@ -46,10 +56,10 @@ const LatestCard = () => {
 
 			<CardContent>
 				<Typography sx={{ textAlign: "left" }} variant="body1">
-					Comfort Handy Craft
+					{product.name}
 				</Typography>
 				<Typography sx={{ textAlign: "right" }} variant="body1">
-					$42.00 <span>$65.00</span>
+					${product.price} <span>$65.00</span>
 				</Typography>
 			</CardContent>
 		</Card>

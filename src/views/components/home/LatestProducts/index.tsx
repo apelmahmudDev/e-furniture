@@ -25,7 +25,6 @@ const LatestProducts = () => {
 
 	// get products
 	const { data, error, isLoading } = useGetProductsQuery();
-	console.log(!isLoading && data);
 
 	return (
 		<Box my={5} component="section">
@@ -54,11 +53,12 @@ const LatestProducts = () => {
 					</Box>
 					<TabPanel value={value} index={0}>
 						<Grid container spacing={3}>
-							{[...Array(6)].map((item, idx) => (
-								<Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
-									<LatestCard />
-								</Grid>
-							))}
+							{!isLoading &&
+								data?.data.map((product, idx) => (
+									<Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
+										<LatestCard product={product} />
+									</Grid>
+								))}
 						</Grid>
 					</TabPanel>
 					<TabPanel value={value} index={1}>
