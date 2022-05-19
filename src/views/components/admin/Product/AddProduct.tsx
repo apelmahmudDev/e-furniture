@@ -8,13 +8,14 @@ import {
 	TextField,
 	Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { STYLES } from "../../../../styles/styles";
 import { styled } from "@mui/material/styles";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useStyles } from "./styled";
 import { useAddProductsMutation } from "../../../../store/api/api.product";
+import Snackbar from "../../common/Snackbar";
 
 const categories = [
 	{
@@ -67,6 +68,8 @@ const Input = styled("input")({
 
 const AddProduct = () => {
 	const classes = useStyles();
+	const handleClickVariant = Snackbar();
+
 	const [imgUploading, setImgUploading] = useState(false);
 	const [values, setValues] = useState({
 		name: "",
@@ -115,6 +118,12 @@ const AddProduct = () => {
 		e.preventDefault();
 		addProducts(values);
 	};
+
+	useEffect(() => {
+		if (data?.data._id) {
+			handleClickVariant("success", data.message);
+		}
+	}, [data?.data?._id, data?.message, handleClickVariant]);
 
 	return (
 		<Paper sx={{ p: 2, ...STYLES.boxShadow1 }}>
@@ -226,8 +235,13 @@ const AddProduct = () => {
 						</Box>
 					</Grid>
 				</Grid>
-				<Button sx={{ mt: 1 }} type="submit" variant="outlined">
-					Add Product
+				<Button
+					disabled={isLoading}
+					sx={{ mt: 1 }}
+					type="submit"
+					variant="outlined"
+				>
+					{isLoading ? "Loading..." : "Add Product"}
 				</Button>
 			</Box>
 		</Paper>

@@ -19,6 +19,7 @@
     "@types/react-dom": "^18.0.3",
     "apexcharts": "^3.35.2",
     "axios": "^0.27.2",
+    "notistack": "^2.0.5",
     "react": "^18.1.0",
     "react-apexcharts": "^1.4.0",
     "react-dom": "^18.1.0",

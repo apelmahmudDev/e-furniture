@@ -7,12 +7,16 @@ import "@fontsource/roboto/700.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useRoutes } from "react-router-dom";
-import Admin from "./views/pages/admin";
 import routes from "./routes";
+import { SnackbarProvider } from "notistack";
 
 function App() {
 	const content = useRoutes(routes);
-	return <ThemeProvider theme={appTheme}>{content}</ThemeProvider>;
+	return (
+		<SnackbarProvider anchorOrigin={{ horizontal: "right", vertical: "top" }}>
+			<ThemeProvider theme={appTheme}>{content}</ThemeProvider>
+		</SnackbarProvider>
+	);
 }
 
 export default App;
