@@ -17,28 +17,46 @@ import { useStyles } from "./styled";
 
 const categories = [
 	{
-		value: "Sofa",
+		value: "sofa",
 		label: "Sofa",
 	},
 	{
-		value: "Chairs",
+		value: "chairs",
 		label: "Chairs",
 	},
 	{
-		value: "Desks",
+		value: "desks",
 		label: "Desks",
 	},
 	{
-		value: "Dressers",
+		value: "dressers",
 		label: "Dressers",
 	},
 	{
-		value: "Cupboards",
+		value: "cupboards",
 		label: "Cupboards",
 	},
 	{
-		value: "Book_self",
+		value: "book_self",
 		label: "Book self",
+	},
+];
+const subCategories = [
+	{
+		value: "new_arrival",
+		label: "New Arrival",
+	},
+	{
+		value: "best_seller",
+		label: "Best Seller",
+	},
+	{
+		value: "featured",
+		label: "Featured",
+	},
+	{
+		value: "special_offer",
+		label: "Special Offer",
 	},
 ];
 
@@ -48,13 +66,25 @@ const Input = styled("input")({
 
 const AddProduct = () => {
 	const classes = useStyles();
-	const [category, setCategory] = useState("Chair");
 	const [imgUploading, setImgUploading] = useState(false);
 	const [productImg, setProductImg] = useState();
+	const [values, setValues] = useState({
+		name: "",
+		price: "",
+		description: "",
+		category: "",
+		subCategory: "",
+	});
 
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setCategory(event.target.value);
+	// handle input change
+	const handleOnChange = (
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+		prop: string
+	) => {
+		setValues({ ...values, [prop]: event.target.value });
 	};
+
+	console.log(values);
 
 	// handle product image upload
 	const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,7 +115,7 @@ const AddProduct = () => {
 				Add new product
 			</Typography>
 			<Box component="form" autoComplete="off">
-				<Grid container spacing={2}>
+				<Grid container spacing={{ xs: 0, md: 2 }}>
 					<Grid item xs={12} md={6}>
 						<TextField
 							fullWidth
@@ -93,7 +123,8 @@ const AddProduct = () => {
 							margin="dense"
 							size="small"
 							variant="filled"
-							label="Product name"
+							label="Name"
+							onChange={(event) => handleOnChange(event, "name")}
 						/>
 						<TextField
 							fullWidth
@@ -103,10 +134,9 @@ const AddProduct = () => {
 							type="number"
 							inputMode="numeric"
 							variant="filled"
-							label="Product price"
+							label="Price"
+							onChange={(event) => handleOnChange(event, "price")}
 						/>
-					</Grid>
-					<Grid item xs={12} md={6}>
 						<TextField
 							fullWidth
 							required
@@ -114,8 +144,11 @@ const AddProduct = () => {
 							size="small"
 							multiline
 							variant="filled"
-							label="Product descriptions"
+							label="Descriptions"
+							onChange={(event) => handleOnChange(event, "description")}
 						/>
+					</Grid>
+					<Grid item xs={12} md={6}>
 						<TextField
 							fullWidth
 							required
@@ -123,9 +156,9 @@ const AddProduct = () => {
 							size="small"
 							variant="filled"
 							margin="dense"
-							label="Product Categories"
-							value={category}
-							onChange={handleChange}
+							label="Categories"
+							value={values.category}
+							onChange={(event) => handleOnChange(event, "category")}
 						>
 							{categories.map((option) => (
 								<MenuItem key={option.value} value={option.value}>
@@ -133,16 +166,32 @@ const AddProduct = () => {
 								</MenuItem>
 							))}
 						</TextField>
-						<Box>
+						<TextField
+							fullWidth
+							select
+							size="small"
+							variant="filled"
+							margin="dense"
+							label="Sub Categories"
+							value={values.subCategory}
+							onChange={(event) => handleOnChange(event, "subCategory")}
+						>
+							{subCategories.map((option) => (
+								<MenuItem key={option.value} value={option.value}>
+									{option.label}
+								</MenuItem>
+							))}
+						</TextField>
+						<Box my={1}>
 							<Grid container spacing={1}>
-								<Grid item xs={12} sm={2}>
+								<Grid item xs={12} sm={3}>
 									<Avatar
-										sx={{ borderRadius: 0, mt: 0.8 }}
+										sx={{ borderRadius: 1, mt: 0.5 }}
 										src={productImg && productImg}
 										alt="product-image"
 									/>
 								</Grid>
-								<Grid item xs={12} sm={10}>
+								<Grid item xs={12} sm={9}>
 									<label htmlFor="contained-button-file">
 										<Input
 											onChange={handleImageUpload}
@@ -170,7 +219,7 @@ const AddProduct = () => {
 						</Box>
 					</Grid>
 				</Grid>
-				<Button sx={{ mt: { xs: 1, md: 0 } }} type="submit" variant="outlined">
+				<Button sx={{ mt: 1 }} type="submit" variant="outlined">
 					Add Product
 				</Button>
 			</Box>

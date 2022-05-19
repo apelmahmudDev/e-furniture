@@ -6,6 +6,7 @@ import Portion from "../../common/Portion";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useState } from "react";
+import { useGetProductsQuery } from "../../../../store/api/api.product";
 
 function a11yProps(index: number) {
 	return {
@@ -21,6 +22,10 @@ const LatestProducts = () => {
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);
 	};
+
+	// get products
+	const { data, error, isLoading } = useGetProductsQuery();
+	console.log(!isLoading && data);
 
 	return (
 		<Box my={5} component="section">

@@ -14,7 +14,7 @@ const Newsletter = () => {
 						size="small"
 						fullWidth
 						id="filled-basic"
-						label="Filled"
+						label="Your Email"
 						variant="filled"
 					/>
 					<Button sx={{ mt: 2 }} type="submit" variant="contained">

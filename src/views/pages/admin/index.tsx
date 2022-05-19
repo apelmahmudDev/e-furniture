@@ -59,7 +59,7 @@ const Admin = (props: Props) => {
 			<Divider />
 			<List>
 				{adminItems.map((item, index) => (
-					<Link to={item.link}>
+					<Link key={index} to={item.link}>
 						<ListItem key={index} disablePadding>
 							<ListItemButton>
 								<ListItemIcon>{item.icon}</ListItemIcon>
