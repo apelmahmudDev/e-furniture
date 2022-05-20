@@ -4,11 +4,12 @@ export interface ProductInterface {
 	data: [
 		{
 			id: string;
-			name: "string";
+			name: string;
 			price: string | number;
-			description: "string";
+			description: string;
 			image: string;
-			category: "string";
+			category: string;
+			// subCategory: string;
 		}
 	];
 }

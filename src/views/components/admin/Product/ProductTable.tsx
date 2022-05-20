@@ -12,6 +12,7 @@ import { IMAGES } from "../../../../constants/themeData";
 import { DeleteOutlined, Visibility, Edit } from "@mui/icons-material";
 import { useStyles } from "./styled";
 import { useState } from "react";
+import { useGetProductsQuery } from "../../../../store/api/api.product";
 
 interface Column {
 	id: "name" | "code" | "population" | "size" | "density";
@@ -99,6 +100,9 @@ const ProductTable = () => {
 		setRowsPerPage(+event.target.value);
 		setPage(0);
 	};
+
+	// get products
+	const { data, isLoading } = useGetProductsQuery();
 	return (
 		<Paper sx={{ p: 2, ...STYLES.boxShadow1 }}>
 			<Typography gutterBottom variant="h6">
@@ -120,10 +124,9 @@ const ProductTable = () => {
 
 							<TableCell>No.</TableCell>
 							<TableCell>Products</TableCell>
-							<TableCell>Customer</TableCell>
-							<TableCell>Country</TableCell>
-							<TableCell>Quantity</TableCell>
-							<TableCell>Status</TableCell>
+							<TableCell>Price</TableCell>
+							<TableCell>Category</TableCell>
+							{/* <TableCell>Sub Category</TableCell> */}
 							<TableCell align="right">Actions</TableCell>
 						</TableRow>
 					</TableHead>
@@ -146,41 +149,44 @@ const ProductTable = () => {
 									</TableRow>
 								);
 							})} */}
-						<TableRow hover role="checkbox" tabIndex={-1}>
-							<TableCell>1</TableCell>
-							<TableCell
-								sx={{
-									display: "flex",
-									alignItems: "center",
-									gap: 1,
-									whiteSpace: "noWrap",
-								}}
-							>
-								<Avatar
-									sx={{ borderRadius: 0 }}
-									src={IMAGES.HeroThreeImg}
-									alt="product-image"
-								/>
-								Lorem ipsum dolor sit.
-							</TableCell>
-							<TableCell sx={{ whiteSpace: "noWrap" }}>Apel Mahmud</TableCell>
-							<TableCell>Bangladesh</TableCell>
-							<TableCell>1</TableCell>
-							<TableCell>Pending</TableCell>
-							<TableCell align="right">
-								<Stack spacing={1} direction="row" justifyContent="flex-end">
-									<IconButton size="small" sx={{ ...STYLES.icon }}>
-										<Visibility />
-									</IconButton>
-									<IconButton size="small" sx={{ ...STYLES.icon }}>
-										<Edit />
-									</IconButton>
-									<IconButton size="small" sx={{ ...STYLES.icon }}>
-										<DeleteOutlined />
-									</IconButton>
-								</Stack>
-							</TableCell>
-						</TableRow>
+						{data?.data.map((product, idx) => (
+							<TableRow hover role="checkbox" tabIndex={-1}>
+								<TableCell>{idx + 1}</TableCell>
+								<TableCell
+									sx={{
+										display: "flex",
+										alignItems: "center",
+										gap: 1,
+										whiteSpace: "noWrap",
+									}}
+								>
+									<Avatar
+										sx={{ borderRadius: 0 }}
+										src={product.image}
+										alt="product-image"
+									/>
+									{product.name}
+								</TableCell>
+								<TableCell sx={{ whiteSpace: "noWrap" }}>
+									{product.price}
+								</TableCell>
+								<TableCell>{product.category}</TableCell>
+								{/* <TableCell>{product.subCategory}</TableCell> */}
+								<TableCell align="right">
+									<Stack spacing={1} direction="row" justifyContent="flex-end">
+										<IconButton size="small" sx={{ ...STYLES.icon }}>
+											<Visibility />
+										</IconButton>
+										<IconButton size="small" sx={{ ...STYLES.icon }}>
+											<Edit />
+										</IconButton>
+										<IconButton size="small" sx={{ ...STYLES.icon }}>
+											<DeleteOutlined />
+										</IconButton>
+									</Stack>
+								</TableCell>
+							</TableRow>
+						))}
 					</TableBody>
 				</Table>
 			</TableContainer>

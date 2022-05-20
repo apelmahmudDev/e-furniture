@@ -24,7 +24,7 @@ const LatestProducts = () => {
 	};
 
 	// get products
-	const { data, error, isLoading } = useGetProductsQuery();
+	const { data, isLoading } = useGetProductsQuery();
 
 	return (
 		<Box my={5} component="section">

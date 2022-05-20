@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import CounterReducer from "./slice/counterSlice";
 import ProductReducer from "./slice/productSlice";
 import CartReducer from "./slice/cartSlice";
+import wishlistReducer from "./slice/wishlistSlice";
 import { useDispatch } from "react-redux";
 import { productApi } from "./api/api.product";
 
@@ -13,6 +14,7 @@ const store = configureStore({
 		counter: CounterReducer,
 		product: ProductReducer,
 		cart: CartReducer,
+		wishlist: wishlistReducer,
 	},
 
 	middleware: (getDefaultMiddleware) =>

@@ -13,15 +13,18 @@ import { STYLES } from "../../../../styles/styles";
 import { handleProductDetails } from "../../../../store/slice/productSlice";
 import { useDispatch } from "react-redux";
 import ZoomOutMapOutlinedIcon from "@mui/icons-material/ZoomOutMapOutlined";
+import { addToCart } from "../../../../store/slice/cartSlice";
+import { addToWishlist } from "../../../../store/slice/wishlistSlice";
 
 interface ProductInterface {
 	product: {
 		id: string;
-		name: "string";
+		name: string;
 		price: string | number;
-		description: "string";
+		description: string;
 		image: string;
-		category: "string";
+		category: string;
+		// subCategory: string;
 	};
 }
 
@@ -38,10 +41,18 @@ const LatestCard = ({ product }: ProductInterface) => {
 					alt="product.name"
 				/>
 				<Box className={classes.cardActions}>
-					<IconButton size="small" sx={{ ...STYLES.icon }}>
+					<IconButton
+						onClick={() => dispatch(addToCart(product))}
+						size="small"
+						sx={{ ...STYLES.icon }}
+					>
 						<ShoppingCartIcon fontSize="small" />
 					</IconButton>
-					<IconButton size="small" sx={{ ...STYLES.icon }}>
+					<IconButton
+						onClick={() => dispatch(addToWishlist(product))}
+						size="small"
+						sx={{ ...STYLES.icon }}
+					>
 						<FavoriteBorderIcon fontSize="small" />
 					</IconButton>
 					<IconButton
