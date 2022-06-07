@@ -142,7 +142,7 @@ const Navbar = (props: any) => {
 							</Box>
 
 							<Box sx={{ flexGrow: 0 }}>
-								{true ? (
+								{false ? (
 									<Tooltip title="Open settings">
 										<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
 											<Avatar

@@ -55,6 +55,10 @@ const Login = () => {
 		event.preventDefault();
 	};
 
+	const handleFormSubmit = (event: React.SyntheticEvent) => {
+		event.preventDefault();
+	};
+
 	return (
 		<Box
 			sx={{
@@ -90,12 +94,14 @@ const Login = () => {
 									}}
 									noValidate
 									autoComplete="off"
+									onSubmit={handleFormSubmit}
 								>
 									<TextField
 										size="small"
 										fullWidth
 										label="Email"
 										type="email"
+										onChange={handleChange("email")}
 										required
 										// helperText="Incorrect entry."
 									/>
