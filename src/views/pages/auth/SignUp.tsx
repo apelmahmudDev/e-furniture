@@ -17,35 +17,49 @@ import { useStyles } from "./styled";
 import AppLogo from "../../components/common/AppLogo";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ReactComponent as EncryptionSvg } from "../../../assets/svg/encryption.svg";
 import { STYLES } from "../../../styles/styles";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useSignUpMutation } from "../../../store/api/api.users";
+import Snackbar from "../../components/common/Snackbar";
+import ButtonProgress from "../../components/common/ButtonProgress";
 interface State {
-	firstName: string;
-	lastName: string;
+	first_name: string;
+	last_name: string;
+	phone: string;
 	email: string;
 	password: string;
 	confirmPassword: string;
 	showPassword: boolean;
 	acceptedTermsAndCondition: boolean;
 }
+export interface User {
+	first_name: string;
+	last_name: string;
+	phone: string;
+	email: string;
+	password: string;
+	user_type: string;
+	avatar: string;
+}
 
 const SignUp = () => {
+	const navigate = useNavigate();
 	const classes = useStyles();
+	const handleClickVariant = Snackbar();
+
 	const [values, setValues] = useState<State>({
-		firstName: "",
-		lastName: "",
+		first_name: "",
+		last_name: "",
+		phone: "",
 		email: "",
 		password: "",
 		confirmPassword: "",
 		showPassword: false,
 		acceptedTermsAndCondition: false,
 	});
-
-	// console.log(values);
 
 	const handleChange =
 		(prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,6 +78,38 @@ const SignUp = () => {
 	) => {
 		event.preventDefault();
 	};
+
+	// add new user
+	const [signUp, { data, error, isLoading }] = useSignUpMutation();
+
+	const handleFormSubmit = (event: React.SyntheticEvent) => {
+		event.preventDefault();
+		const newUser: User = {
+			first_name: values.first_name,
+			last_name: values.last_name,
+			phone: values.phone,
+			email: values.email,
+			password: values.password,
+			user_type: "user",
+			avatar: "",
+		};
+		signUp(newUser);
+	};
+
+	useEffect(() => {
+		if (data) {
+			handleClickVariant("success", "New user created");
+			setTimeout(() => {
+				navigate("/" + ROUTING_TREE.AUTH.LOGIN);
+			}, 3000);
+		}
+		if (error) {
+			if ("status" in error) {
+				handleClickVariant("error", "Email already exists");
+			}
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [data, error]);
 
 	return (
 		<Box
@@ -99,10 +145,11 @@ const SignUp = () => {
 									sx={{
 										"& .MuiTextField-root, & .MuiFormControl-root": { my: 1 },
 									}}
-									noValidate
 									autoComplete="off"
+									onSubmit={handleFormSubmit}
 								>
 									<TextField
+										onChange={handleChange("first_name")}
 										size="small"
 										fullWidth
 										label="First Name"
@@ -111,6 +158,7 @@ const SignUp = () => {
 										// helperText="Incorrect entry."
 									/>
 									<TextField
+										onChange={handleChange("last_name")}
 										size="small"
 										fullWidth
 										label="Last Name"
@@ -119,6 +167,7 @@ const SignUp = () => {
 										// helperText="Incorrect entry."
 									/>
 									<TextField
+										onChange={handleChange("phone")}
 										size="small"
 										fullWidth
 										label="Phone"
@@ -127,6 +176,7 @@ const SignUp = () => {
 										// helperText="Incorrect entry."
 									/>
 									<TextField
+										onChange={handleChange("email")}
 										size="small"
 										fullWidth
 										label="Email"
@@ -167,7 +217,11 @@ const SignUp = () => {
 											label="Password"
 										/>
 									</FormControl>
-									<Button type="submit">Sign Up</Button>
+									<ButtonProgress
+										btnType="submit"
+										btnText="Sign Up"
+										isLoading={isLoading}
+									/>
 								</Box>
 							</Grid>
 						</Grid>
