@@ -5,11 +5,13 @@ import CartReducer from "./slice/cartSlice";
 import wishlistReducer from "./slice/wishlistSlice";
 import { useDispatch } from "react-redux";
 import { productApi } from "./api/api.product";
+import { usersApi } from "./api/api.users";
 
 const store = configureStore({
 	reducer: {
 		// api / services
 		[productApi.reducerPath]: productApi.reducer,
+		[usersApi.reducerPath]: usersApi.reducer,
 		// slice
 		counter: CounterReducer,
 		product: ProductReducer,
