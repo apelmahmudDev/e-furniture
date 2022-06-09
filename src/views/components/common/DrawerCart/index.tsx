@@ -14,7 +14,7 @@ const DrawerCart = () => {
 	return (
 		<>
 			{/* not found */}
-			{false && (
+			{!cart.cart.length && (
 				<Box my={4} sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
 					<NotFound
 						message="No products in the cart."
@@ -29,6 +29,7 @@ const DrawerCart = () => {
 					</Button>
 				</Box>
 			)}
+
 			{/* cart product */}
 			<Box>
 				{/* render cart item */}
@@ -47,25 +48,33 @@ const DrawerCart = () => {
 					</Box>
 				))}
 
-				<Box sx={{ display: "flex", alignItems: "center" }}>
-					<Typography
-						sx={{ flexGrow: 1, fontFamily: "Titillium Web", fontWeight: 600 }}
-					>
-						Subtotal:
-					</Typography>
-					<Typography variant="h6" sx={{ fontWeight: 600 }}>
-						$345.000
-					</Typography>
-				</Box>
+				{cart.cart.length && (
+					<>
+						<Box sx={{ display: "flex", alignItems: "center" }}>
+							<Typography
+								sx={{
+									flexGrow: 1,
+									fontFamily: "Titillium Web",
+									fontWeight: 600,
+								}}
+							>
+								Subtotal:
+							</Typography>
+							<Typography variant="h6" sx={{ fontWeight: 600 }}>
+								$345.000
+							</Typography>
+						</Box>
 
-				<Box>
-					<Button sx={{ my: 1 }} fullWidth variant="outlined">
-						View Cart
-					</Button>
-					<Button sx={{ my: 1 }} fullWidth variant="contained">
-						Checkout
-					</Button>
-				</Box>
+						<Box>
+							<Button sx={{ my: 1 }} fullWidth variant="outlined">
+								View Cart
+							</Button>
+							<Button sx={{ my: 1 }} fullWidth variant="contained">
+								Checkout
+							</Button>
+						</Box>
+					</>
+				)}
 			</Box>
 		</>
 	);
