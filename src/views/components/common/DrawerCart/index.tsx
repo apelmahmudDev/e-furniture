@@ -2,12 +2,14 @@ import NotFound from "../NotFound";
 import { Box, Button, Avatar, Typography, IconButton } from "@mui/material";
 import ProductionQuantityLimitsOutlinedIcon from "@mui/icons-material/ProductionQuantityLimitsOutlined";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-import { IMAGES } from "../../../../constants/themeData";
 import DeleteIcon from "@mui/icons-material/Close";
 import { useStyles } from "./styled";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store";
 
 const DrawerCart = () => {
 	const classes = useStyles();
+	const cart = useSelector((state: RootState) => state.cart);
 
 	return (
 		<>
@@ -29,11 +31,12 @@ const DrawerCart = () => {
 			)}
 			{/* cart product */}
 			<Box>
-				{[...Array(3)].map((item, idx) => (
-					<Box key={idx} className={classes.cartProduct}>
-						<Avatar src={IMAGES.HeroOneImg} alt="product" />
+				{/* render cart item */}
+				{cart.cart.map((product) => (
+					<Box key={product.id} className={classes.cartProduct}>
+						<Avatar src={product.image} alt="product" />
 						<Box>
-							<Typography variant="subtitle1">CH24 Wishbone Chair</Typography>
+							<Typography variant="subtitle1">{product.name}</Typography>
 							<Typography color="primary" variant="subtitle2">
 								4 x $452.00
 							</Typography>
@@ -43,6 +46,7 @@ const DrawerCart = () => {
 						</IconButton>
 					</Box>
 				))}
+
 				<Box sx={{ display: "flex", alignItems: "center" }}>
 					<Typography
 						sx={{ flexGrow: 1, fontFamily: "Titillium Web", fontWeight: 600 }}
@@ -53,6 +57,7 @@ const DrawerCart = () => {
 						$345.000
 					</Typography>
 				</Box>
+
 				<Box>
 					<Button sx={{ my: 1 }} fullWidth variant="outlined">
 						View Cart

@@ -5,8 +5,9 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { styled } from "@mui/material/styles";
 import { STYLES } from "../../../../styles/styles";
-import { useAppDispatch } from "../../../../store";
+import { RootState, useAppDispatch } from "../../../../store";
 import { toggleDrawer } from "../../../../store/slice/cartSlice";
+import { useSelector } from "react-redux";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 	"& .MuiBadge-badge": {
@@ -19,6 +20,8 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 
 const WishAndCardView = () => {
 	const classes = useStyles();
+
+	const cart = useSelector((state: RootState) => state.cart);
 	const dispatch = useAppDispatch();
 
 	return (
@@ -29,7 +32,7 @@ const WishAndCardView = () => {
 				sx={{ ...STYLES.icon }}
 				size="small"
 			>
-				<StyledBadge badgeContent={4} color="secondary">
+				<StyledBadge badgeContent={cart.cart.length} color="secondary">
 					<ShoppingCartOutlinedIcon />
 				</StyledBadge>
 			</IconButton>
@@ -39,7 +42,7 @@ const WishAndCardView = () => {
 				sx={{ ...STYLES.icon }}
 				size="small"
 			>
-				<StyledBadge badgeContent={1} color="secondary">
+				<StyledBadge badgeContent={3} color="secondary">
 					<FavoriteBorderOutlinedIcon />
 				</StyledBadge>
 			</IconButton>
