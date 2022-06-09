@@ -1,3 +1,7 @@
+// styles
+import { useStyles } from "./styled";
+import { STYLES } from "../../../styles/styles";
+
 import {
 	Box,
 	Button,
@@ -13,15 +17,21 @@ import {
 	InputLabel,
 	Typography,
 } from "@mui/material";
-import { STYLES } from "../../../styles/styles";
-import { useStyles } from "./styled";
 import AppLogo from "../../components/common/AppLogo";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ReactComponent as EncryptionSvg } from "../../../assets/svg/encryption.svg";
-import { Link } from "react-router-dom";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
+import ButtonProgress from "../../components/common/ButtonProgress";
+import Snackbar from "../../components/common/Snackbar";
+
+// store
+import { useLoginMutation } from "../../../store/api/api.users";
+import { useAppDispatch } from "../../../store";
+import { setAuth } from "../../../store/slice/authSlice";
+
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 interface State {
 	email: string;
@@ -29,8 +39,20 @@ interface State {
 	showPassword: boolean;
 }
 
+export interface LoginUser {
+	email: string;
+	password: string;
+}
+
 const Login = () => {
 	const classes = useStyles();
+	const navigate = useNavigate();
+	const location: any = useLocation();
+	const dispatch = useAppDispatch();
+	const handleClickVariant = Snackbar();
+
+	let from = location.state?.from?.pathname || "/";
+
 	const [values, setValues] = useState<State>({
 		email: "",
 		password: "",
@@ -55,9 +77,45 @@ const Login = () => {
 		event.preventDefault();
 	};
 
+	// login user func
+	const [login, { data, error, isLoading }] = useLoginMutation();
+
 	const handleFormSubmit = (event: React.SyntheticEvent) => {
 		event.preventDefault();
+
+		const loggedInUser: LoginUser = {
+			email: values.email,
+			password: values.password,
+		};
+		login(loggedInUser);
 	};
+
+	// display message
+	useEffect(() => {
+		if (data) {
+			if (data.user) {
+				handleClickVariant("success", "User logged in successfully");
+				dispatch(setAuth(data.user));
+				navigate(from, { replace: true });
+			}
+
+			if (data.status === "error") {
+				handleClickVariant("error", "There is an error occurred");
+			}
+		}
+
+		if (error) {
+			if ("error" in error) {
+				handleClickVariant("error", "There is an error occurred");
+			}
+			if ("data" in error) {
+				if (error.data) {
+					handleClickVariant("error", "Bad credentials, Please try agian");
+				}
+			}
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [data, error]);
 
 	return (
 		<Box
@@ -92,7 +150,6 @@ const Login = () => {
 									sx={{
 										"& .MuiTextField-root, & .MuiFormControl-root": { my: 1 },
 									}}
-									noValidate
 									autoComplete="off"
 									onSubmit={handleFormSubmit}
 								>
@@ -138,7 +195,11 @@ const Login = () => {
 											label="Password"
 										/>
 									</FormControl>
-									<Button type="submit">Login</Button>
+									<ButtonProgress
+										btnType="submit"
+										btnText="Login"
+										isLoading={isLoading}
+									/>
 								</Box>
 							</Grid>
 						</Grid>

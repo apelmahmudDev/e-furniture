@@ -7,6 +7,7 @@ import Product from "../views/pages/admin/product";
 import Login from "../views/pages/auth/Login";
 import SignUp from "../views/pages/auth/SignUp";
 import Home from "../views/pages/home";
+import RequireAuth from "../views/pages/auth/RequireAuth";
 
 const routes = [
 	{
@@ -23,7 +24,11 @@ const routes = [
 		path: ROUTING_TREE.AUTH.SIGNUP,
 	},
 	{
-		element: <Admin />,
+		element: (
+			<RequireAuth>
+				<Admin />
+			</RequireAuth>
+		),
 		path: ROUTING_TREE.ADMIN.ADMIN,
 		children: [
 			{

@@ -1,8 +1,12 @@
+// slice
 import { configureStore } from "@reduxjs/toolkit";
 import CounterReducer from "./slice/counterSlice";
 import ProductReducer from "./slice/productSlice";
 import CartReducer from "./slice/cartSlice";
 import wishlistReducer from "./slice/wishlistSlice";
+import authReducer from "./slice/authSlice";
+
+// api / services
 import { useDispatch } from "react-redux";
 import { productApi } from "./api/api.product";
 import { usersApi } from "./api/api.users";
@@ -12,11 +16,13 @@ const store = configureStore({
 		// api / services
 		[productApi.reducerPath]: productApi.reducer,
 		[usersApi.reducerPath]: usersApi.reducer,
+
 		// slice
 		counter: CounterReducer,
 		product: ProductReducer,
 		cart: CartReducer,
 		wishlist: wishlistReducer,
+		auth: authReducer,
 	},
 
 	middleware: (getDefaultMiddleware) =>

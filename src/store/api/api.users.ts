@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { LoginUser } from "../../views/pages/auth/Login";
 import { User } from "../../views/pages/auth/SignUp";
 
 export const usersApi = createApi({
@@ -12,13 +13,14 @@ export const usersApi = createApi({
 				body,
 			}),
 		}),
-		login: builder.query<any, void>({
+		login: builder.mutation<any, LoginUser>({
 			query: (body) => ({
 				url: "/login",
+				method: "POST",
 				body,
 			}),
 		}),
 	}),
 });
 
-export const { useSignUpMutation, useLoginQuery } = usersApi;
+export const { useSignUpMutation, useLoginMutation } = usersApi;
