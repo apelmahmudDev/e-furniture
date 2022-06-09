@@ -19,10 +19,16 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import { ROUTING_TREE } from "../../../../constants/siteUrls";
 import { Link } from "react-router-dom";
+import { RootState, useAppDispatch } from "../../../../store";
+import { useSelector } from "react-redux";
+import { logout } from "../../../../store/slice/authSlice";
 
 const pages = ["Home", "Shop", "About Us", "Blog"];
 
 const Navbar = (props: any) => {
+	const dispatch = useAppDispatch();
+	const auth = useSelector((state: RootState) => state.auth);
+
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 	const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
@@ -142,12 +148,12 @@ const Navbar = (props: any) => {
 							</Box>
 
 							<Box sx={{ flexGrow: 0 }}>
-								{false ? (
+								{auth.isAuthenticated ? (
 									<Tooltip title="Open settings">
 										<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
 											<Avatar
-												alt="Memy Sharp"
-												src="/static/images/avatar/2.jpg"
+												alt={auth.user.first_name}
+												src={auth.user.avatar}
 											/>
 										</IconButton>
 									</Tooltip>
@@ -190,7 +196,7 @@ const Navbar = (props: any) => {
 											<Typography textAlign="center">Dashboard</Typography>
 										</MenuItem>
 									</Link>
-									<MenuItem onClick={handleCloseUserMenu}>
+									<MenuItem onClick={() => dispatch(logout())}>
 										<Typography textAlign="center">Logout</Typography>
 									</MenuItem>
 								</Menu>

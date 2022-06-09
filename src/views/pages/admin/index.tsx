@@ -25,6 +25,9 @@ import AppLogo from "../../components/common/AppLogo";
 import { ReactComponent as DashboardSvg } from "../../../assets/svg/ideas.svg";
 import { Link, Outlet } from "react-router-dom";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
+import { RootState, useAppDispatch } from "../../../store";
+import { useSelector } from "react-redux";
+import { logout } from "../../../store/slice/authSlice";
 
 const drawerWidth = 230;
 
@@ -37,6 +40,9 @@ interface Props {
 }
 
 const Admin = (props: Props) => {
+	const dispatch = useAppDispatch();
+	const auth = useSelector((state: RootState) => state.auth);
+
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -49,11 +55,11 @@ const Admin = (props: Props) => {
 			<Box my={2} sx={{ textAlign: "center" }}>
 				<Avatar
 					sx={{ height: 70, width: 70, margin: "0 auto" }}
-					src="/ApelMahmud.png"
-					alt="Apel Mahmud"
+					src={auth.user?.avatar}
+					alt={auth.user.first_name}
 				/>
 				<Typography color="primary" my={1} variant="h5">
-					Apel Mahmud
+					{`${auth.user?.first_name} ${auth.user?.last_name}`}
 				</Typography>
 			</Box>
 			<Divider />
@@ -70,7 +76,7 @@ const Admin = (props: Props) => {
 				))}
 				{/* logout item */}
 				<ListItem disablePadding>
-					<ListItemButton>
+					<ListItemButton onClick={() => dispatch(logout())}>
 						<ListItemIcon>
 							<PowerIcon color="primary" />
 						</ListItemIcon>
