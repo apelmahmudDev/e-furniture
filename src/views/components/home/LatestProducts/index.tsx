@@ -7,6 +7,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useState } from "react";
 import { useGetProductsQuery } from "../../../../store/api/api.product";
+import Spinner from "../../common/Spinner";
 
 function a11yProps(index: number) {
 	return {
@@ -24,19 +25,12 @@ const LatestProducts = () => {
 	};
 
 	// get products
-	const { data, isLoading } = useGetProductsQuery();
+	const { data, isFetching } = useGetProductsQuery();
 
 	return (
 		<Box my={5} component="section">
 			<Container>
 				<Portion firstWord="Latest" lastWord="Products" />
-				{/* <Grid container spacing={3}>
-					{[...Array(6)].map((item, idx) => (
-						<Grid key={idx} item xs={12} md={3} lg={4}>
-							<LatestCard />
-						</Grid>
-					))}
-				</Grid>  */}
 
 				<Box sx={{ width: "100%" }}>
 					<Box className={classes.tabsWrapper}>
@@ -52,14 +46,19 @@ const LatestProducts = () => {
 						</Tabs>
 					</Box>
 					<TabPanel value={value} index={0}>
-						<Grid container spacing={3}>
-							{!isLoading &&
-								data?.data.map((product, idx) => (
+						{isFetching ? (
+							<Box textAlign="center">
+								<Spinner />
+							</Box>
+						) : (
+							<Grid container spacing={3}>
+								{data?.data.map((product, idx) => (
 									<Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
 										<LatestCard product={product} />
 									</Grid>
 								))}
-						</Grid>
+							</Grid>
+						)}
 					</TabPanel>
 					<TabPanel value={value} index={1}>
 						Best Seller
