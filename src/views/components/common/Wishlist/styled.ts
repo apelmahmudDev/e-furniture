@@ -12,6 +12,10 @@ export const useStyles = makeStyles((theme) => ({
 			width: "65px !important",
 			height: "65px !important",
 			borderRadius: "0 !important",
+
+			"& > img": {
+				objectFit: "contain",
+			},
 		},
 	},
 	date: {

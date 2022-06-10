@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { format } from "date-fns";
 
 export interface ProductInterface {
 	_id: string;
@@ -8,7 +9,7 @@ export interface ProductInterface {
 	image: string;
 	category: string;
 	// subCategory: string;
-	createdAt?: Date;
+	createdAt?: string;
 }
 interface InitialStateInterFace {
 	wishlist: ProductInterface[];
@@ -25,7 +26,7 @@ export const wishlistSlice = createSlice({
 		addToWishlist: (state, action: PayloadAction<ProductInterface>) => {
 			state.wishlist = [
 				...state.wishlist,
-				{ ...action.payload, createdAt: new Date() },
+				{ ...action.payload, createdAt: format(new Date(), "dd MMM, yyyy") },
 			];
 		},
 	},
