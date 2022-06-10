@@ -3,7 +3,7 @@ export interface ProductInterface {
 	message: string;
 	data: [
 		{
-			id: string;
+			_id: string;
 			name: string;
 			price: string | number;
 			description: string;

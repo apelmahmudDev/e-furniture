@@ -18,7 +18,7 @@ import { addToWishlist } from "../../../../store/slice/wishlistSlice";
 
 interface ProductInterface {
 	product: {
-		id: string;
+		_id: string;
 		name: string;
 		price: string | number;
 		description: string;
