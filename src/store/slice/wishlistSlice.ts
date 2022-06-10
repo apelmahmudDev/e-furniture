@@ -8,6 +8,7 @@ export interface ProductInterface {
 	image: string;
 	category: string;
 	// subCategory: string;
+	createdAt?: Date;
 }
 interface InitialStateInterFace {
 	wishlist: ProductInterface[];
@@ -22,7 +23,10 @@ export const wishlistSlice = createSlice({
 	initialState,
 	reducers: {
 		addToWishlist: (state, action: PayloadAction<ProductInterface>) => {
-			state.wishlist = [...state.wishlist, action.payload];
+			state.wishlist = [
+				...state.wishlist,
+				{ ...action.payload, createdAt: new Date() },
+			];
 		},
 	},
 });

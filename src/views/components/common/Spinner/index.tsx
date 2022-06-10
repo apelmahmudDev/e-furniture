@@ -5,7 +5,6 @@ import CircularProgress, {
 } from "@mui/material/CircularProgress";
 import { ChairIcon } from "../../../../assets/icon";
 
-// Inspired by the former Facebook spinners.
 function EfurnitureCircularSpinner(props: CircularProgressProps) {
 	return (
 		<Box sx={{ display: "inline-block", position: "relative" }}>

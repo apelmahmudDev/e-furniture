@@ -22,10 +22,12 @@ const WishAndCardView = () => {
 	const classes = useStyles();
 
 	const cart = useSelector((state: RootState) => state.cart);
+	const wishlist = useSelector((state: RootState) => state.wishlist.wishlist);
 	const dispatch = useAppDispatch();
 
 	return (
 		<Box classes={5} className={classes.root}>
+			{/* cart */}
 			<IconButton
 				onClick={() => dispatch(toggleDrawer({ open: true, isCart: true }))}
 				aria-label="cart"
@@ -36,13 +38,14 @@ const WishAndCardView = () => {
 					<ShoppingCartOutlinedIcon />
 				</StyledBadge>
 			</IconButton>
+			{/* whishlist */}
 			<IconButton
 				onClick={() => dispatch(toggleDrawer({ open: true }))}
 				aria-label="wish"
 				sx={{ ...STYLES.icon }}
 				size="small"
 			>
-				<StyledBadge badgeContent={3} color="secondary">
+				<StyledBadge badgeContent={wishlist.length} color="secondary">
 					<FavoriteBorderOutlinedIcon />
 				</StyledBadge>
 			</IconButton>

@@ -1,17 +1,22 @@
 import NotFound from "../NotFound";
-import HeartBrokenOutlinedIcon from "@mui/icons-material/HeartBrokenOutlined";
 import { Box, Button, Avatar, Typography, IconButton } from "@mui/material";
-import { IMAGES } from "../../../../constants/themeData";
 import { useStyles } from "./styled";
-import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store";
+import { format } from "date-fns";
+import {
+	AddShoppingCartOutlinedIcon,
+	HeartBrokenOutlinedIcon,
+} from "../../../../assets/icon";
 
 const Wishlist = () => {
 	const classes = useStyles();
+	const wishlist = useSelector((state: RootState) => state.wishlist.wishlist);
 
 	return (
 		<Box>
-			{/* not found */}
-			{false && (
+			{/* no whish*/}
+			{!wishlist.length && (
 				<Box my={4} textAlign="center">
 					<NotFound
 						message="No products in the wishlist."
@@ -21,13 +26,18 @@ const Wishlist = () => {
 			)}
 			{/* wishlist product*/}
 			<Box>
-				{[...Array(3)].map((item, idx) => (
-					<Box key={idx} className={classes.wishlist}>
-						<Avatar src={IMAGES.HeroOneImg} alt="product" />
+				{wishlist.map((product) => (
+					<Box key={product._id} className={classes.wishlist}>
+						<Avatar src={product.image} alt={product.name} />
 						<Box>
-							<Typography variant="subtitle1">CH24 Wishbone Chair</Typography>
+							<Typography variant="subtitle1">{product.name}</Typography>
 							<Typography color="primary" variant="subtitle2">
-								$452.00 <span className={classes.date}>Date: 21 jun 2021</span>
+								${product.price}{" "}
+								<span className={classes.date}>
+									{product.createdAt
+										? format(product.createdAt, "dd MMM, yyyy")
+										: undefined}
+								</span>
 							</Typography>
 						</Box>
 						<IconButton size="small">
@@ -35,9 +45,11 @@ const Wishlist = () => {
 						</IconButton>
 					</Box>
 				))}
-				<Button sx={{ my: 1 }} fullWidth variant="outlined">
-					View Cart
-				</Button>
+				{wishlist.length > 0 && (
+					<Button sx={{ my: 1 }} fullWidth variant="outlined">
+						View Cart
+					</Button>
+				)}
 			</Box>
 		</Box>
 	);
