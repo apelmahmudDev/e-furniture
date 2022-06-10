@@ -70,7 +70,8 @@ const LatestCard = ({ product }: ProductInterface) => {
 					{product.name}
 				</Typography>
 				<Typography sx={{ textAlign: "right" }} variant="body1">
-					${product.price} <span>$65.00</span>
+					<strong>৳</strong>
+					{product.price} <span>৳65.00</span>
 				</Typography>
 			</CardContent>
 		</Card>

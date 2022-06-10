@@ -158,7 +158,7 @@ const Navbar = (props: any) => {
 										</IconButton>
 									</Tooltip>
 								) : (
-									<Link to={ROUTING_TREE.AUTH.LOGIN}>
+									<Link to={`/${ROUTING_TREE.AUTH.LOGIN}`}>
 										<Button
 											sx={{ color: (theme) => theme.palette.text.primary }}
 											endIcon={<PermIdentityOutlinedIcon />}

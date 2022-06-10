@@ -1,7 +1,6 @@
 export const ROUTING_TREE = {
-	HOME: {
-		HOME: "/",
-	},
+	HOME: "/",
+	SHIPPING: "shipping",
 	AUTH: {
 		LOGIN: "auth/login",
 		SIGNUP: "auth/sign-up",

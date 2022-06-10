@@ -11,6 +11,8 @@ import {
 	removeFromCart,
 	toggleDrawer,
 } from "../../../../store/slice/cartSlice";
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
+import { useNavigate } from "react-router-dom";
 
 const styles = {
 	flexCenterRow: {
@@ -26,6 +28,7 @@ const styles = {
 
 const DrawerCart = () => {
 	const classes = useStyles();
+	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const cart = useSelector((state: RootState) => state.cart);
 
@@ -93,7 +96,12 @@ const DrawerCart = () => {
 							<Button sx={{ my: 1 }} fullWidth variant="outlined">
 								View Cart
 							</Button>
-							<Button sx={{ my: 1 }} fullWidth variant="contained">
+							<Button
+								onClick={() => navigate(ROUTING_TREE.SHIPPING)}
+								sx={{ my: 1 }}
+								fullWidth
+								variant="contained"
+							>
 								Checkout
 							</Button>
 						</Box>

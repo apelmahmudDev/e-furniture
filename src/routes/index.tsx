@@ -8,11 +8,13 @@ import Login from "../views/pages/auth/Login";
 import SignUp from "../views/pages/auth/SignUp";
 import Home from "../views/pages/home";
 import RequireAuth from "../views/pages/auth/RequireAuth";
+import ShippingLayout from "../views/layout/ShippingLayout";
+import Shipping from "../views/pages/shipping";
 
 const routes = [
 	{
 		element: <MainLayout />,
-		path: ROUTING_TREE.HOME.HOME,
+		path: ROUTING_TREE.HOME,
 		children: [{ path: "", element: <Home /> }],
 	},
 	{
@@ -22,6 +24,15 @@ const routes = [
 	{
 		element: <SignUp />,
 		path: ROUTING_TREE.AUTH.SIGNUP,
+	},
+	{
+		element: (
+			<RequireAuth>
+				<ShippingLayout />
+			</RequireAuth>
+		),
+		path: ROUTING_TREE.SHIPPING,
+		children: [{ path: "", element: <Shipping /> }],
 	},
 	{
 		element: (
