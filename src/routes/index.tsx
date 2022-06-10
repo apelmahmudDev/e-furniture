@@ -27,9 +27,9 @@ const routes = [
 	},
 	{
 		element: (
-			<RequireAuth>
-				<ShippingLayout />
-			</RequireAuth>
+			// <RequireAuth>
+			<ShippingLayout />
+			// </RequireAuth>
 		),
 		path: ROUTING_TREE.SHIPPING,
 		children: [{ path: "", element: <Shipping /> }],
