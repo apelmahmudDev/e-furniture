@@ -1,5 +1,6 @@
 // slice
 import { configureStore } from "@reduxjs/toolkit";
+import GlobalReducer from "./slice/globalSlice";
 import CounterReducer from "./slice/counterSlice";
 import ProductReducer from "./slice/productSlice";
 import CartReducer from "./slice/cartSlice";
@@ -19,6 +20,7 @@ const store = configureStore({
 		[usersApi.reducerPath]: usersApi.reducer,
 
 		// slice
+		global: GlobalReducer,
 		counter: CounterReducer,
 		product: ProductReducer,
 		cart: CartReducer,
