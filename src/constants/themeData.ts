@@ -16,7 +16,15 @@ import GiftIcon from "../assets/icon/services/price-tag.png";
 import AuthBg from "../assets/images/banner/auth-bg.png";
 import AutImg from "../assets/images/auth-img.png";
 
+// payment method
+import BkashImg from "../assets/images/payment_method/bkash.png";
+import NagadImg from "../assets/images/payment_method/nagad.png";
+import CashOnDeleveryImg from "../assets/images/payment_method/cash_on_delevery.png";
+
 const IMAGES = {
+	CashOnDeleveryImg,
+	BkashImg,
+	NagadImg,
 	AuthBg,
 	AutImg,
 	HeroOneImg,

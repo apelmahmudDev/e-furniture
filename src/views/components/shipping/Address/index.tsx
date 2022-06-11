@@ -1,14 +1,12 @@
-import { Box, CardContent, Grid, TextField, Typography } from "@mui/material";
+import { Box, CardContent, Grid, TextField } from "@mui/material";
 import { AppCard } from "../../common/StyledComponent";
+import Header from "../Header";
 
 const Address = () => {
 	return (
 		<AppCard>
 			<CardContent>
-				<Typography variant="h5" sx={{ mb: 1 }}>
-					Shipping Address
-				</Typography>
-
+				<Header headerText="Shipping Address" />
 				<Box
 					component="form"
 					sx={{

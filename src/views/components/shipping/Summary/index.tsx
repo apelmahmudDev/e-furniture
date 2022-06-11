@@ -1,14 +1,13 @@
 import { Box, CardContent, Divider, Typography } from "@mui/material";
 import { PercentIcon } from "../../../../assets/icon";
 import { AppCard } from "../../common/StyledComponent";
+import Header from "../Header";
 
 const Summary = () => {
 	return (
 		<AppCard>
 			<CardContent>
-				<Typography variant="h5" sx={{ mb: 1 }}>
-					Checkout Summary
-				</Typography>
+				<Header headerText="Checkout Summary" />
 				<Box>
 					<CheckoutItem title="Subtotal" amount={50} />
 					<CheckoutItem title="Shipping" amount={50} />
