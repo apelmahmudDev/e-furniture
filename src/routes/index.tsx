@@ -33,7 +33,7 @@ const routes = [
 			<ShippingLayout />
 			// </RequireAuth>
 		),
-		path: ROUTING_TREE.SHIPPING,
+		path: ROUTING_TREE.ORDER.SHIPPING,
 		children: [{ path: "", element: <Shipping /> }],
 	},
 	{
@@ -42,7 +42,7 @@ const routes = [
 			<OrderCompleteMsgLayout />
 			// </RequireAuth>
 		),
-		path: ROUTING_TREE.ORDER_COMPLETED,
+		path: ROUTING_TREE.ORDER.COMPLETED,
 		children: [{ path: "", element: <OrderCompleteMsg /> }],
 	},
 	{

@@ -1,7 +1,9 @@
 export const ROUTING_TREE = {
 	HOME: "/",
-	SHIPPING: "shipping",
-	ORDER_COMPLETED: "order-completed",
+	ORDER: {
+		SHIPPING: "order-shipping",
+		COMPLETED: "order-completed",
+	},
 	AUTH: {
 		LOGIN: "auth/login",
 		SIGNUP: "auth/sign-up",

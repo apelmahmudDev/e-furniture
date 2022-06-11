@@ -97,7 +97,7 @@ const DrawerCart = () => {
 								View Cart
 							</Button>
 							<Button
-								onClick={() => navigate(ROUTING_TREE.SHIPPING)}
+								onClick={() => navigate(ROUTING_TREE.ORDER.SHIPPING)}
 								sx={{ my: 1 }}
 								fullWidth
 								variant="contained"

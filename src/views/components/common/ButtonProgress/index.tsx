@@ -15,23 +15,25 @@ const ButtonProgress = ({
 	isLoading: boolean;
 }) => {
 	return (
-		<Box sx={{ position: "relative" }}>
-			<Button type={btnType} disabled={isLoading} variant={variantType}>
-				{btnText}
-			</Button>
-			{isLoading && (
-				<CircularProgress
-					size={24}
-					sx={{
-						color: green[500],
-						position: "absolute",
-						top: "50%",
-						left: "50%",
-						marginTop: "-12px",
-						marginLeft: "-12px",
-					}}
-				/>
-			)}
+		<Box sx={{ display: "flex", alignItems: "center" }}>
+			<Box sx={{ position: "relative" }}>
+				<Button type={btnType} disabled={isLoading} variant={variantType}>
+					{btnText}
+				</Button>
+				{isLoading && (
+					<CircularProgress
+						size={24}
+						sx={{
+							color: green[500],
+							position: "absolute",
+							top: "50%",
+							left: "50%",
+							marginTop: "-12px",
+							marginLeft: "-12px",
+						}}
+					/>
+				)}
+			</Box>
 		</Box>
 	);
 };
