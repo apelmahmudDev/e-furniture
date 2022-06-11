@@ -1,1 +1,1 @@
-export type MethodType = "bkash" | "nagad" | "cash_on_delevery";
+export type MethodType = "Bkash" | "Nagad" | "Cash on Delevery";
