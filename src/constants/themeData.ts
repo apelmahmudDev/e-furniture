@@ -21,7 +21,15 @@ import BkashImg from "../assets/images/payment_method/bkash.png";
 import NagadImg from "../assets/images/payment_method/nagad.png";
 import CashOnDeleveryImg from "../assets/images/payment_method/cash_on_delevery.png";
 
+// order
+import TickMarkImg from "../assets/images/order/tick-mark.png";
+import ClockImg from "../assets/images/order/clock.png";
+import ScooterImg from "../assets/images/order/scooter.png";
+
 const IMAGES = {
+	ClockImg,
+	ScooterImg,
+	TickMarkImg,
 	CashOnDeleveryImg,
 	BkashImg,
 	NagadImg,
