@@ -8,10 +8,13 @@ import {
 	Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ArrowBackIcon } from "../../assets/icon";
 import { ROUTING_TREE } from "../../constants/siteUrls";
 import { IMAGES } from "../../constants/themeData";
+import { RootState } from "../../store";
 import { STYLES } from "../../styles/styles";
 
 const useStyles = makeStyles(() => ({
@@ -26,6 +29,14 @@ const useStyles = makeStyles(() => ({
 const OrderCompleteMsg = () => {
 	const classes = useStyles();
 	const navigate = useNavigate();
+	// const dispatch = useAppDispatch()
+	const global = useSelector((state: RootState) => state.global);
+
+	// is coming from shipping route ?
+	useEffect(() => {
+		// dispatch(setIsGoToOrderCompletedPage(false));
+		if (!global.isGoToOrderCompletedPage) navigate(ROUTING_TREE.HOME);
+	}, [global.isGoToOrderCompletedPage, navigate]);
 
 	return (
 		<Box

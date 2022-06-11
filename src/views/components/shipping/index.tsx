@@ -4,13 +4,17 @@ import PaymentMethod from "./PaymentMethod";
 import { Box, Container, Grid } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
+import { useNavigate } from "react-router-dom";
+import { ROUTING_TREE } from "../../../constants/siteUrls";
 
 const ShippingContainer = () => {
+	const navigate = useNavigate();
 	const shipping = useSelector((state: RootState) => state.shipping);
 
 	const handleShippingSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
 		console.log(shipping);
+		navigate(`/${ROUTING_TREE.ORDER.COMPLETED}`);
 	};
 
 	return (
