@@ -10,6 +10,8 @@ import Home from "../views/pages/home";
 import RequireAuth from "../views/pages/auth/RequireAuth";
 import ShippingLayout from "../views/layout/ShippingLayout";
 import Shipping from "../views/pages/shipping";
+import OrderCompleteMsg from "../views/pages/orderCompleteMsg";
+import OrderCompleteMsgLayout from "../views/layout/OrderCompleteMsgLayout";
 
 const routes = [
 	{
@@ -33,6 +35,15 @@ const routes = [
 		),
 		path: ROUTING_TREE.SHIPPING,
 		children: [{ path: "", element: <Shipping /> }],
+	},
+	{
+		element: (
+			// <RequireAuth>
+			<OrderCompleteMsgLayout />
+			// </RequireAuth>
+		),
+		path: ROUTING_TREE.ORDER_COMPLETED,
+		children: [{ path: "", element: <OrderCompleteMsg /> }],
 	},
 	{
 		element: (
