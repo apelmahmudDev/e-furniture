@@ -1,8 +1,12 @@
 import { CardContent, Grid, TextField } from "@mui/material";
+import { useAppDispatch } from "../../../store";
+import { updateShippingForm } from "../../../store/slice/shippingSlice";
 import { AppCard } from "../common/StyledComponent";
 import Header from "./Header";
 
 const Address = () => {
+	const dispatch = useAppDispatch();
+
 	return (
 		<AppCard>
 			<CardContent>
@@ -12,8 +16,12 @@ const Address = () => {
 					size="small"
 					fullWidth
 					label="Name"
-					// onChange={handleChange("name")}
 					required
+					onChange={(e) =>
+						dispatch(
+							updateShippingForm({ field: "name", value: e.target.value })
+						)
+					}
 				/>
 				<Grid container spacing={{ xs: 0, sm: 3 }}>
 					<Grid item xs={12} sm={6}>
@@ -22,8 +30,12 @@ const Address = () => {
 							fullWidth
 							label="Email"
 							type="email"
-							// onChange={handleChange("email")}
 							required
+							onChange={(e) =>
+								dispatch(
+									updateShippingForm({ field: "email", value: e.target.value })
+								)
+							}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -33,8 +45,12 @@ const Address = () => {
 							label="Phone No"
 							type="tel"
 							inputMode="numeric"
-							// onChange={handleChange("phone")}
 							required
+							onChange={(e) =>
+								dispatch(
+									updateShippingForm({ field: "phone", value: e.target.value })
+								)
+							}
 						/>
 					</Grid>
 				</Grid>
@@ -44,8 +60,15 @@ const Address = () => {
 							size="small"
 							fullWidth
 							label="Country"
-							// onChange={handleChange("country")}
 							required
+							onChange={(e) =>
+								dispatch(
+									updateShippingForm({
+										field: "country",
+										value: e.target.value,
+									})
+								)
+							}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -53,8 +76,15 @@ const Address = () => {
 							size="small"
 							fullWidth
 							label="District"
-							// onChange={handleChange("district")}
 							required
+							onChange={(e) =>
+								dispatch(
+									updateShippingForm({
+										field: "district",
+										value: e.target.value,
+									})
+								)
+							}
 						/>
 					</Grid>
 				</Grid>
@@ -64,8 +94,15 @@ const Address = () => {
 							size="small"
 							fullWidth
 							label="Area"
-							// onChange={handleChange("area")}
 							required
+							onChange={(e) =>
+								dispatch(
+									updateShippingForm({
+										field: "area",
+										value: e.target.value,
+									})
+								)
+							}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -76,8 +113,15 @@ const Address = () => {
 							type="number"
 							inputMode="numeric"
 							inputProps={{ min: "0", minLength: "4" }}
-							// onChange={handleChange("postCode")}
 							required
+							onChange={(e) =>
+								dispatch(
+									updateShippingForm({
+										field: "postCode",
+										value: e.target.value,
+									})
+								)
+							}
 						/>
 					</Grid>
 				</Grid>
@@ -87,7 +131,11 @@ const Address = () => {
 					label="Address (Optional)"
 					multiline
 					rows={3}
-					// onChange={handleChange("address")}
+					onChange={(e) =>
+						dispatch(
+							updateShippingForm({ field: "address", value: e.target.value })
+						)
+					}
 				/>
 			</CardContent>
 		</AppCard>

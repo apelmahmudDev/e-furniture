@@ -2,8 +2,17 @@ import Address from "./Address";
 import Summary from "../common/Summary";
 import PaymentMethod from "./PaymentMethod";
 import { Box, Container, Grid } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
 
 const ShippingContainer = () => {
+	const shipping = useSelector((state: RootState) => state.shipping);
+
+	const handleShippingSubmit = (e: React.SyntheticEvent) => {
+		e.preventDefault();
+		console.log(shipping);
+	};
+
 	return (
 		<Box my={5}>
 			<Container>
@@ -16,6 +25,7 @@ const ShippingContainer = () => {
 								"& .MuiTextField-root, & .MuiFormControl-root": { my: 1 },
 							}}
 							autoComplete="off"
+							onSubmit={handleShippingSubmit}
 						>
 							<Address />
 							<PaymentMethod />
