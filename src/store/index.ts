@@ -5,6 +5,7 @@ import ProductReducer from "./slice/productSlice";
 import CartReducer from "./slice/cartSlice";
 import wishlistReducer from "./slice/wishlistSlice";
 import authReducer from "./slice/authSlice";
+import shippingReducer from "./slice/shippingSlice";
 
 // api / services
 import { useDispatch } from "react-redux";
@@ -23,6 +24,7 @@ const store = configureStore({
 		cart: CartReducer,
 		wishlist: wishlistReducer,
 		auth: authReducer,
+		shipping: shippingReducer,
 	},
 
 	middleware: (getDefaultMiddleware) =>

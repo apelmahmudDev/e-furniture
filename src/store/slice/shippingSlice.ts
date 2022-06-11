@@ -3,14 +3,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // types
 import { AddressInterface } from "../../types/shipping/address.type";
 import { SummaryInterface } from "../../types/shipping/checkoutSummary.type";
-import { MethodType } from "../../types/shipping/paymentMethod.type";
 import { ProductInterface } from "./cartSlice";
 
 interface InitialState {
 	shippingAddress: AddressInterface;
 	checkoutSummary: SummaryInterface;
-	paymentMethod: MethodType;
+	paymentMethod: string;
 	cart: ProductInterface[];
+	status: "Pending" | "Done" | "Cancel";
 }
 
 const initialState: InitialState = {
@@ -30,18 +30,32 @@ const initialState: InitialState = {
 		total: 0,
 		payableTotal: 0,
 	},
-	paymentMethod: "cash_on_delevery",
+	paymentMethod: "Cash on Delevery",
 	cart: [],
+	status: "Pending",
 };
 
 export const shippingSlice = createSlice({
 	name: "shipping",
 	initialState,
 	reducers: {
-		updateShippingForm: (state, action: PayloadAction<AddressInterface>) => {},
+		updateShippingForm: (
+			state,
+			action: PayloadAction<{ field: string; value: string }>
+		) => {
+			state.shippingAddress = {
+				...state.shippingAddress,
+				[action.payload.field]: action.payload.value,
+			};
+		},
+
+		updatePaymentMethod: (state, action: PayloadAction<string>) => {
+			state.paymentMethod = action.payload;
+		},
 	},
 });
 
-export const { updateShippingForm } = shippingSlice.actions;
+export const { updateShippingForm, updatePaymentMethod } =
+	shippingSlice.actions;
 
 export default shippingSlice.reducer;
