@@ -1,7 +1,7 @@
 import { Box, CardContent, Divider, Typography } from "@mui/material";
 import { PercentIcon } from "../../../../assets/icon";
-import { AppCard } from "../../common/StyledComponent";
-import Header from "../Header";
+import { AppCard } from "../StyledComponent";
+import Header from "../../shipping/Header";
 
 const Summary = () => {
 	return (

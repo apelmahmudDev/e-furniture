@@ -1,13 +1,13 @@
-import { Box, Button, CardContent, Typography } from "@mui/material";
-import { AppCard } from "../../common/StyledComponent";
-import Header from "../Header";
+import { Box, Button, CardContent, Divider, Typography } from "@mui/material";
+import { AppCard } from "../common/StyledComponent";
+import Header from "./Header";
 
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { makeStyles } from "@mui/styles";
-import { IMAGES } from "../../../../constants/themeData";
+import { IMAGES } from "../../../constants/themeData";
 
 const useStyles = makeStyles((theme) => ({
 	formControlLabel: {
@@ -70,7 +70,12 @@ const PaymentMethod = () => {
 					</FormControl>
 
 					{/* confrim order */}
-					<Button variant="contained">Confirm Order</Button>
+					<Divider sx={{ my: 2 }} />
+					<Box textAlign="right" mt={2}>
+						<Button type="submit" variant="contained">
+							Confirm Order
+						</Button>
+					</Box>
 				</CardContent>
 			</AppCard>
 		</Box>
