@@ -1,8 +1,8 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import { ReactComponent as NotFountSvg } from "../../assets/svg/not_found.svg";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link } from "react-router-dom";
 import { ROUTING_TREE } from "../../constants/siteUrls";
+import { ArrowBackIcon } from "../../assets/icon";
 
 const NotFound = () => {
 	return (
