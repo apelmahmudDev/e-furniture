@@ -15,7 +15,8 @@ import { ArrowBackIcon } from "../../assets/icon";
 import { ROUTING_TREE } from "../../constants/siteUrls";
 import { IMAGES } from "../../constants/themeData";
 import { RootState, useAppDispatch } from "../../store";
-import { removedShipping } from "../../store/slice/shippingSlice";
+import { resetCart } from "../../store/slice/cartSlice";
+import { resetShipping } from "../../store/slice/shippingSlice";
 import { STYLES } from "../../styles/styles";
 
 const useStyles = makeStyles(() => ({
@@ -41,7 +42,8 @@ const OrderCompleteMsg = () => {
 
 	// remove shipping info after comming this page
 	useEffect(() => {
-		dispatch(removedShipping());
+		dispatch(resetShipping());
+		dispatch(resetCart());
 	}, [dispatch]);
 
 	return (

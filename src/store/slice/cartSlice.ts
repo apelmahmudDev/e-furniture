@@ -69,10 +69,23 @@ export const cartSlice = createSlice({
 			// checkout summary calculation
 			checkoutSummaryCalc(state);
 		},
+
+		resetCart: (state) => {
+			state.cart = [];
+			state.subTotal = 0;
+			state.checkoutSummary = {
+				subtotal: 0,
+				shippingCharge: 0,
+				total: 0,
+				discount: 0,
+				payableTotal: 0,
+			};
+		},
 	},
 });
 
-export const { toggleDrawer, addToCart, removeFromCart } = cartSlice.actions;
+export const { toggleDrawer, addToCart, removeFromCart, resetCart } =
+	cartSlice.actions;
 
 export default cartSlice.reducer;
 

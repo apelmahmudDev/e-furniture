@@ -62,7 +62,7 @@ export const shippingSlice = createSlice({
 			state.checkoutSummary = action.payload;
 		},
 
-		removedShipping: (state) => {
+		resetShipping: (state) => {
 			state.shippingAddress = initialState.shippingAddress;
 			state.checkoutSummary = initialState.checkoutSummary;
 			state.paymentMethod = initialState.paymentMethod;
@@ -77,7 +77,7 @@ export const {
 	updatePaymentMethod,
 	setShippingCart,
 	setShippingSummary,
-	removedShipping,
+	resetShipping,
 } = shippingSlice.actions;
 
 export default shippingSlice.reducer;
