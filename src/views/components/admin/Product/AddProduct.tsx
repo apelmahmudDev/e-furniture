@@ -1,5 +1,4 @@
 import {
-	Avatar,
 	Box,
 	Button,
 	Grid,
@@ -12,10 +11,10 @@ import { useEffect, useState } from "react";
 import { STYLES } from "../../../../styles/styles";
 import { styled } from "@mui/material/styles";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
-import CircularProgress from "@mui/material/CircularProgress";
 import { useStyles } from "./styled";
 import { useAddProductsMutation } from "../../../../store/api/api.product";
 import Snackbar from "../../common/Snackbar";
+import AvatarProgress from "../../common/AvatarProgress";
 
 const categories = [
 	{
@@ -201,10 +200,9 @@ const AddProduct = () => {
 						<Box my={1}>
 							<Grid container spacing={1}>
 								<Grid item xs={12} sm={3}>
-									<Avatar
-										sx={{ borderRadius: 1, mt: 0.5 }}
-										src={values.image && values.image}
-										alt="product-image"
+									<AvatarProgress
+										isLoading={imgUploading}
+										imgSrc={values.image && values.image}
 									/>
 								</Grid>
 								<Grid item xs={12} sm={9}>
@@ -222,7 +220,6 @@ const AddProduct = () => {
 											className={classes.uploadBtn}
 											startIcon={<PhotoCameraIcon />}
 											disabled={imgUploading}
-											endIcon={imgUploading && <CircularProgress />}
 											fullWidth
 											variant="contained"
 											component="span"

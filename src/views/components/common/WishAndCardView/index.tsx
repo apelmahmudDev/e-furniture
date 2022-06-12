@@ -1,13 +1,17 @@
 import { Box, IconButton } from "@mui/material";
 import { useStyles } from "./styled";
 import Badge, { BadgeProps } from "@mui/material/Badge";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { styled } from "@mui/material/styles";
 import { STYLES } from "../../../../styles/styles";
 import { RootState, useAppDispatch } from "../../../../store";
 import { toggleDrawer } from "../../../../store/slice/cartSlice";
 import { useSelector } from "react-redux";
+
+// icons
+import {
+	FavoriteBorderOutlinedIcon,
+	ShoppingCartOutlinedIcon,
+} from "../../../../assets/icon";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 	"& .MuiBadge-badge": {
