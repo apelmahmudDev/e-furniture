@@ -14,6 +14,7 @@ import OrderCompleteMsg from "../views/pages/orderCompleteMsg";
 import OrderCompleteMsgLayout from "../views/layout/OrderCompleteMsgLayout";
 import RequireAdmin from "../utils/security/RequireAdmin";
 import User from "../views/pages/user";
+import MyProfile from "../views/pages/user/myProfile";
 
 const routes = [
 	{
@@ -54,6 +55,7 @@ const routes = [
 			// </RequireAuth>
 		),
 		path: ROUTING_TREE.USER.USER,
+		children: [{ element: <MyProfile />, path: ROUTING_TREE.USER.PROFILE }],
 	},
 	{
 		element: (

@@ -67,7 +67,7 @@ const User = (props: Props) => {
 			</Box>
 			<Divider />
 			<List>
-				{adminItems.map((item, index) => (
+				{userItems.map((item, index) => (
 					<Link key={index} to={item.link}>
 						<ListItem key={index} disablePadding>
 							<ListItemButton>
@@ -181,7 +181,7 @@ const User = (props: Props) => {
 };
 export default User;
 
-const adminItems = [
+const userItems = [
 	{
 		item: "My Profile",
 		icon: <PersonIcon color="primary" />,
