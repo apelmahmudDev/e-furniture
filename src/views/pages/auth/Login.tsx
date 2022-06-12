@@ -94,7 +94,10 @@ const Login = () => {
 	useEffect(() => {
 		if (data) {
 			if (data.user) {
-				handleClickVariant("success", "User logged in successfully");
+				handleClickVariant(
+					"success",
+					`${data.user.user_type} logged in successfully`
+				);
 				dispatch(setAuth(data.user));
 				navigate(from, { replace: true });
 			}

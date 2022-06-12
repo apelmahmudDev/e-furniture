@@ -24,11 +24,10 @@ import { logout } from "../../../store/slice/authSlice";
 
 // icons
 import {
-	AutorenewIcon,
-	DashboardIcon,
-	InventoryIcon,
+	FavoriteBorderOutlinedIcon,
 	MallIcon,
 	MenuIcon,
+	PersonIcon,
 	PowerIcon,
 	SettingsIcon,
 } from "../../../assets/icon";
@@ -43,7 +42,7 @@ interface Props {
 	window?: () => Window;
 }
 
-const Admin = (props: Props) => {
+const User = (props: Props) => {
 	const dispatch = useAppDispatch();
 	const auth = useSelector((state: RootState) => state.auth);
 
@@ -164,7 +163,7 @@ const Admin = (props: Props) => {
 					<DashboardSvg />
 				</Drawer>
 			</Box>
-			{/* admin body content */}
+			{/* user body content */}
 			<Box
 				component="main"
 				sx={{
@@ -180,28 +179,23 @@ const Admin = (props: Props) => {
 		</Box>
 	);
 };
-export default Admin;
+export default User;
 
 const adminItems = [
 	{
-		item: "Dashboard",
-		icon: <DashboardIcon color="primary" />,
-		link: ROUTING_TREE.ADMIN.DASHBOARD,
+		item: "My Profile",
+		icon: <PersonIcon color="primary" />,
+		link: ROUTING_TREE.USER.PROFILE,
 	},
 	{
 		item: "Orders",
 		icon: <MallIcon color="primary" />,
-		link: "",
+		link: ROUTING_TREE.USER.ORDERS,
 	},
 	{
-		item: "Products",
-		icon: <InventoryIcon color="primary" />,
-		link: ROUTING_TREE.ADMIN.PRODUCTS,
-	},
-	{
-		item: "Earning Status",
-		icon: <AutorenewIcon color="primary" />,
-		link: "",
+		item: "Wishlist",
+		icon: <FavoriteBorderOutlinedIcon color="primary" />,
+		link: ROUTING_TREE.USER.WISHLIST,
 	},
 	{
 		item: "Settings",

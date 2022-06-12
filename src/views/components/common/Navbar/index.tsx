@@ -151,6 +151,16 @@ const Navbar = (props: any) => {
 								{auth.isAuthenticated ? (
 									<Tooltip title="Open settings">
 										<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+											<Typography
+												variant="h6"
+												sx={{
+													fontWeight: "bold",
+													mr: 1,
+													display: { xs: "none", sm: "block" },
+												}}
+											>
+												{auth.user.first_name}
+											</Typography>
 											<Avatar
 												alt={auth.user.first_name}
 												src={auth.user.avatar}
@@ -183,20 +193,32 @@ const Navbar = (props: any) => {
 									open={Boolean(anchorElUser)}
 									onClose={handleCloseUserMenu}
 								>
-									<MenuItem onClick={handleCloseUserMenu}>
-										<Typography textAlign="center">Profile</Typography>
-									</MenuItem>
+									<Link
+										to={`${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.PROFILE}`}
+									>
+										<MenuItem onClick={handleCloseUserMenu}>
+											<Typography textAlign="center">Profile</Typography>
+										</MenuItem>
+									</Link>
 									<MenuItem onClick={handleCloseUserMenu}>
 										<Typography textAlign="center">Account</Typography>
 									</MenuItem>
-									<Link
-										to={`${ROUTING_TREE.ADMIN.ADMIN}/${ROUTING_TREE.ADMIN.DASHBOARD}`}
+									{auth.user.user_type === "admin" && (
+										<Link
+											to={`${ROUTING_TREE.ADMIN.ADMIN}/${ROUTING_TREE.ADMIN.DASHBOARD}`}
+										>
+											<MenuItem onClick={handleCloseUserMenu}>
+												<Typography textAlign="center">Dashboard</Typography>
+											</MenuItem>
+										</Link>
+									)}
+
+									<MenuItem
+										onClick={() => {
+											dispatch(logout());
+											handleCloseUserMenu();
+										}}
 									>
-										<MenuItem onClick={handleCloseUserMenu}>
-											<Typography textAlign="center">Dashboard</Typography>
-										</MenuItem>
-									</Link>
-									<MenuItem onClick={() => dispatch(logout())}>
 										<Typography textAlign="center">Logout</Typography>
 									</MenuItem>
 								</Menu>
