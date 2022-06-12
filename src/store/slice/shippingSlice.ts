@@ -28,6 +28,7 @@ const initialState: InitialState = {
 		subtotal: 0,
 		shippingCharge: 0,
 		total: 0,
+		discount: 0,
 		payableTotal: 0,
 	},
 	paymentMethod: "Cash on Delevery",
@@ -52,10 +53,31 @@ export const shippingSlice = createSlice({
 		updatePaymentMethod: (state, action: PayloadAction<string>) => {
 			state.paymentMethod = action.payload;
 		},
+
+		setShippingCart: (state, action: PayloadAction<ProductInterface[]>) => {
+			state.cart = action.payload;
+		},
+
+		setShippingSummary: (state, action: PayloadAction<SummaryInterface>) => {
+			state.checkoutSummary = action.payload;
+		},
+
+		removedShipping: (state) => {
+			state.shippingAddress = initialState.shippingAddress;
+			state.checkoutSummary = initialState.checkoutSummary;
+			state.paymentMethod = initialState.paymentMethod;
+			state.cart = initialState.cart;
+			state.status = initialState.status;
+		},
 	},
 });
 
-export const { updateShippingForm, updatePaymentMethod } =
-	shippingSlice.actions;
+export const {
+	updateShippingForm,
+	updatePaymentMethod,
+	setShippingCart,
+	setShippingSummary,
+	removedShipping,
+} = shippingSlice.actions;
 
 export default shippingSlice.reducer;

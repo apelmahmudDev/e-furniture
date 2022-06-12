@@ -14,7 +14,8 @@ import { useNavigate } from "react-router-dom";
 import { ArrowBackIcon } from "../../assets/icon";
 import { ROUTING_TREE } from "../../constants/siteUrls";
 import { IMAGES } from "../../constants/themeData";
-import { RootState } from "../../store";
+import { RootState, useAppDispatch } from "../../store";
+import { removedShipping } from "../../store/slice/shippingSlice";
 import { STYLES } from "../../styles/styles";
 
 const useStyles = makeStyles(() => ({
@@ -29,7 +30,7 @@ const useStyles = makeStyles(() => ({
 const OrderCompleteMsg = () => {
 	const classes = useStyles();
 	const navigate = useNavigate();
-	// const dispatch = useAppDispatch()
+	const dispatch = useAppDispatch();
 	const global = useSelector((state: RootState) => state.global);
 
 	// is coming from shipping route ?
@@ -37,6 +38,11 @@ const OrderCompleteMsg = () => {
 		// dispatch(setIsGoToOrderCompletedPage(false));
 		if (!global.isGoToOrderCompletedPage) navigate(ROUTING_TREE.HOME);
 	}, [global.isGoToOrderCompletedPage, navigate]);
+
+	// remove shipping info after comming this page
+	useEffect(() => {
+		dispatch(removedShipping());
+	}, [dispatch]);
 
 	return (
 		<Box

@@ -13,6 +13,10 @@ import {
 } from "../../../../store/slice/cartSlice";
 import { ROUTING_TREE } from "../../../../constants/siteUrls";
 import { useNavigate } from "react-router-dom";
+import {
+	setShippingCart,
+	setShippingSummary,
+} from "../../../../store/slice/shippingSlice";
 
 const styles = {
 	flexCenterRow: {
@@ -97,7 +101,11 @@ const DrawerCart = () => {
 								View Cart
 							</Button>
 							<Button
-								onClick={() => navigate(ROUTING_TREE.ORDER.SHIPPING)}
+								onClick={() => {
+									dispatch(setShippingCart(cart.cart));
+									dispatch(setShippingSummary(cart.checkoutSummary));
+									navigate(ROUTING_TREE.ORDER.SHIPPING);
+								}}
 								sx={{ my: 1 }}
 								fullWidth
 								variant="contained"
