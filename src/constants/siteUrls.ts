@@ -8,6 +8,12 @@ export const ROUTING_TREE = {
 		LOGIN: "auth/login",
 		SIGNUP: "auth/sign-up",
 	},
+	USER: {
+		USER: "user",
+		PROFILE: "profile",
+		WISHLIST: "wishlist",
+		ORDERS: "order",
+	},
 	ADMIN: {
 		ADMIN: "admin",
 		DASHBOARD: "dashboard",
