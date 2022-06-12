@@ -2,17 +2,23 @@ import { Box, CardContent, Divider, Typography } from "@mui/material";
 import { PercentIcon } from "../../../../assets/icon";
 import { AppCard } from "../StyledComponent";
 import Header from "../../shipping/Header";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store";
 
 const Summary = () => {
+	const cart = useSelector((state: RootState) => state.cart);
+	const { subtotal, total, shippingCharge, payableTotal, discount } =
+		cart.checkoutSummary;
+
 	return (
 		<AppCard>
 			<CardContent>
 				<Header headerText="Checkout Summary" />
 				<Box>
-					<CheckoutItem title="Subtotal" amount={50} />
-					<CheckoutItem title="Shipping" amount={50} />
-					<CheckoutItem title="Total" amount={50} />
-					<CheckoutItem title="Payalbe Total" amount={50} />
+					<CheckoutItem title="Subtotal" amount={subtotal} />
+					<CheckoutItem title="Shipping" amount={shippingCharge} />
+					<CheckoutItem title="Total" amount={total} />
+					<CheckoutItem title="Payalbe Total" amount={payableTotal} />
 				</Box>
 				<Typography
 					color="primary"
@@ -24,7 +30,7 @@ const Summary = () => {
 						justifyContent: "center",
 					}}
 				>
-					You are saving 20 <PercentIcon color="primary" />
+					You are saving {discount} <PercentIcon color="primary" />
 				</Typography>
 			</CardContent>
 		</AppCard>
