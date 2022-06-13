@@ -1,6 +1,6 @@
 import { Box, CardContent, Divider, Typography } from "@mui/material";
 import { AppCard } from "../common/StyledComponent";
-import Header from "./Header";
+import Header from "../common/Header";
 
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";

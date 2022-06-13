@@ -1,9 +1,9 @@
 import { Box, CardContent, Divider, Typography } from "@mui/material";
 import { PercentIcon } from "../../../../assets/icon";
 import { AppCard } from "../StyledComponent";
-import Header from "../../shipping/Header";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
+import Header from "../Header";
 
 const Summary = () => {
 	const cart = useSelector((state: RootState) => state.cart);

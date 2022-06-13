@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import ElevationScroll from "../../../../utils/helper/ElevationScroll";
 import ChairIcon from "@mui/icons-material/Chair";
 import ScrollTopTrigger from "../../../../utils/helper/ScrollTopTrigger";
-import { Badge, Fab } from "@mui/material";
+import { Fab } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import { ROUTING_TREE } from "../../../../constants/siteUrls";

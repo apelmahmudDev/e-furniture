@@ -17,6 +17,8 @@ import User from "../views/pages/user";
 import MyProfile from "../views/pages/user/myProfile";
 import CartLayout from "../views/layout/CartLayout";
 import Cart from "../views/pages/cart";
+import Orders from "../views/pages/user/orders";
+import Wishlist from "../views/pages/user/wishlist";
 
 const routes = [
 	{
@@ -62,7 +64,11 @@ const routes = [
 			// </RequireAuth>
 		),
 		path: ROUTING_TREE.USER.USER,
-		children: [{ element: <MyProfile />, path: ROUTING_TREE.USER.PROFILE }],
+		children: [
+			{ element: <MyProfile />, path: ROUTING_TREE.USER.PROFILE },
+			{ element: <Orders />, path: ROUTING_TREE.USER.ORDERS },
+			{ element: <Wishlist />, path: ROUTING_TREE.USER.WISHLIST },
+		],
 	},
 	{
 		element: (
@@ -74,14 +80,8 @@ const routes = [
 		),
 		path: ROUTING_TREE.ADMIN.ADMIN,
 		children: [
-			{
-				path: ROUTING_TREE.ADMIN.DASHBOARD,
-				element: <Dashboard />,
-			},
-			{
-				path: ROUTING_TREE.ADMIN.PRODUCTS,
-				element: <Product />,
-			},
+			{ element: <Dashboard />, path: ROUTING_TREE.ADMIN.DASHBOARD },
+			{ element: <Product />, path: ROUTING_TREE.ADMIN.PRODUCTS },
 		],
 	},
 	{

@@ -2,7 +2,7 @@ import { CardContent, Grid, TextField } from "@mui/material";
 import { useAppDispatch } from "../../../store";
 import { updateShippingForm } from "../../../store/slice/shippingSlice";
 import { AppCard } from "../common/StyledComponent";
-import Header from "./Header";
+import Header from "../common/Header";
 
 const Address = () => {
 	const dispatch = useAppDispatch();
