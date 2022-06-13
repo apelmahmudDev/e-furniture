@@ -79,7 +79,16 @@ const PaymentMethod = () => {
 
 					{/* confrim order */}
 					<Divider sx={{ my: 2 }} />
-					<Box textAlign="right" mt={2}>
+					<Box
+						sx={{
+							display: "flex",
+							justifyContent: "flex-end",
+							"& .MuiButton-root": {
+								color: (theme) => theme.palette.secondary.light,
+							},
+						}}
+						mt={2}
+					>
 						<ButtonProgress
 							btnType="submit"
 							btnText="Confirm Order"

@@ -7,9 +7,12 @@ import {
 	AddShoppingCartOutlinedIcon,
 	HeartBrokenOutlinedIcon,
 } from "../../../../assets/icon";
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
+import { useNavigate } from "react-router-dom";
 
 const Wishlist = () => {
 	const classes = useStyles();
+	const navigate = useNavigate();
 	const wishlist = useSelector((state: RootState) => state.wishlist.wishlist);
 
 	return (
@@ -43,7 +46,12 @@ const Wishlist = () => {
 					</Box>
 				))}
 				{wishlist.length > 0 && (
-					<Button sx={{ my: 1 }} fullWidth variant="outlined">
+					<Button
+						onClick={() => navigate(ROUTING_TREE.CART.CART)}
+						sx={{ my: 1 }}
+						fullWidth
+						variant="outlined"
+					>
 						View Cart
 					</Button>
 				)}

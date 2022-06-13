@@ -14,8 +14,16 @@ import PowerIcon from "@mui/icons-material/PowerSettingsNew";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { DeleteOutlined, Visibility, Edit } from "@mui/icons-material";
+import ProductionQuantityLimitsOutlinedIcon from "@mui/icons-material/ProductionQuantityLimitsOutlined";
+import CloseIcon from "@mui/icons-material/Close";
 
 export {
+	CloseIcon,
+	ProductionQuantityLimitsOutlinedIcon,
+	Edit,
+	Visibility,
+	DeleteOutlined,
 	ShoppingCartOutlinedIcon,
 	FavoriteBorderOutlinedIcon,
 	PersonIcon,

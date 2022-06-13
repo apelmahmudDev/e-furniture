@@ -197,12 +197,23 @@ const Navbar = (props: any) => {
 										to={`${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.PROFILE}`}
 									>
 										<MenuItem onClick={handleCloseUserMenu}>
-											<Typography textAlign="center">Profile</Typography>
+											<Typography textAlign="center">My Profile</Typography>
 										</MenuItem>
 									</Link>
-									<MenuItem onClick={handleCloseUserMenu}>
-										<Typography textAlign="center">Account</Typography>
-									</MenuItem>
+									<Link
+										to={`${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.ORDERS}`}
+									>
+										<MenuItem onClick={handleCloseUserMenu}>
+											<Typography textAlign="center">My Orders</Typography>
+										</MenuItem>
+									</Link>
+									<Link
+										to={`${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.WISHLIST}`}
+									>
+										<MenuItem onClick={handleCloseUserMenu}>
+											<Typography textAlign="center">My Wishlist</Typography>
+										</MenuItem>
+									</Link>
 									{auth.user.user_type === "admin" && (
 										<Link
 											to={`${ROUTING_TREE.ADMIN.ADMIN}/${ROUTING_TREE.ADMIN.DASHBOARD}`}

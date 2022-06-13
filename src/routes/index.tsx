@@ -15,6 +15,8 @@ import OrderCompleteMsgLayout from "../views/layout/OrderCompleteMsgLayout";
 import RequireAdmin from "../utils/security/RequireAdmin";
 import User from "../views/pages/user";
 import MyProfile from "../views/pages/user/myProfile";
+import CartLayout from "../views/layout/CartLayout";
+import Cart from "../views/pages/cart";
 
 const routes = [
 	{
@@ -31,10 +33,15 @@ const routes = [
 		path: ROUTING_TREE.AUTH.SIGNUP,
 	},
 	{
+		element: <CartLayout />,
+		path: ROUTING_TREE.CART.CART,
+		children: [{ path: "", element: <Cart /> }],
+	},
+	{
 		element: (
-			<RequireAuth>
-				<ShippingLayout />
-			</RequireAuth>
+			// <RequireAuth>
+			<ShippingLayout />
+			// </RequireAuth>
 		),
 		path: ROUTING_TREE.ORDER.SHIPPING,
 		children: [{ path: "", element: <Shipping /> }],
@@ -59,11 +66,11 @@ const routes = [
 	},
 	{
 		element: (
-			<RequireAuth>
-				<RequireAdmin>
-					<Admin />
-				</RequireAdmin>
-			</RequireAuth>
+			// <RequireAuth>
+			// 	<RequireAdmin>
+			<Admin />
+			// 	</RequireAdmin>
+			// </RequireAuth>
 		),
 		path: ROUTING_TREE.ADMIN.ADMIN,
 		children: [

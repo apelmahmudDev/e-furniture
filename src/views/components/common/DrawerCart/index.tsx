@@ -1,10 +1,6 @@
 import { useStyles } from "./styled";
 import NotFound from "../NotFound";
 import { Box, Button, Avatar, Typography, IconButton } from "@mui/material";
-import ProductionQuantityLimitsOutlinedIcon from "@mui/icons-material/ProductionQuantityLimitsOutlined";
-import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-import DeleteIcon from "@mui/icons-material/Close";
-
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../../../store";
 import {
@@ -17,6 +13,13 @@ import {
 	setShippingCart,
 	setShippingSummary,
 } from "../../../../store/slice/shippingSlice";
+
+// icons
+import {
+	ProductionQuantityLimitsOutlinedIcon,
+	CloseIcon,
+	ArrowBackIcon,
+} from "../../../../assets/icon";
 
 const styles = {
 	flexCenterRow: {
@@ -47,7 +50,7 @@ const DrawerCart = () => {
 					/>
 					<Button
 						onClick={() => dispatch(toggleDrawer({ open: false }))}
-						startIcon={<ArrowBackOutlinedIcon />}
+						startIcon={<ArrowBackIcon />}
 						sx={{ width: "50%", m: "0 auto" }}
 						variant="outlined"
 					>
@@ -74,7 +77,7 @@ const DrawerCart = () => {
 							onClick={() => dispatch(removeFromCart(product._id))}
 							size="small"
 						>
-							<DeleteIcon fontSize="small" />
+							<CloseIcon fontSize="small" />
 						</IconButton>
 					</Box>
 				))}
@@ -97,7 +100,12 @@ const DrawerCart = () => {
 						</Box>
 
 						<Box>
-							<Button sx={{ my: 1 }} fullWidth variant="outlined">
+							<Button
+								onClick={() => navigate(ROUTING_TREE.CART.CART)}
+								sx={{ my: 1 }}
+								fullWidth
+								variant="outlined"
+							>
 								View Cart
 							</Button>
 							<Button

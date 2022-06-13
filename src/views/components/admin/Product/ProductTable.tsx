@@ -1,4 +1,4 @@
-import { Box, Paper, Stack, Typography } from "@mui/material";
+import { Paper, Stack, Typography } from "@mui/material";
 import { STYLES } from "../../../../styles/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,11 +8,12 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { Avatar, IconButton } from "@mui/material";
-import { IMAGES } from "../../../../constants/themeData";
-import { DeleteOutlined, Visibility, Edit } from "@mui/icons-material";
 import { useStyles } from "./styled";
 import { useState } from "react";
 import { useGetProductsQuery } from "../../../../store/api/api.product";
+
+// icons
+import { Visibility, Edit, DeleteOutlined } from "../../../../assets/icon";
 
 interface Column {
 	id: "name" | "code" | "population" | "size" | "density";
