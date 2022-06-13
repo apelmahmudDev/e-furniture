@@ -14,20 +14,25 @@ import MenuItem from "@mui/material/MenuItem";
 import ElevationScroll from "../../../../utils/helper/ElevationScroll";
 import ChairIcon from "@mui/icons-material/Chair";
 import ScrollTopTrigger from "../../../../utils/helper/ScrollTopTrigger";
-import { Fab } from "@mui/material";
+import { Badge, Fab } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import { ROUTING_TREE } from "../../../../constants/siteUrls";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RootState, useAppDispatch } from "../../../../store";
 import { useSelector } from "react-redux";
 import { logout } from "../../../../store/slice/authSlice";
+import { ShoppingCartOutlinedIcon } from "../../../../assets/icon";
+import { STYLES } from "../../../../styles/styles";
+import { StyledBadge } from "../StyledComponent";
 
 const pages = ["Home", "Shop", "About Us", "Blog"];
 
 const Navbar = (props: any) => {
+	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const auth = useSelector((state: RootState) => state.auth);
+	const cart = useSelector((state: RootState) => state.cart);
 
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 	const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -76,6 +81,7 @@ const Navbar = (props: any) => {
 								</Typography>
 							</Link>
 
+							{/* menu for small device */}
 							<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
 								<IconButton
 									size="large"
@@ -106,10 +112,27 @@ const Navbar = (props: any) => {
 									}}
 								>
 									{pages.map((page) => (
-										<MenuItem key={page} onClick={handleCloseNavMenu}>
+										<MenuItem>
 											<Typography textAlign="center">{page}</Typography>
 										</MenuItem>
 									))}
+
+									{/* cart menu */}
+									<MenuItem
+										onClick={() => {
+											handleCloseNavMenu();
+											navigate("/" + ROUTING_TREE.CART.CART);
+										}}
+									>
+										<IconButton size="small" sx={{ mr: 2, ...STYLES.icon }}>
+											<StyledBadge
+												badgeContent={cart.cart.length}
+												color="secondary"
+											>
+												<ShoppingCartOutlinedIcon fontSize="small" />
+											</StyledBadge>
+										</IconButton>
+									</MenuItem>
 								</Menu>
 							</Box>
 							<ChairIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -131,6 +154,8 @@ const Navbar = (props: any) => {
 									e-furniture
 								</Typography>
 							</Link>
+
+							{/* menu for large device */}
 							<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
 								{pages.map((page) => (
 									<Button
@@ -148,6 +173,25 @@ const Navbar = (props: any) => {
 							</Box>
 
 							<Box sx={{ flexGrow: 0 }}>
+								{/* cart */}
+								<Box sx={{ display: { xs: "none", md: "inline" } }}>
+									<IconButton
+										size="small"
+										sx={{
+											mr: 2,
+											...STYLES.icon,
+										}}
+										onClick={() => navigate("/" + ROUTING_TREE.CART.CART)}
+									>
+										<StyledBadge
+											badgeContent={cart.cart.length}
+											color="secondary"
+										>
+											<ShoppingCartOutlinedIcon fontSize="small" />
+										</StyledBadge>
+									</IconButton>
+								</Box>
+
 								{auth.isAuthenticated ? (
 									<Tooltip title="Open settings">
 										<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

@@ -1,26 +1,16 @@
 import { Box, IconButton } from "@mui/material";
 import { useStyles } from "./styled";
-import Badge, { BadgeProps } from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
 import { STYLES } from "../../../../styles/styles";
 import { RootState, useAppDispatch } from "../../../../store";
 import { toggleDrawer } from "../../../../store/slice/cartSlice";
 import { useSelector } from "react-redux";
+import { StyledBadge } from "../StyledComponent";
 
 // icons
 import {
 	FavoriteBorderOutlinedIcon,
 	ShoppingCartOutlinedIcon,
 } from "../../../../assets/icon";
-
-const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
-	"& .MuiBadge-badge": {
-		right: -3,
-		top: 13,
-		border: `2px solid ${theme.palette.background.paper}`,
-		padding: "0 4px",
-	},
-}));
 
 const WishAndCardView = () => {
 	const classes = useStyles();
