@@ -6,10 +6,20 @@ import {
 	TextField,
 	Typography,
 } from "@mui/material";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { STYLES } from "../../../../styles/styles";
 import ButtonProgress from "../../common/ButtonProgress";
+import { useState } from "react";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 
 const GeneralInformation = () => {
+	const [value, setValue] = useState<Date | null>(null);
 	return (
 		<Box>
 			<Card sx={{ ...STYLES.boxShadow2 }}>
@@ -42,21 +52,19 @@ const GeneralInformation = () => {
 								/>
 							</Grid>
 							<Grid item xs={12} sm={6}>
-								<TextField
-									size="small"
-									label="Birthday"
-									fullWidth
-									type="date"
-									defaultValue=""
-								/>
-							</Grid>
-							<Grid item xs={12} sm={6}>
-								<TextField
-									size="small"
-									label="Gender"
-									fullWidth
-									defaultValue="Male"
-								/>
+								<LocalizationProvider dateAdapter={AdapterDateFns}>
+									<DatePicker
+										label="Birthday"
+										inputFormat="dd/MM/yyyy"
+										value={value}
+										onChange={(newValue: Date | null) => {
+											setValue(newValue);
+										}}
+										renderInput={(params) => (
+											<TextField size="small" fullWidth {...params} />
+										)}
+									/>
+								</LocalizationProvider>
 							</Grid>
 							<Grid item xs={12} sm={6}>
 								<TextField
@@ -76,6 +84,34 @@ const GeneralInformation = () => {
 									inputMode="numeric"
 									defaultValue="01739801364"
 								/>
+							</Grid>
+							<Grid item xs={12}>
+								<FormControl>
+									<FormLabel id="demo-row-radio-buttons-group-label">
+										Gender
+									</FormLabel>
+									<RadioGroup
+										row
+										aria-labelledby="demo-row-radio-buttons-group-label"
+										name="row-radio-buttons-group"
+									>
+										<FormControlLabel
+											value="female"
+											control={<Radio />}
+											label="Female"
+										/>
+										<FormControlLabel
+											value="male"
+											control={<Radio />}
+											label="Male"
+										/>
+										<FormControlLabel
+											value="other"
+											control={<Radio />}
+											label="Other"
+										/>
+									</RadioGroup>
+								</FormControl>
 							</Grid>
 						</Grid>
 
@@ -112,8 +148,6 @@ const GeneralInformation = () => {
 						<Box
 							sx={{
 								mt: 3,
-								display: "flex",
-								justifyContent: "flex-end",
 								"& .MuiButton-root": {
 									color: (theme) => theme.palette.secondary.light,
 								},
