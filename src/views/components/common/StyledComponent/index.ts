@@ -30,4 +30,11 @@ const AppIconButton = styled(IconButton)(({ theme }) => ({
 	},
 }));
 
-export { AppCard, StyledBadge, AppIconButton };
+const StatusChip = styled("div")(({ bgcolor }: { bgcolor: string }) => ({
+	backgroundColor: bgcolor,
+	color: "#fff",
+	borderRadius: "35px",
+	padding: "2px 15px",
+}));
+
+export { AppCard, StyledBadge, AppIconButton, StatusChip };

@@ -7,7 +7,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { AppCard, AppIconButton } from "../common/StyledComponent";
+import { AppCard, AppIconButton, StatusChip } from "../common/StyledComponent";
 import Header from "../common/Header";
 import NotFound from "../common/NotFound";
 import { IMAGES } from "../../../constants/themeData";
@@ -17,6 +17,9 @@ import {
 	CloseIcon,
 	ProductionQuantityLimitsOutlinedIcon,
 } from "../../../assets/icon";
+
+// colors
+import { green, red, orange } from "@mui/material/colors";
 
 const productImgStyles = {
 	height: 60,
@@ -85,7 +88,9 @@ const OrdersTable = () => {
 											<TableCell align="center">
 												<strong>৳ </strong> {"345"}
 											</TableCell>
-											<TableCell align="center">Pending</TableCell>
+											<TableCell align="center">
+												<StatusChip bgcolor="green">Pending</StatusChip>
+											</TableCell>
 											<TableCell align="center">
 												<AppIconButton>
 													<CloseIcon />
