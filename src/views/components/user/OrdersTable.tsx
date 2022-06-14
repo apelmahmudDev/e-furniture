@@ -1,4 +1,4 @@
-import { Avatar, Box, CardContent, IconButton } from "@mui/material";
+import { Avatar, Box, CardContent } from "@mui/material";
 
 // table
 import Table from "@mui/material/Table";
@@ -7,14 +7,14 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { AppCard } from "../common/StyledComponent";
+import { AppCard, AppIconButton } from "../common/StyledComponent";
 import Header from "../common/Header";
 import NotFound from "../common/NotFound";
 import { IMAGES } from "../../../constants/themeData";
 
 // icons
 import {
-	DeleteOutlined,
+	CloseIcon,
 	ProductionQuantityLimitsOutlinedIcon,
 } from "../../../assets/icon";
 
@@ -67,6 +67,7 @@ const OrdersTable = () => {
 								<TableBody>
 									{[...Array(5)].map((_, index) => (
 										<TableRow
+											key={index}
 											sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
 										>
 											<TableCell component="th" scope="row">
@@ -86,9 +87,9 @@ const OrdersTable = () => {
 											</TableCell>
 											<TableCell align="center">Pending</TableCell>
 											<TableCell align="center">
-												<IconButton color="primary">
-													<DeleteOutlined />
-												</IconButton>
+												<AppIconButton>
+													<CloseIcon />
+												</AppIconButton>
 											</TableCell>
 										</TableRow>
 									))}

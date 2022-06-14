@@ -1,4 +1,4 @@
-import { Avatar, Box, CardContent, IconButton } from "@mui/material";
+import { Avatar, Box, CardContent, Stack } from "@mui/material";
 
 // table
 import Table from "@mui/material/Table";
@@ -7,14 +7,17 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { AppCard } from "../common/StyledComponent";
+import { AppCard, AppIconButton } from "../common/StyledComponent";
 import Header from "../common/Header";
 import NotFound from "../common/NotFound";
 import { IMAGES } from "../../../constants/themeData";
 
+import { format } from "date-fns";
+
 // icons
 import {
-	DeleteOutlined,
+	AddShoppingCartOutlinedIcon,
+	CloseIcon,
 	ProductionQuantityLimitsOutlinedIcon,
 } from "../../../assets/icon";
 
@@ -57,8 +60,7 @@ const WishlistTable = () => {
 										<TableCell>Product</TableCell>
 										<TableCell align="center">Name</TableCell>
 										<TableCell align="center">Price</TableCell>
-										<TableCell align="center">Quantity(g)</TableCell>
-										<TableCell align="center">Total</TableCell>
+										<TableCell align="center">Date</TableCell>
 										<TableCell align="center">Actions</TableCell>
 									</TableRow>
 								</TableHead>
@@ -66,6 +68,7 @@ const WishlistTable = () => {
 								<TableBody>
 									{[...Array(3)].map((_, index) => (
 										<TableRow
+											key={index}
 											sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
 										>
 											<TableCell component="th" scope="row">
@@ -79,14 +82,22 @@ const WishlistTable = () => {
 											<TableCell align="center">
 												<strong>৳ </strong> {"345"}
 											</TableCell>
-											<TableCell align="center">2</TableCell>
 											<TableCell align="center">
-												<strong>৳ </strong> {"345"}
+												{format(new Date(), "dd-MMM-yyyy")}
 											</TableCell>
 											<TableCell align="center">
-												<IconButton color="primary">
-													<DeleteOutlined />
-												</IconButton>
+												<Stack
+													spacing={1}
+													direction="row"
+													justifyContent="center"
+												>
+													<AppIconButton>
+														<AddShoppingCartOutlinedIcon fontSize="small" />
+													</AppIconButton>
+													<AppIconButton>
+														<CloseIcon />
+													</AppIconButton>
+												</Stack>
 											</TableCell>
 										</TableRow>
 									))}
