@@ -7,7 +7,12 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { AppCard, AppIconButton, StatusChip } from "../common/StyledComponent";
+import {
+	AppCard,
+	AppIconButton,
+	AppTableCell,
+	StatusChip,
+} from "../common/StyledComponent";
 import Header from "../common/Header";
 import NotFound from "../common/NotFound";
 import { IMAGES } from "../../../constants/themeData";
@@ -17,9 +22,6 @@ import {
 	CloseIcon,
 	ProductionQuantityLimitsOutlinedIcon,
 } from "../../../assets/icon";
-
-// colors
-import { green, red, orange } from "@mui/material/colors";
 
 const productImgStyles = {
 	height: 60,
@@ -60,7 +62,7 @@ const OrdersTable = () => {
 										<TableCell>Product</TableCell>
 										<TableCell align="center">Name</TableCell>
 										<TableCell align="center">Price</TableCell>
-										<TableCell align="center">Quantity(g)</TableCell>
+										<TableCell align="center">Quantity</TableCell>
 										<TableCell align="center">Total</TableCell>
 										<TableCell align="center">Status</TableCell>
 										<TableCell align="center">Actions</TableCell>
@@ -80,22 +82,24 @@ const OrdersTable = () => {
 													alt="product"
 												/>
 											</TableCell>
-											<TableCell align="center">Blue sofa box style</TableCell>
-											<TableCell align="center">
+											<AppTableCell>Blue sofa box style</AppTableCell>
+											<AppTableCell>
 												<strong>৳ </strong> {"345"}
-											</TableCell>
-											<TableCell align="center">2</TableCell>
-											<TableCell align="center">
+											</AppTableCell>
+											<AppTableCell>2</AppTableCell>
+											<AppTableCell>
 												<strong>৳ </strong> {"345"}
-											</TableCell>
-											<TableCell align="center">
-												<StatusChip bgcolor="green">Pending</StatusChip>
-											</TableCell>
-											<TableCell align="center">
+											</AppTableCell>
+											<AppTableCell>
+												<Box sx={{ display: "flex", justifyContent: "center" }}>
+													<StatusChip status="pending">Pending</StatusChip>
+												</Box>
+											</AppTableCell>
+											<AppTableCell>
 												<AppIconButton>
 													<CloseIcon />
 												</AppIconButton>
-											</TableCell>
+											</AppTableCell>
 										</TableRow>
 									))}
 								</TableBody>
