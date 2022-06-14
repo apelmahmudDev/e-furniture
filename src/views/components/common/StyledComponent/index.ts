@@ -1,4 +1,4 @@
-import { Card } from "@mui/material";
+import { Card, IconButton } from "@mui/material";
 import { styled } from "@mui/system";
 import { STYLES } from "../../../../styles/styles";
 import Badge, { BadgeProps } from "@mui/material/Badge";
@@ -20,4 +20,14 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 	},
 }));
 
-export { AppCard, StyledBadge };
+const AppIconButton = styled(IconButton)(({ theme }) => ({
+	background: theme.palette.secondary.light,
+	color: theme.palette.primary.main,
+
+	"& .MuiSvgIcon-root": {
+		width: "1rem",
+		height: "1rem",
+	},
+}));
+
+export { AppCard, StyledBadge, AppIconButton };
