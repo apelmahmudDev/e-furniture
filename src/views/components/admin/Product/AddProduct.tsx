@@ -119,7 +119,7 @@ const AddProduct = () => {
 	};
 
 	useEffect(() => {
-		if (data?.data._id) {
+		if (data?.data?._id) {
 			handleClickVariant("success", data.message);
 		}
 	}, [data?.data?._id, data?.message, handleClickVariant]);

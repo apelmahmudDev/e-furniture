@@ -6,7 +6,7 @@ import Portion from "../../common/Portion";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useState } from "react";
-import { useGetProductsQuery } from "../../../../store/api/api.product";
+import { useGetFilteredProductsQuery } from "../../../../store/api/api.product";
 import Spinner from "../../common/Spinner";
 
 function a11yProps(index: number) {
@@ -18,14 +18,31 @@ function a11yProps(index: number) {
 
 const LatestProducts = () => {
 	const classes = useStyles();
+
 	const [value, setValue] = useState(0);
+	const [category, setCategory] = useState("new_arrival");
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);
+		switch (newValue) {
+			case 0:
+				setCategory("new_arrival");
+				break;
+			case 1:
+				setCategory("best_seller");
+				break;
+			case 2:
+				setCategory("featured");
+				break;
+			default:
+				break;
+		}
 	};
 
-	// get products
-	const { data, isFetching } = useGetProductsQuery();
+	// get filtered products
+	const { data, isFetching } = useGetFilteredProductsQuery({
+		category: category,
+	});
 
 	return (
 		<Box my={5} component="section">
@@ -42,7 +59,6 @@ const LatestProducts = () => {
 							<Tab label="New Arrival" {...a11yProps(0)} />
 							<Tab label="Best Seller" {...a11yProps(1)} />
 							<Tab label="Featured" {...a11yProps(2)} />
-							<Tab label="Special Offer" {...a11yProps(3)} />
 						</Tabs>
 					</Box>
 					<TabPanel value={value} index={0}>
@@ -52,7 +68,7 @@ const LatestProducts = () => {
 							</Box>
 						) : (
 							<Grid container spacing={3}>
-								{data?.data.map((product, idx) => (
+								{data?.data?.map((product, idx) => (
 									<Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
 										<LatestCard product={product} />
 									</Grid>
@@ -61,13 +77,34 @@ const LatestProducts = () => {
 						)}
 					</TabPanel>
 					<TabPanel value={value} index={1}>
-						Best Seller
+						{isFetching ? (
+							<Box textAlign="center">
+								<Spinner />
+							</Box>
+						) : (
+							<Grid container spacing={3}>
+								{data?.data?.map((product, idx) => (
+									<Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
+										<LatestCard product={product} />
+									</Grid>
+								))}
+							</Grid>
+						)}
 					</TabPanel>
 					<TabPanel value={value} index={2}>
-						Featured
-					</TabPanel>
-					<TabPanel value={value} index={3}>
-						Special Offer
+						{isFetching ? (
+							<Box textAlign="center">
+								<Spinner />
+							</Box>
+						) : (
+							<Grid container spacing={3}>
+								{data?.data?.map((product, idx) => (
+									<Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
+										<LatestCard product={product} />
+									</Grid>
+								))}
+							</Grid>
+						)}
 					</TabPanel>
 				</Box>
 			</Container>

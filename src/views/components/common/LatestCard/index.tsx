@@ -24,7 +24,7 @@ interface ProductInterface {
 		description: string;
 		image: string;
 		category: string;
-		// subCategory: string;
+		subCategory: string;
 	};
 }
 

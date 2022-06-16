@@ -111,8 +111,8 @@ const Navbar = (props: any) => {
 										display: { xs: "block", md: "none" },
 									}}
 								>
-									{pages.map((page) => (
-										<MenuItem>
+									{pages.map((page, idx) => (
+										<MenuItem key={idx}>
 											<Typography textAlign="center">{page}</Typography>
 										</MenuItem>
 									))}

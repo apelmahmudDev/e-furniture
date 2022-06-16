@@ -10,15 +10,31 @@ import { STYLES } from "../../../../styles/styles";
 import { useDispatch } from "react-redux";
 import { handleProductDetails } from "../../../../store/slice/productSlice";
 import ZoomOutMapOutlinedIcon from "@mui/icons-material/ZoomOutMapOutlined";
+import { useGetFilteredProductsQuery } from "../../../../store/api/api.product";
+import { addToCart } from "../../../../store/slice/cartSlice";
+import { addToWishlist } from "../../../../store/slice/wishlistSlice";
+import Spinner from "../../common/Spinner";
 
 const FeaturedProducts = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 
+	// get filtered products
+	const { data, isLoading } = useGetFilteredProductsQuery({
+		category: "featured",
+	});
+
 	return (
 		<Box py={5} component="section">
 			<Container>
 				<Portion firstWord="Featured" lastWord="Products" mb={4} />
+
+				{/* data loading message show */}
+				{isLoading && (
+					<Box textAlign="center">
+						<Spinner />
+					</Box>
+				)}
 
 				<Swiper
 					slidesPerView={1}
@@ -43,19 +59,20 @@ const FeaturedProducts = () => {
 					}}
 					className={classes.mySwiper}
 				>
-					{[...Array(5)].map((item, idx) => (
+					{data?.data.map((product, idx) => (
 						<SwiperSlide key={idx}>
 							<Card sx={{ maxWidth: 280 }} className={classes.root}>
 								<Box sx={{ bgcolor: (theme) => theme.palette.secondary.light }}>
 									<CardMedia
 										component="img"
 										height="200"
-										image="https://www.pngplay.com/wp-content/uploads/2/Modern-Chair-PNG-HD-Quality.png"
+										image={product.image}
 										alt="image of product"
 									/>
 									<Box className={classes.cardActions}>
 										<Stack direction="row" spacing={1}>
 											<IconButton
+												onClick={() => dispatch(addToCart(product))}
 												size="small"
 												sx={{
 													...STYLES.icon,
@@ -64,6 +81,7 @@ const FeaturedProducts = () => {
 												<ShoppingCartIcon fontSize="small" />
 											</IconButton>
 											<IconButton
+												onClick={() => dispatch(addToWishlist(product))}
 												size="small"
 												sx={{
 													...STYLES.icon,
@@ -84,9 +102,12 @@ const FeaturedProducts = () => {
 
 								<CardContent sx={{ textAlign: "center" }}>
 									<Typography component="div">
-										<Box sx={{ lineHeight: 1.3 }}>Cantilever chair</Box>
+										<Box sx={{ lineHeight: 1.3 }}>{product.name}</Box>
 										<Box sx={{ lineHeight: 1.3 }}>Code: Y390Z</Box>
-										<Box sx={{ lineHeight: 1.3 }}>$42.00</Box>
+										<Box sx={{ lineHeight: 1.3 }}>
+											<strong>৳ </strong>
+											{product.price}
+										</Box>
 									</Typography>
 								</CardContent>
 							</Card>

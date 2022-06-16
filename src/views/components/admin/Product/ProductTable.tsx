@@ -14,6 +14,8 @@ import { useGetProductsQuery } from "../../../../store/api/api.product";
 
 // icons
 import { Visibility, Edit, DeleteOutlined } from "../../../../assets/icon";
+import NoData from "../../common/NoData";
+import Spinner from "../../common/Spinner";
 
 interface Column {
 	id: "name" | "code" | "population" | "size" | "density";
@@ -113,16 +115,6 @@ const ProductTable = () => {
 				<Table size="small" stickyHeader aria-label="sticky table">
 					<TableHead>
 						<TableRow>
-							{/* {columns.map((column) => (
-								<TableCell
-									key={column.id}
-									align={column.align}
-									style={{ minWidth: column.minWidth }}
-								>
-									{column.label}
-								</TableCell>
-							))} */}
-
 							<TableCell>No.</TableCell>
 							<TableCell>Products</TableCell>
 							<TableCell>Price</TableCell>
@@ -132,26 +124,28 @@ const ProductTable = () => {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{/* {rows
-							.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-							.map((row) => {
-								return (
-									<TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-										{columns.map((column) => {
-											const value = row[column.id];
-											return (
-												<TableCell key={column.id} align={column.align}>
-													{column.format && typeof value === "number"
-														? column.format(value)
-														: value}
-												</TableCell>
-											);
-										})}
+						{/* loading spinner */}
+						{isLoading && (
+							<TableRow>
+								<TableCell sx={{ height: 100 }} align="center" colSpan={7}>
+									<Spinner />
+								</TableCell>
+							</TableRow>
+						)}
+						{/* no data found message */}
+						{data?.data?.length
+							? data?.data.length <= 0 && (
+									<TableRow>
+										<TableCell sx={{ height: 100 }} align="center" colSpan={7}>
+											<NoData />
+										</TableCell>
 									</TableRow>
-								);
-							})} */}
+							  )
+							: null}
+
+						{/*table data show */}
 						{data?.data.map((product, idx) => (
-							<TableRow hover role="checkbox" tabIndex={-1}>
+							<TableRow key={idx} hover role="checkbox" tabIndex={-1}>
 								<TableCell>{idx + 1}</TableCell>
 								<TableCell
 									sx={{
