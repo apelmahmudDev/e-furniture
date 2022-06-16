@@ -6,16 +6,26 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { useNavigate } from "react-router-dom";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
+import { useCreateOrderMutation } from "../../../store/api/api.order";
+import { useEffect } from "react";
 
 const ShippingContainer = () => {
 	const navigate = useNavigate();
 	const shipping = useSelector((state: RootState) => state.shipping);
 
+	// create order endpoint
+	const [createOrder, { data, isLoading }] = useCreateOrderMutation();
+
 	const handleShippingSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
-		console.log(shipping);
-		navigate(`/${ROUTING_TREE.ORDER.COMPLETED}`);
+		createOrder(shipping);
 	};
+
+	useEffect(() => {
+		if (data) {
+			navigate(`/${ROUTING_TREE.ORDER.COMPLETED}`);
+		}
+	}, [data, navigate]);
 
 	return (
 		<Box my={5}>
@@ -32,7 +42,7 @@ const ShippingContainer = () => {
 							onSubmit={handleShippingSubmit}
 						>
 							<Address />
-							<PaymentMethod />
+							<PaymentMethod isLoading={isLoading} />
 						</Box>
 					</Grid>
 					{/* checkout summery */}

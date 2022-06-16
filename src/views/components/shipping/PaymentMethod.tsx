@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const PaymentMethod = () => {
+const PaymentMethod = ({ isLoading }: { isLoading: boolean }) => {
 	const classes = useStyles();
 	const dispatch = useAppDispatch();
 
@@ -92,7 +92,7 @@ const PaymentMethod = () => {
 						<ButtonProgress
 							btnType="submit"
 							btnText="Confirm Order"
-							isLoading={false}
+							isLoading={isLoading}
 							variantType="contained"
 						></ButtonProgress>
 					</Box>

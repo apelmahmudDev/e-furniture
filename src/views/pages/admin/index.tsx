@@ -191,7 +191,7 @@ const adminItems = [
 	{
 		item: "Orders",
 		icon: <MallIcon color="primary" />,
-		link: "",
+		link: ROUTING_TREE.ADMIN.ORDERS,
 	},
 	{
 		item: "Products",

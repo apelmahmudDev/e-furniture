@@ -12,12 +12,14 @@ import shippingReducer from "./slice/shippingSlice";
 import { useDispatch } from "react-redux";
 import { productApi } from "./api/api.product";
 import { usersApi } from "./api/api.users";
+import { orderApi } from "./api/api.order";
 
 const store = configureStore({
 	reducer: {
 		// api / services
 		[productApi.reducerPath]: productApi.reducer,
 		[usersApi.reducerPath]: usersApi.reducer,
+		[orderApi.reducerPath]: orderApi.reducer,
 
 		// slice
 		global: GlobalReducer,

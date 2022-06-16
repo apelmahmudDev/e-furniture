@@ -39,6 +39,7 @@ const StatusChip = styled("div")(({ status }: { status: string }) => ({
 			? "#28a745"
 			: "#dc3545",
 	color: "#fff",
+	textAlign: "center",
 	borderRadius: "35px",
 	padding: "2px 15px",
 	maxWidth: 90,

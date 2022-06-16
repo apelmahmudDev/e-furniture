@@ -5,7 +5,7 @@ import { AddressInterface } from "../../types/shipping/address.type";
 import { SummaryInterface } from "../../types/shipping/checkoutSummary.type";
 import { ProductInterface } from "./cartSlice";
 
-interface InitialState {
+export interface InitialState {
 	shippingAddress: AddressInterface;
 	checkoutSummary: SummaryInterface;
 	paymentMethod: string;

@@ -18,6 +18,7 @@ import MyProfile from "../views/pages/user/myProfile";
 import CartLayout from "../views/layout/CartLayout";
 import Cart from "../views/pages/cart";
 import Orders from "../views/pages/user/orders";
+import AdminOrders from "../views/pages/admin/orders";
 import Wishlist from "../views/pages/user/wishlist";
 
 const routes = [
@@ -26,14 +27,9 @@ const routes = [
 		path: ROUTING_TREE.HOME,
 		children: [{ path: "", element: <Home /> }],
 	},
-	{
-		element: <Login />,
-		path: ROUTING_TREE.AUTH.LOGIN,
-	},
-	{
-		element: <SignUp />,
-		path: ROUTING_TREE.AUTH.SIGNUP,
-	},
+	// crate account & login
+	{ element: <Login />, path: ROUTING_TREE.AUTH.LOGIN },
+	{ element: <SignUp />, path: ROUTING_TREE.AUTH.SIGNUP },
 	{
 		element: <CartLayout />,
 		path: ROUTING_TREE.CART.CART,
@@ -57,6 +53,8 @@ const routes = [
 		path: ROUTING_TREE.ORDER.COMPLETED,
 		children: [{ path: "", element: <OrderCompleteMsg /> }],
 	},
+
+	// user profile
 	{
 		element: (
 			// <RequireAuth>
@@ -70,6 +68,8 @@ const routes = [
 			{ element: <Wishlist />, path: ROUTING_TREE.USER.WISHLIST },
 		],
 	},
+
+	// admin dashboard
 	{
 		element: (
 			// <RequireAuth>
@@ -81,6 +81,7 @@ const routes = [
 		path: ROUTING_TREE.ADMIN.ADMIN,
 		children: [
 			{ element: <Dashboard />, path: ROUTING_TREE.ADMIN.DASHBOARD },
+			{ element: <AdminOrders />, path: ROUTING_TREE.ADMIN.ORDERS },
 			{ element: <Product />, path: ROUTING_TREE.ADMIN.PRODUCTS },
 		],
 	},

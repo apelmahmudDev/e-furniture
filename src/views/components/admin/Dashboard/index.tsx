@@ -1,6 +1,5 @@
 import { Box, Card, Grid, Typography } from "@mui/material";
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
-import { useStyles } from "./styled";
 import { STYLES } from "../../../../styles/styles";
 import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf";
 import { StyledCardContent } from "./styledComponents/StyledCardContent";
@@ -11,7 +10,6 @@ import OrderChart from "./OrderChart";
 import CustomerTable from "./CustomerTable";
 
 const Dashboard = () => {
-	const classes = useStyles();
 	return (
 		<>
 			{/* dashboard top section - card*/}
