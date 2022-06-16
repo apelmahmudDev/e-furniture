@@ -121,7 +121,7 @@ const Navbar = (props: any) => {
 									<MenuItem
 										onClick={() => {
 											handleCloseNavMenu();
-											navigate("/" + ROUTING_TREE.CART.CART);
+											navigate("/" + ROUTING_TREE.CART);
 										}}
 									>
 										<IconButton size="small" sx={{ mr: 2, ...STYLES.icon }}>
@@ -181,7 +181,7 @@ const Navbar = (props: any) => {
 											mr: 2,
 											...STYLES.icon,
 										}}
-										onClick={() => navigate("/" + ROUTING_TREE.CART.CART)}
+										onClick={() => navigate("/" + ROUTING_TREE.CART)}
 									>
 										<StyledBadge
 											badgeContent={cart.cart.length}

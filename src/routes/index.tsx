@@ -20,6 +20,8 @@ import Cart from "../views/pages/cart";
 import Orders from "../views/pages/user/orders";
 import AdminOrders from "../views/pages/admin/orders";
 import Wishlist from "../views/pages/user/wishlist";
+import ShopLayout from "../views/layout/ShopLayout";
+import Shop from "../views/pages/shop";
 
 const routes = [
 	{
@@ -27,12 +29,17 @@ const routes = [
 		path: ROUTING_TREE.HOME,
 		children: [{ path: "", element: <Home /> }],
 	},
+	{
+		element: <ShopLayout />,
+		path: ROUTING_TREE.SHOP,
+		children: [{ path: "", element: <Shop /> }],
+	},
 	// crate account & login
 	{ element: <Login />, path: ROUTING_TREE.AUTH.LOGIN },
 	{ element: <SignUp />, path: ROUTING_TREE.AUTH.SIGNUP },
 	{
 		element: <CartLayout />,
-		path: ROUTING_TREE.CART.CART,
+		path: ROUTING_TREE.CART,
 		children: [{ path: "", element: <Cart /> }],
 	},
 	{

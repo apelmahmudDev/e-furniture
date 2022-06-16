@@ -3,7 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { useStyles } from "./styled";
 import { Avatar, Box, Container, Grid } from "@mui/material";
-import Portion from "../../common/Portion";
+import Portion from "../Portion";
 import { IMAGES } from "../../../../constants/themeData";
 
 const serviceData = [
