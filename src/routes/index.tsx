@@ -1,27 +1,32 @@
+import React from "react";
 import { ROUTING_TREE } from "../constants/siteUrls";
-import MainLayout from "../views/layout/MainLayout";
-import NotFound from "../views/pages/page404";
-import Admin from "../views/pages/admin";
-import Dashboard from "../views/pages/admin/dashboard";
-import Product from "../views/pages/admin/product";
-import Login from "../views/pages/auth/Login";
-import SignUp from "../views/pages/auth/SignUp";
+
 import Home from "../views/pages/home";
 import RequireAuth from "../views/pages/auth/RequireAuth";
-import ShippingLayout from "../views/layout/ShippingLayout";
-import Shipping from "../views/pages/shipping";
 import OrderCompleteMsg from "../views/pages/orderCompleteMsg";
 import OrderCompleteMsgLayout from "../views/layout/OrderCompleteMsgLayout";
 import RequireAdmin from "../utils/security/RequireAdmin";
-import User from "../views/pages/user";
-import MyProfile from "../views/pages/user/myProfile";
-import CartLayout from "../views/layout/CartLayout";
 import Cart from "../views/pages/cart";
-import Orders from "../views/pages/user/orders";
-import AdminOrders from "../views/pages/admin/orders";
-import Wishlist from "../views/pages/user/wishlist";
-import ShopLayout from "../views/layout/ShopLayout";
 import Shop from "../views/pages/shop";
+
+const MainLayout = React.lazy(() => import("../views/layout/MainLayout"));
+const NotFound = React.lazy(() => import("../views/pages/page404"));
+const Admin = React.lazy(() => import("../views/pages/admin"));
+const Dashboard = React.lazy(() => import("../views/pages/admin/dashboard"));
+const Product = React.lazy(() => import("../views/pages/admin/product"));
+const Login = React.lazy(() => import("../views/pages/auth/Login"));
+const SignUp = React.lazy(() => import("../views/pages/auth/SignUp"));
+const Shipping = React.lazy(() => import("../views/pages/shipping"));
+const User = React.lazy(() => import("../views/pages/user"));
+const MyProfile = React.lazy(() => import("../views/pages/user/myProfile"));
+const CartLayout = React.lazy(() => import("../views/layout/CartLayout"));
+const Orders = React.lazy(() => import("../views/pages/user/orders"));
+const AdminOrders = React.lazy(() => import("../views/pages/admin/orders"));
+const Wishlist = React.lazy(() => import("../views/pages/user/wishlist"));
+const ShopLayout = React.lazy(() => import("../views/layout/ShopLayout"));
+const ShippingLayout = React.lazy(
+	() => import("../views/layout/ShippingLayout")
+);
 
 const routes = [
 	{

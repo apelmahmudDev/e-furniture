@@ -8,7 +8,6 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { Avatar, IconButton } from "@mui/material";
-import { useStyles } from "./styled";
 import { useState } from "react";
 import { useGetProductsQuery } from "../../../../store/api/api.product";
 
@@ -16,40 +15,6 @@ import { useGetProductsQuery } from "../../../../store/api/api.product";
 import { Visibility, Edit, DeleteOutlined } from "../../../../assets/icon";
 import NoData from "../../common/NoData";
 import Spinner from "../../common/Spinner";
-
-interface Column {
-	id: "name" | "code" | "population" | "size" | "density";
-	label: string;
-	minWidth?: number;
-	align?: "right";
-	format?: (value: number) => string;
-}
-
-const columns: readonly Column[] = [
-	{ id: "name", label: "Name", minWidth: 170 },
-	{ id: "code", label: "ISO\u00a0Code", minWidth: 100 },
-	{
-		id: "population",
-		label: "Population",
-		minWidth: 170,
-		align: "right",
-		format: (value: number) => value.toLocaleString("en-US"),
-	},
-	{
-		id: "size",
-		label: "Size\u00a0(km\u00b2)",
-		minWidth: 170,
-		align: "right",
-		format: (value: number) => value.toLocaleString("en-US"),
-	},
-	{
-		id: "density",
-		label: "Density",
-		minWidth: 170,
-		align: "right",
-		format: (value: number) => value.toFixed(2),
-	},
-];
 
 interface Data {
 	name: string;
@@ -88,8 +53,6 @@ const rows = [
 ];
 
 const ProductTable = () => {
-	const classes = useStyles();
-
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 

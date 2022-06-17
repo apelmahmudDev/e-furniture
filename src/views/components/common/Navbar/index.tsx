@@ -117,7 +117,7 @@ const Navbar = (props: any) => {
 									}}
 								>
 									{navbarData.map((page, idx) => (
-										<Link to={"/" + page.link}>
+										<Link key={idx} to={"/" + page.link}>
 											<MenuItem key={idx}>
 												<Typography textAlign="center">{page.page}</Typography>
 											</MenuItem>
@@ -294,9 +294,11 @@ const Navbar = (props: any) => {
 
 			{/* scroll Back to Top */}
 			<ScrollTopTrigger {...props}>
-				<Fab color="secondary" size="small" aria-label="scroll back to top">
-					<KeyboardArrowUpIcon />
-				</Fab>
+				<Tooltip title="Scroll To Top">
+					<Fab color="secondary" size="small" aria-label="scroll back to top">
+						<KeyboardArrowUpIcon />
+					</Fab>
+				</Tooltip>
 			</ScrollTopTrigger>
 		</>
 	);

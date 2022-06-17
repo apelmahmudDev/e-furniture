@@ -22,9 +22,9 @@ const Home = () => {
 			<Blog />
 			<Services />
 			<Newsletter />
-			<WishAndCardView /> {/* global components */}
-			<ProductDetails /> {/* global components */}
-			<AppDrawer /> {/* global components */}
+			<WishAndCardView /> {/* global */}
+			<ProductDetails /> {/* global */}
+			<AppDrawer /> {/* global */}
 		</>
 	);
 };

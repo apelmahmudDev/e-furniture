@@ -17,8 +17,14 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { DeleteOutlined, Visibility, Edit } from "@mui/icons-material";
 import ProductionQuantityLimitsOutlinedIcon from "@mui/icons-material/ProductionQuantityLimitsOutlined";
 import CloseIcon from "@mui/icons-material/Close";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import HomeIcon from "@mui/icons-material/Home";
+import GrainIcon from "@mui/icons-material/Grain";
 
 export {
+	GrainIcon,
+	HomeIcon,
+	MenuBookIcon,
 	CloseIcon,
 	ProductionQuantityLimitsOutlinedIcon,
 	Edit,
