@@ -26,7 +26,12 @@ import { ShoppingCartOutlinedIcon } from "../../../../assets/icon";
 import { STYLES } from "../../../../styles/styles";
 import { StyledBadge } from "../StyledComponent";
 
-const pages = ["Home", "Shop", "About Us", "Blog"];
+const navbarData = [
+	{ page: "Home", link: ROUTING_TREE.HOME },
+	{ page: "Shop", link: ROUTING_TREE.SHOP },
+	{ page: "About Us", link: ROUTING_TREE.SHOP },
+	{ page: "Blog", link: ROUTING_TREE.SHOP },
+];
 
 const Navbar = (props: any) => {
 	const navigate = useNavigate();
@@ -63,7 +68,7 @@ const Navbar = (props: any) => {
 					<Container>
 						<Toolbar disableGutters>
 							<ChairIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-							<Link to={ROUTING_TREE.HOME}>
+							<Link to={"/" + ROUTING_TREE.HOME}>
 								<Typography
 									variant="h6"
 									noWrap
@@ -111,10 +116,12 @@ const Navbar = (props: any) => {
 										display: { xs: "block", md: "none" },
 									}}
 								>
-									{pages.map((page, idx) => (
-										<MenuItem key={idx}>
-											<Typography textAlign="center">{page}</Typography>
-										</MenuItem>
+									{navbarData.map((page, idx) => (
+										<Link to={"/" + page.link}>
+											<MenuItem key={idx}>
+												<Typography textAlign="center">{page.page}</Typography>
+											</MenuItem>
+										</Link>
 									))}
 
 									{/* cart menu */}
@@ -136,7 +143,7 @@ const Navbar = (props: any) => {
 								</Menu>
 							</Box>
 							<ChairIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-							<Link to={ROUTING_TREE.HOME}>
+							<Link to={"/" + ROUTING_TREE.HOME}>
 								<Typography
 									variant="h5"
 									noWrap
@@ -157,18 +164,19 @@ const Navbar = (props: any) => {
 
 							{/* menu for large device */}
 							<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-								{pages.map((page) => (
-									<Button
-										key={page}
-										onClick={handleCloseNavMenu}
-										sx={{
-											my: 2,
-											color: (theme) => theme.palette.text.primary,
-											display: "block",
-										}}
-									>
-										{page}
-									</Button>
+								{navbarData.map((page) => (
+									<Link to={"/" + page.link} key={page.page}>
+										<Button
+											onClick={handleCloseNavMenu}
+											sx={{
+												my: 2,
+												color: (theme) => theme.palette.text.primary,
+												display: "block",
+											}}
+										>
+											{page.page}
+										</Button>
+									</Link>
 								))}
 							</Box>
 
