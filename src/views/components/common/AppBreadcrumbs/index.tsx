@@ -21,17 +21,6 @@ const AppBreadcrumbs = () => {
 		console.info("You clicked a breadcrumb.");
 	}
 
-	const navigate = useNavigate();
-	const { pathname } = useLocation();
-	console.log();
-	console.log(navigate("/"));
-
-	// const {
-	// 	history,
-	// 	location: { pathname },
-	// } = props;
-	const pathnames = pathname.split("/").filter((x: any) => x);
-
 	return (
 		<Box sx={{ ...styles }} role="presentation" onClick={handleClick}>
 			<Container>
@@ -67,24 +56,6 @@ const AppBreadcrumbs = () => {
 				</Breadcrumbs>
 			</Container>
 		</Box>
-		// <Breadcrumbs aria-label="breadcrumb">
-		// 	{pathnames.length > 0 ? (
-		// 		<Link onClick={() => navigate("/")}>Home</Link>
-		// 	) : (
-		// 		<Typography> Home </Typography>
-		// 	)}
-		// 	{pathnames.map((name: any, index: any) => {
-		// 		const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
-		// 		const isLast = index === pathnames.length - 1;
-		// 		return isLast ? (
-		// 			<Typography key={name}>{name}</Typography>
-		// 		) : (
-		// 			<Link key={name} onClick={() => navigate(routeTo)}>
-		// 				{name}
-		// 			</Link>
-		// 		);
-		// 	})}
-		// </Breadcrumbs>
 	);
 };
 
