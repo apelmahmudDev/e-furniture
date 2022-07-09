@@ -10,3 +10,10 @@
 
 - Scroll to top every page transitions
 - Fully Responsive
+
+## Technology used:
+- React.js + TypeScript
+- Redux toolkit
+- Rtk Query
+- Mui for bulding UI
+
