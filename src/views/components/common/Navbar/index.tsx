@@ -253,14 +253,14 @@ const Navbar = (props: any) => {
 										</MenuItem>
 									</Link>
 									<Link
-										to={`${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.ORDERS}`}
+										to={`$/{ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.ORDERS}`}
 									>
 										<MenuItem onClick={handleCloseUserMenu}>
 											<Typography textAlign="center">My Orders</Typography>
 										</MenuItem>
 									</Link>
 									<Link
-										to={`${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.WISHLIST}`}
+										to={`/${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.WISHLIST}`}
 									>
 										<MenuItem onClick={handleCloseUserMenu}>
 											<Typography textAlign="center">My Wishlist</Typography>

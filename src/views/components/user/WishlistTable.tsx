@@ -10,9 +10,6 @@ import TableRow from "@mui/material/TableRow";
 import { AppCard, AppIconButton } from "../common/StyledComponent";
 import Header from "../common/Header";
 import NotFound from "../common/NotFound";
-import { IMAGES } from "../../../constants/themeData";
-
-import { format } from "date-fns";
 
 // icons
 import {
@@ -20,6 +17,10 @@ import {
 	CloseIcon,
 	ProductionQuantityLimitsOutlinedIcon,
 } from "../../../assets/icon";
+import { RootState, useAppDispatch } from "../../../store";
+import { useSelector } from "react-redux";
+import { removeWishlist } from "../../../store/slice/wishlistSlice";
+import { addToCart } from "../../../store/slice/cartSlice";
 
 const productImgStyles = {
 	height: 60,
@@ -29,13 +30,22 @@ const productImgStyles = {
 };
 
 const WishlistTable = () => {
+	const dispatch = useAppDispatch();
+	const wishlist = useSelector((state: RootState) => state.wishlist);
+
+	// after add product to cart , then remove that from wishlist
+	const addProductToCart = (product: any) => {
+		dispatch(addToCart(product));
+		dispatch(removeWishlist(product));
+	};
+
 	return (
 		<AppCard>
 			<CardContent>
 				<Header headerText="Your Wishlist" />
 
 				{/* orders empty message */}
-				{false && (
+				{!wishlist.wishlist.length && (
 					<Box
 						sx={{
 							display: "flex",
@@ -44,14 +54,14 @@ const WishlistTable = () => {
 						}}
 					>
 						<NotFound
-							message="You have no product added in wishlist"
+							message="You have no product in wishlist"
 							icon={<ProductionQuantityLimitsOutlinedIcon />}
 						/>
 					</Box>
 				)}
 
 				{/* show when you have any orders */}
-				{1 > 0 && (
+				{wishlist.wishlist.length > 0 && (
 					<>
 						<TableContainer>
 							<Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -66,35 +76,35 @@ const WishlistTable = () => {
 								</TableHead>
 
 								<TableBody>
-									{[...Array(3)].map((_, index) => (
+									{wishlist.wishlist.map((pd) => (
 										<TableRow
-											key={index}
+											key={pd._id}
 											sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
 										>
 											<TableCell component="th" scope="row">
 												<Avatar
 													sx={productImgStyles}
-													src={IMAGES.HeroOneImg}
-													alt="product"
+													src={pd.image}
+													alt={pd.name}
 												/>
 											</TableCell>
 											<TableCell align="center">Blue sofa box style</TableCell>
 											<TableCell align="center">
-												<strong>৳ </strong> {"345"}
+												<strong>৳ </strong> {pd.price}
 											</TableCell>
-											<TableCell align="center">
-												{format(new Date(), "dd-MMM-yyyy")}
-											</TableCell>
+											<TableCell align="center">{pd.createdAt}</TableCell>
 											<TableCell align="center">
 												<Stack
 													spacing={1}
 													direction="row"
 													justifyContent="center"
 												>
-													<AppIconButton>
+													<AppIconButton onClick={() => addProductToCart(pd)}>
 														<AddShoppingCartOutlinedIcon fontSize="small" />
 													</AppIconButton>
-													<AppIconButton>
+													<AppIconButton
+														onClick={() => dispatch(removeWishlist(pd))}
+													>
 														<CloseIcon />
 													</AppIconButton>
 												</Stack>

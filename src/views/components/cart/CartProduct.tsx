@@ -33,6 +33,7 @@ import {
 	ProductionQuantityLimitsOutlinedIcon,
 } from "../../../assets/icon";
 import NotFound from "../common/NotFound";
+import { removeFromCart } from "../../../store/slice/cartSlice";
 
 const productImgStyles = {
 	height: 60,
@@ -109,7 +110,10 @@ const CartProduct = () => {
 												<strong>৳ </strong> {product.price}
 											</TableCell>
 											<TableCell align="center">
-												<IconButton color="primary">
+												<IconButton
+													color="primary"
+													onClick={() => dispatch(removeFromCart(product._id))}
+												>
 													<DeleteOutlined />
 												</IconButton>
 											</TableCell>

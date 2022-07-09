@@ -28,7 +28,6 @@ export const wishlistSlice = createSlice({
 			action: PayloadAction<ProductInterface>
 		) => {
 			const product = action.payload;
-			console.log(product);
 
 			if (state.wishlist.some((pd) => pd._id === product._id)) {
 				state.wishlist = state.wishlist.filter((pd) => pd._id !== product._id);
@@ -39,9 +38,17 @@ export const wishlistSlice = createSlice({
 				];
 			}
 		},
+
+		removeWishlist: (
+			state: InitialStateInterFace,
+			action: PayloadAction<ProductInterface>
+		) => {
+			const product = action.payload;
+			state.wishlist = state.wishlist.filter((pd) => pd._id !== product._id);
+		},
 	},
 });
 
-export const { addToWishlist } = wishlistSlice.actions;
+export const { addToWishlist, removeWishlist } = wishlistSlice.actions;
 
 export default wishlistSlice.reducer;

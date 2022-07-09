@@ -47,12 +47,16 @@ const Wishlist = () => {
 				))}
 				{wishlist.length > 0 && (
 					<Button
-						onClick={() => navigate("/" + ROUTING_TREE.CART)}
+						onClick={() =>
+							navigate(
+								`/${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.WISHLIST}`
+							)
+						}
 						sx={{ my: 1 }}
 						fullWidth
 						variant="outlined"
 					>
-						View Cart
+						View Wishlist
 					</Button>
 				)}
 			</Box>

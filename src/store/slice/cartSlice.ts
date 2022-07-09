@@ -39,14 +39,17 @@ export const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		toggleDrawer: (
-			state,
+			state: InitialStateInterFace,
 			action: PayloadAction<{ open: boolean; isCart?: boolean }>
 		) => {
 			state.drawer_open = action.payload.open;
 			state.isCart = action.payload.isCart;
 		},
 
-		addToCart: (state, action: PayloadAction<ProductInterface>) => {
+		addToCart: (
+			state: InitialStateInterFace,
+			action: PayloadAction<ProductInterface>
+		) => {
 			state.cart = [...state.cart, action.payload];
 			state.subTotal = state.cart.reduce(
 				(sum, product) => sum + Number(product.price),
@@ -57,7 +60,10 @@ export const cartSlice = createSlice({
 			checkoutSummaryCalc(state);
 		},
 
-		removeFromCart: (state, action: PayloadAction<string>) => {
+		removeFromCart: (
+			state: InitialStateInterFace,
+			action: PayloadAction<string>
+		) => {
 			state.cart = state.cart.filter(
 				(product) => product._id !== action.payload
 			);
@@ -70,7 +76,7 @@ export const cartSlice = createSlice({
 			checkoutSummaryCalc(state);
 		},
 
-		resetCart: (state) => {
+		resetCart: (state: InitialStateInterFace) => {
 			state.cart = [];
 			state.subTotal = 0;
 			state.checkoutSummary = {
