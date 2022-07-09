@@ -6,7 +6,6 @@ import { Theme } from "@mui/system";
 
 // icons
 import { HomeIcon, MenuBookIcon, GrainIcon } from "../../../../assets/icon";
-import { useLocation, useNavigate } from "react-router-dom";
 
 const styles = {
 	background: (theme: Theme) => theme.palette.secondary.light,
