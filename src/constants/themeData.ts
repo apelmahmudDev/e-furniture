@@ -26,8 +26,20 @@ import TickMarkImg from "../assets/images/order/tick-mark.png";
 import ClockImg from "../assets/images/order/clock.png";
 import ScooterImg from "../assets/images/order/scooter.png";
 
+// top categories
+import ChairOneImg from "../assets/images/top-categories/chair-1.png";
+import ChairTwoImg from "../assets/images/top-categories/chair-0.png";
+import DocgChairImg from "../assets/images/top-categories/docg-min-chair.png";
+import MinimalistChairImg from "../assets/images/top-categories/minimalist-chair.png";
+import ModerChairImg from "../assets/images/top-categories/modern-Chair.png";
+
 const IMAGES = {
+	DocgChairImg,
+	ModerChairImg,
+	MinimalistChairImg,
+	ChairOneImg,
 	ClockImg,
+	ChairTwoImg,
 	ScooterImg,
 	TickMarkImg,
 	CashOnDeleveryImg,

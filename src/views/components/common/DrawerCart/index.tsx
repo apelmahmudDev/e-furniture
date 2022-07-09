@@ -101,7 +101,7 @@ const DrawerCart = () => {
 
 						<Box>
 							<Button
-								onClick={() => navigate(ROUTING_TREE.CART)}
+								onClick={() => navigate("/" + ROUTING_TREE.CART)}
 								sx={{ my: 1 }}
 								fullWidth
 								variant="outlined"
@@ -112,7 +112,7 @@ const DrawerCart = () => {
 								onClick={() => {
 									dispatch(setShippingCart(cart.cart));
 									dispatch(setShippingSummary(cart.checkoutSummary));
-									navigate(ROUTING_TREE.ORDER.SHIPPING);
+									navigate("/" + ROUTING_TREE.ORDER.SHIPPING);
 								}}
 								sx={{ my: 1 }}
 								fullWidth

@@ -1,11 +1,13 @@
 import { CardContent, Grid, TextField } from "@mui/material";
-import { useAppDispatch } from "../../../store";
+import { RootState, useAppDispatch } from "../../../store";
 import { updateShippingForm } from "../../../store/slice/shippingSlice";
 import { AppCard } from "../common/StyledComponent";
 import Header from "../common/Header";
+import { useSelector } from "react-redux";
 
 const Address = () => {
 	const dispatch = useAppDispatch();
+	const user = useSelector((state: RootState) => state.auth.user);
 
 	return (
 		<AppCard>
@@ -17,6 +19,7 @@ const Address = () => {
 					fullWidth
 					label="Name"
 					required
+					value={`${user.first_name} ${user.last_name}`}
 					onChange={(e) =>
 						dispatch(
 							updateShippingForm({ field: "name", value: e.target.value })
@@ -31,6 +34,7 @@ const Address = () => {
 							label="Email"
 							type="email"
 							required
+							value={user.email}
 							onChange={(e) =>
 								dispatch(
 									updateShippingForm({ field: "email", value: e.target.value })
@@ -46,6 +50,7 @@ const Address = () => {
 							type="tel"
 							inputMode="numeric"
 							required
+							value={user.phone}
 							onChange={(e) =>
 								dispatch(
 									updateShippingForm({ field: "phone", value: e.target.value })

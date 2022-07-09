@@ -1,4 +1,4 @@
-import React from "react";
+import { lazy } from "react";
 import { ROUTING_TREE } from "../constants/siteUrls";
 
 import Home from "../views/pages/home";
@@ -9,24 +9,22 @@ import RequireAdmin from "../utils/security/RequireAdmin";
 import Cart from "../views/pages/cart";
 import Shop from "../views/pages/shop";
 
-const MainLayout = React.lazy(() => import("../views/layout/MainLayout"));
-const NotFound = React.lazy(() => import("../views/pages/page404"));
-const Admin = React.lazy(() => import("../views/pages/admin"));
-const Dashboard = React.lazy(() => import("../views/pages/admin/dashboard"));
-const Product = React.lazy(() => import("../views/pages/admin/product"));
-const Login = React.lazy(() => import("../views/pages/auth/Login"));
-const SignUp = React.lazy(() => import("../views/pages/auth/SignUp"));
-const Shipping = React.lazy(() => import("../views/pages/shipping"));
-const User = React.lazy(() => import("../views/pages/user"));
-const MyProfile = React.lazy(() => import("../views/pages/user/myProfile"));
-const CartLayout = React.lazy(() => import("../views/layout/CartLayout"));
-const Orders = React.lazy(() => import("../views/pages/user/orders"));
-const AdminOrders = React.lazy(() => import("../views/pages/admin/orders"));
-const Wishlist = React.lazy(() => import("../views/pages/user/wishlist"));
-const ShopLayout = React.lazy(() => import("../views/layout/ShopLayout"));
-const ShippingLayout = React.lazy(
-	() => import("../views/layout/ShippingLayout")
-);
+const MainLayout = lazy(() => import("../views/layout/MainLayout"));
+const NotFound = lazy(() => import("../views/pages/page404"));
+const Admin = lazy(() => import("../views/pages/admin"));
+const Dashboard = lazy(() => import("../views/pages/admin/dashboard"));
+const Product = lazy(() => import("../views/pages/admin/product"));
+const Login = lazy(() => import("../views/pages/auth/Login"));
+const SignUp = lazy(() => import("../views/pages/auth/SignUp"));
+const Shipping = lazy(() => import("../views/pages/shipping"));
+const User = lazy(() => import("../views/pages/user"));
+const MyProfile = lazy(() => import("../views/pages/user/myProfile"));
+const CartLayout = lazy(() => import("../views/layout/CartLayout"));
+const Orders = lazy(() => import("../views/pages/user/orders"));
+const AdminOrders = lazy(() => import("../views/pages/admin/orders"));
+const Wishlist = lazy(() => import("../views/pages/user/wishlist"));
+const ShopLayout = lazy(() => import("../views/layout/ShopLayout"));
+const ShippingLayout = lazy(() => import("../views/layout/ShippingLayout"));
 
 const routes = [
 	{
@@ -49,9 +47,9 @@ const routes = [
 	},
 	{
 		element: (
-			// <RequireAuth>
-			<ShippingLayout />
-			// </RequireAuth>
+			<RequireAuth>
+				<ShippingLayout />
+			</RequireAuth>
 		),
 		path: ROUTING_TREE.ORDER.SHIPPING,
 		children: [{ path: "", element: <Shipping /> }],
@@ -69,9 +67,9 @@ const routes = [
 	// user profile
 	{
 		element: (
-			// <RequireAuth>
-			<User />
-			// </RequireAuth>
+			<RequireAuth>
+				<User />
+			</RequireAuth>
 		),
 		path: ROUTING_TREE.USER.USER,
 		children: [
@@ -84,11 +82,11 @@ const routes = [
 	// admin dashboard
 	{
 		element: (
-			// <RequireAuth>
-			// 	<RequireAdmin>
-			<Admin />
-			// 	</RequireAdmin>
-			// </RequireAuth>
+			<RequireAuth>
+				<RequireAdmin>
+					<Admin />
+				</RequireAdmin>
+			</RequireAuth>
 		),
 		path: ROUTING_TREE.ADMIN.ADMIN,
 		children: [

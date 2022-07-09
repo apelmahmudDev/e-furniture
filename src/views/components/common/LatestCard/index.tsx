@@ -11,10 +11,12 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { STYLES } from "../../../../styles/styles";
 import { handleProductDetails } from "../../../../store/slice/productSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ZoomOutMapOutlinedIcon from "@mui/icons-material/ZoomOutMapOutlined";
 import { addToCart } from "../../../../store/slice/cartSlice";
 import { addToWishlist } from "../../../../store/slice/wishlistSlice";
+import { FavoriteIcon } from "../../../../assets/icon";
+import { RootState } from "../../../../store";
 
 interface ProductInterface {
 	product: {
@@ -31,6 +33,8 @@ interface ProductInterface {
 const LatestCard = ({ product }: ProductInterface) => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
+	const whishlist = useSelector((state: RootState) => state.wishlist.wishlist);
+
 	return (
 		<Card className={classes.root}>
 			<Box className={classes.cardMediaWrapper}>
@@ -53,7 +57,11 @@ const LatestCard = ({ product }: ProductInterface) => {
 						size="small"
 						sx={{ ...STYLES.icon }}
 					>
-						<FavoriteBorderIcon fontSize="small" />
+						{whishlist.some((pd) => pd._id === product._id) ? (
+							<FavoriteIcon fontSize="small" />
+						) : (
+							<FavoriteBorderIcon fontSize="small" />
+						)}
 					</IconButton>
 					<IconButton
 						onClick={() => dispatch(handleProductDetails(true))}

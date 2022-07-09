@@ -117,7 +117,7 @@ const User = (props: Props) => {
 							<MenuIcon />
 						</IconButton>
 					</Box>
-					<Link to={ROUTING_TREE.HOME}>
+					<Link to={"/" + ROUTING_TREE.HOME}>
 						<AppLogo />
 					</Link>
 				</Toolbar>

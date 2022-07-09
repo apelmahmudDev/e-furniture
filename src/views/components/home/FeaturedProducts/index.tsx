@@ -7,20 +7,24 @@ import { Card, CardContent, CardMedia, IconButton } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { STYLES } from "../../../../styles/styles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { handleProductDetails } from "../../../../store/slice/productSlice";
 import ZoomOutMapOutlinedIcon from "@mui/icons-material/ZoomOutMapOutlined";
 import { useGetFilteredProductsQuery } from "../../../../store/api/api.product";
 import { addToCart } from "../../../../store/slice/cartSlice";
 import { addToWishlist } from "../../../../store/slice/wishlistSlice";
 import Spinner from "../../common/Spinner";
+import ServerError from "../../common/ServerError";
+import { FavoriteIcon } from "../../../../assets/icon";
+import { RootState } from "../../../../store";
 
 const FeaturedProducts = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
+	const whishlist = useSelector((state: RootState) => state.wishlist.wishlist);
 
 	// get filtered products
-	const { data, isLoading } = useGetFilteredProductsQuery({
+	const { data, error, isLoading } = useGetFilteredProductsQuery({
 		category: "featured",
 	});
 
@@ -35,6 +39,9 @@ const FeaturedProducts = () => {
 						<Spinner />
 					</Box>
 				)}
+
+				{/* if server side error */}
+				{error && <ServerError />}
 
 				<Swiper
 					slidesPerView={1}
@@ -87,7 +94,11 @@ const FeaturedProducts = () => {
 													...STYLES.icon,
 												}}
 											>
-												<FavoriteBorderIcon fontSize="small" />
+												{whishlist.some((pd) => pd._id === product._id) ? (
+													<FavoriteIcon fontSize="small" />
+												) : (
+													<FavoriteBorderIcon fontSize="small" />
+												)}
 											</IconButton>
 											<IconButton
 												onClick={() => dispatch(handleProductDetails(true))}

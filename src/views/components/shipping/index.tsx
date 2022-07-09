@@ -8,17 +8,26 @@ import { useNavigate } from "react-router-dom";
 import { ROUTING_TREE } from "../../../constants/siteUrls";
 import { useCreateOrderMutation } from "../../../store/api/api.order";
 import { useEffect } from "react";
+import Snackbar from "../common/Snackbar";
 
 const ShippingContainer = () => {
 	const navigate = useNavigate();
+	const handleClickVariant = Snackbar();
+
 	const shipping = useSelector((state: RootState) => state.shipping);
+	const cart = useSelector((state: RootState) => state.cart);
 
 	// create order endpoint
 	const [createOrder, { data, isLoading }] = useCreateOrderMutation();
 
 	const handleShippingSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
-		createOrder(shipping);
+
+		if (cart.cart.length) {
+			createOrder(shipping);
+		} else {
+			handleClickVariant("warning", "No product select to confirm order!");
+		}
 	};
 
 	useEffect(() => {

@@ -12,6 +12,8 @@ import { useStyles } from "./styled";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import StarIcon from "@mui/icons-material/Star";
 import { IMAGES } from "../../../../constants/themeData";
+import { Link } from "react-router-dom";
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
 
 // heroData
 const heroData = [
@@ -92,13 +94,15 @@ const Hero = () => {
 									</Typography>
 
 									<Typography variant="body1">{item.description}</Typography>
-									<Button
-										endIcon={<ArrowForwardIcon />}
-										sx={{ mt: 2 }}
-										variant="outlined"
-									>
-										Shop Collection
-									</Button>
+									<Link to={"/" + ROUTING_TREE.SHOP}>
+										<Button
+											endIcon={<ArrowForwardIcon />}
+											sx={{ mt: 2 }}
+											variant="outlined"
+										>
+											Shop Collection
+										</Button>
+									</Link>
 								</Grid>
 								<Grid item xs={12} md={6}>
 									<Avatar

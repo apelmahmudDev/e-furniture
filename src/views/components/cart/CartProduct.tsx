@@ -65,7 +65,7 @@ const CartProduct = () => {
 							icon={<ProductionQuantityLimitsOutlinedIcon />}
 						/>
 						<Button
-							onClick={() => navigate(ROUTING_TREE.HOME)}
+							onClick={() => navigate("/" + ROUTING_TREE.HOME)}
 							sx={{ mt: 2 }}
 							startIcon={<ArrowBackIcon />}
 							variant="outlined"

@@ -139,7 +139,7 @@ const Login = () => {
 							<Grid item xs={12} sm={7}>
 								<Box sx={{ mb: 2, display: "flex", alignItems: "center" }}>
 									<Box sx={{ flexGrow: 1 }}>
-										<Link to={ROUTING_TREE.HOME}>
+										<Link to={"/" + ROUTING_TREE.HOME}>
 											<AppLogo />
 										</Link>
 									</Box>

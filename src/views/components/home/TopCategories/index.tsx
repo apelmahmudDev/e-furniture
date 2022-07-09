@@ -4,9 +4,33 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 import Portion from "../../common/Portion";
 import { STYLES } from "../../../../styles/styles";
+import { IMAGES } from "../../../../constants/themeData";
+import { ROUTING_TREE } from "../../../../constants/siteUrls";
+import { useNavigate } from "react-router-dom";
+
+const categoriesData = [
+	{
+		name: "Grid 99 chair (No backpain)",
+		price: 8900,
+		image: IMAGES.DocgChairImg,
+	},
+	{
+		name: "Confrotable & remove backpain",
+		price: 10000,
+		image: IMAGES.ChairTwoImg,
+	},
+	{
+		name: "Simplified yellow chair",
+		price: 15000,
+		image: IMAGES.MinimalistChairImg,
+	},
+	{ name: "Box chair", price: 20000, image: IMAGES.ModerChairImg },
+	{ name: "Black & kallu chair", price: 4500, image: IMAGES.ChairOneImg },
+];
 
 const TopCategories = () => {
 	const classes = useStyles();
+	const navigate = useNavigate();
 	return (
 		<Box my={5} component="section">
 			<Container>
@@ -35,7 +59,7 @@ const TopCategories = () => {
 					}}
 					className={classes.mySwiper}
 				>
-					{[...Array(5)].map((item, idx) => (
+					{categoriesData.map((pd, idx) => (
 						<SwiperSlide key={idx}>
 							<Box className={classes.CardRoot} sx={{ maxWidth: 280 }}>
 								<Box
@@ -43,18 +67,22 @@ const TopCategories = () => {
 									sx={{ ...STYLES.boxShadow1 }}
 								>
 									<Box className={classes.CardMedia}>
-										<Avatar
-											src="https://proofmart.com/wp-content/uploads/2021/06/503-5-1.png"
-											alt="image of categories"
-										/>
-										<Button size="small" variant="contained">
+										<Avatar src={pd.image} alt="image of categories" />
+										<Button
+											onClick={() => navigate("/" + ROUTING_TREE.SHOP)}
+											size="small"
+											variant="contained"
+										>
 											View Shop
 										</Button>
 									</Box>
 								</Box>
 								<Box mt={2}>
-									<Typography variant="body1">Mini LCW Chair</Typography>
-									<Typography variant="body2">$54.00</Typography>
+									<Typography variant="body1">{pd.name}</Typography>
+									<Typography variant="body2">
+										<strong>৳ </strong>
+										{pd.price}
+									</Typography>
 								</Box>
 							</Box>
 						</SwiperSlide>

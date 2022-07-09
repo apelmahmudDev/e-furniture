@@ -11,6 +11,7 @@ import { useRoutes } from "react-router-dom";
 import routes from "./routes";
 import { SnackbarProvider } from "notistack";
 import LinearProgress from "@mui/material/LinearProgress";
+import ScrollTopOnTransitionPage from "./utils/helper/ScrollTopOnTransitionPage";
 
 const PageLinearProgress = () => {
 	return <LinearProgress />;
@@ -21,6 +22,8 @@ function App() {
 	return (
 		<SnackbarProvider anchorOrigin={{ horizontal: "right", vertical: "top" }}>
 			<ThemeProvider theme={appTheme}>
+				{/* scroll to top every page transition */}
+				<ScrollTopOnTransitionPage />
 				<Suspense fallback={<PageLinearProgress />}>{content}</Suspense>
 			</ThemeProvider>
 		</SnackbarProvider>

@@ -47,7 +47,7 @@ const Wishlist = () => {
 				))}
 				{wishlist.length > 0 && (
 					<Button
-						onClick={() => navigate(ROUTING_TREE.CART)}
+						onClick={() => navigate("/" + ROUTING_TREE.CART)}
 						sx={{ my: 1 }}
 						fullWidth
 						variant="outlined"

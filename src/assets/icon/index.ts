@@ -20,8 +20,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import HomeIcon from "@mui/icons-material/Home";
 import GrainIcon from "@mui/icons-material/Grain";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export {
+	FavoriteIcon,
 	GrainIcon,
 	HomeIcon,
 	MenuBookIcon,
