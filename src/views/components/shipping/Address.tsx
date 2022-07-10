@@ -4,10 +4,23 @@ import { updateShippingForm } from "../../../store/slice/shippingSlice";
 import { AppCard } from "../common/StyledComponent";
 import Header from "../common/Header";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Address = () => {
 	const dispatch = useAppDispatch();
 	const user = useSelector((state: RootState) => state.auth.user);
+
+	// by default set these key value
+	useEffect(() => {
+		dispatch(
+			updateShippingForm({
+				field: "name",
+				value: `${user.first_name} ${user.last_name}`,
+			})
+		);
+		dispatch(updateShippingForm({ field: "email", value: user.email }));
+		dispatch(updateShippingForm({ field: "phone", value: user.phone }));
+	}, [dispatch, user.email, user.first_name, user.last_name, user.phone]);
 
 	return (
 		<AppCard>
@@ -22,7 +35,10 @@ const Address = () => {
 					value={`${user.first_name} ${user.last_name}`}
 					onChange={(e) =>
 						dispatch(
-							updateShippingForm({ field: "name", value: e.target.value })
+							updateShippingForm({
+								field: "name",
+								value: e.target.value,
+							})
 						)
 					}
 				/>
