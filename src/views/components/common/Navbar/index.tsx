@@ -246,14 +246,14 @@ const Navbar = (props: any) => {
 									onClose={handleCloseUserMenu}
 								>
 									<Link
-										to={`/{ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.PROFILE}`}
+										to={`/${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.PROFILE}`}
 									>
 										<MenuItem onClick={handleCloseUserMenu}>
 											<Typography textAlign="center">My Profile</Typography>
 										</MenuItem>
 									</Link>
 									<Link
-										to={`$/{ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.ORDERS}`}
+										to={`/${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.ORDERS}`}
 									>
 										<MenuItem onClick={handleCloseUserMenu}>
 											<Typography textAlign="center">My Orders</Typography>
