@@ -30,7 +30,7 @@ const NotFound = () => {
 				>
 					oops! The page you requested was not found!
 				</Typography>
-				<Link to={ROUTING_TREE.HOME}>
+				<Link to={"/" + ROUTING_TREE.HOME}>
 					<Button
 						sx={{ color: (theme) => theme.palette.secondary.light }}
 						variant="contained"

@@ -68,7 +68,7 @@ const User = (props: Props) => {
 			<Divider />
 			<List>
 				{userItems.map((item, index) => (
-					<Link key={index} to={item.link}>
+					<Link key={index} to={"/" + item.link}>
 						<ListItem key={index} disablePadding>
 							<ListItemButton>
 								<ListItemIcon>{item.icon}</ListItemIcon>

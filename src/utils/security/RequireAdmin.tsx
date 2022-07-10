@@ -10,7 +10,11 @@ const RequireAdmin = ({ children }: { children: JSX.Element }) => {
 
 	if (auth.user.user_type === "user") {
 		return (
-			<Navigate to={ROUTING_TREE.HOME} state={{ from: location }} replace />
+			<Navigate
+				to={"/" + ROUTING_TREE.HOME}
+				state={{ from: location }}
+				replace
+			/>
 		);
 	} else if (auth.user.user_type === "admin") {
 		return children;

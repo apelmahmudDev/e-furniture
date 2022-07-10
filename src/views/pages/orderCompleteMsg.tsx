@@ -75,7 +75,7 @@ const OrderCompleteMsg = () => {
 							cofirmation when your order is completed.
 						</Typography>
 						<Button
-							onClick={() => navigate(ROUTING_TREE.HOME)}
+							onClick={() => navigate("/" + ROUTING_TREE.HOME)}
 							sx={{ color: (theme) => theme.palette.secondary.light }}
 							variant="contained"
 							size="small"
