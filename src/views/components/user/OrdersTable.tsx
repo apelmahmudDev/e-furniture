@@ -15,13 +15,14 @@ import {
 } from "../common/StyledComponent";
 import Header from "../common/Header";
 import NotFound from "../common/NotFound";
-import { IMAGES } from "../../../constants/themeData";
 
 // icons
 import {
 	CloseIcon,
 	ProductionQuantityLimitsOutlinedIcon,
 } from "../../../assets/icon";
+import { useGetOrdersQuery } from "../../../store/api/api.order";
+import Spinner from "../common/Spinner";
 
 const productImgStyles = {
 	height: 60,
@@ -31,13 +32,29 @@ const productImgStyles = {
 };
 
 const OrdersTable = () => {
+	const { data, isFetching } = useGetOrdersQuery();
+
 	return (
 		<AppCard>
 			<CardContent>
-				<Header headerText="Your Orders" />
+				<Header headerText={`Your Orders (${data?.data?.length || 0}) `} />
+
+				{/* loading spinner */}
+				{isFetching && (
+					<Box
+						sx={{
+							height: 100,
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+						}}
+					>
+						<Spinner />
+					</Box>
+				)}
 
 				{/* orders empty message */}
-				{false && (
+				{!data?.data?.length && !isFetching && (
 					<Box
 						sx={{
 							display: "flex",
@@ -53,7 +70,7 @@ const OrdersTable = () => {
 				)}
 
 				{/* show when you have any orders */}
-				{1 > 0 && (
+				{data?.data && data?.data?.length > 0 && (
 					<>
 						<TableContainer>
 							<Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -70,38 +87,47 @@ const OrdersTable = () => {
 								</TableHead>
 
 								<TableBody>
-									{[...Array(5)].map((_, index) => (
-										<TableRow
-											key={index}
-											sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-										>
-											<TableCell component="th" scope="row">
-												<Avatar
-													sx={productImgStyles}
-													src={IMAGES.HeroOneImg}
-													alt="product"
-												/>
-											</TableCell>
-											<AppTableCell>Blue sofa box style</AppTableCell>
-											<AppTableCell>
-												<strong>৳ </strong> {"345"}
-											</AppTableCell>
-											<AppTableCell>2</AppTableCell>
-											<AppTableCell>
-												<strong>৳ </strong> {"345"}
-											</AppTableCell>
-											<AppTableCell>
-												<Box sx={{ display: "flex", justifyContent: "center" }}>
-													<StatusChip status="pending">Pending</StatusChip>
-												</Box>
-											</AppTableCell>
-											<AppTableCell>
-												<AppIconButton>
-													<CloseIcon />
-												</AppIconButton>
-											</AppTableCell>
-										</TableRow>
-									))}
+									{data?.data?.map((order, idx) => {
+										return order.cart.map((pd) => (
+											<TableRow
+												key={pd._id}
+												sx={{
+													"&:last-child td, &:last-child th": { border: 0 },
+												}}
+											>
+												<TableCell component="th" scope="row">
+													<Avatar
+														sx={productImgStyles}
+														src={pd.image}
+														alt={pd.name}
+													/>
+												</TableCell>
+
+												<AppTableCell>{pd.name}</AppTableCell>
+												<AppTableCell>
+													<strong>৳ </strong> {pd.price}
+												</AppTableCell>
+												<AppTableCell>{pd.quantity}</AppTableCell>
+												<AppTableCell>
+													<strong>৳ </strong> {pd.price}
+												</AppTableCell>
+												<AppTableCell>
+													<Box
+														sx={{ display: "flex", justifyContent: "center" }}
+													>
+														<StatusChip status={order.status.toLowerCase()}>
+															{order.status}
+														</StatusChip>
+													</Box>
+												</AppTableCell>
+												<AppTableCell>
+													<AppIconButton>
+														<CloseIcon />
+													</AppIconButton>
+												</AppTableCell>
+											</TableRow>
+										));
+									})}
 								</TableBody>
 							</Table>
 						</TableContainer>
