@@ -17,8 +17,11 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store";
 
 const GeneralInformation = () => {
+	const user = useSelector((state: RootState) => state.auth.user);
 	const [value, setValue] = useState<Date | null>(null);
 	return (
 		<Box>
@@ -40,7 +43,7 @@ const GeneralInformation = () => {
 									size="small"
 									label="First Name"
 									fullWidth
-									defaultValue="Apel"
+									defaultValue={user.first_name}
 								/>
 							</Grid>
 							<Grid item xs={12} sm={6}>
@@ -48,7 +51,7 @@ const GeneralInformation = () => {
 									size="small"
 									label="Last Name"
 									fullWidth
-									defaultValue="Mahmud"
+									defaultValue={user.last_name}
 								/>
 							</Grid>
 							<Grid item xs={12} sm={6}>
@@ -72,7 +75,7 @@ const GeneralInformation = () => {
 									label="Email"
 									fullWidth
 									type="email"
-									defaultValue="apelmahmud@gmail.com"
+									defaultValue={user.email}
 								/>
 							</Grid>
 							<Grid item xs={12} sm={6}>
@@ -82,7 +85,7 @@ const GeneralInformation = () => {
 									fullWidth
 									type="tel"
 									inputMode="numeric"
-									defaultValue="01739801364"
+									defaultValue={user.phone}
 								/>
 							</Grid>
 							<Grid item xs={12}>

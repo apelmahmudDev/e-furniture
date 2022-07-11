@@ -45,19 +45,7 @@ const StatusChip = styled("div")(({ status }: { status: string }) => ({
 	maxWidth: 90,
 }));
 
-// enum Align {
-// 	left='left',
-// 	right='right',
-// 	center='right',
-// }
-
-const AppTableCell = ({
-	children,
-}: // align = "center",
-{
-	children: React.ReactNode;
-	// align?: Align;
-}) => {
+const AppTableCell = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<TableCell align="center" sx={{ whiteSpace: "noWrap" }}>
 			{children}
