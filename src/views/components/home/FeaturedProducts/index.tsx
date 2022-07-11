@@ -1,15 +1,27 @@
-import { Container, Typography, Box, Stack } from "@mui/material";
-import { useStyles } from "./styled";
+import {
+	Container,
+	Typography,
+	Box,
+	Stack,
+	Card,
+	CardContent,
+	CardMedia,
+	IconButton,
+} from "@mui/material";
+
+import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
-import Portion from "../../common/Portion";
-import { Card, CardContent, CardMedia, IconButton } from "@mui/material";
+
+// icons
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { STYLES } from "../../../../styles/styles";
-import { useDispatch, useSelector } from "react-redux";
-import { handleProductDetails } from "../../../../store/slice/productSlice";
 import ZoomOutMapOutlinedIcon from "@mui/icons-material/ZoomOutMapOutlined";
+
+import { useStyles } from "./styled";
+import Portion from "../../common/Portion";
+import { STYLES } from "../../../../styles/styles";
+import { handleProductDetails } from "../../../../store/slice/productSlice";
 import { useGetFilteredProductsQuery } from "../../../../store/api/api.product";
 import { addToCart } from "../../../../store/slice/cartSlice";
 import { addToWishlist } from "../../../../store/slice/wishlistSlice";

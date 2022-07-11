@@ -34,7 +34,7 @@ import MinimalistChairImg from "../assets/images/top-categories/minimalist-chair
 import ModerChairImg from "../assets/images/top-categories/modern-Chair.png";
 
 const IMAGES = {
-	DocgChairImg,
+	DocgChairImg, //test
 	ModerChairImg,
 	MinimalistChairImg,
 	ChairOneImg,

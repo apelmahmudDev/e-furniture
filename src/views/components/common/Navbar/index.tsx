@@ -149,6 +149,7 @@ const Navbar = (props: any) => {
 									noWrap
 									sx={{
 										mr: 2,
+										fontSize: { xs: "1rem" },
 										display: { xs: "flex", md: "none" },
 										flexGrow: 1,
 										fontFamily: "monospace",

@@ -2,6 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles((theme) => ({
 	root: {
+		height: "100%",
 		position: "relative",
 		margin: "0 auto",
 		borderRadius: "0 !important",

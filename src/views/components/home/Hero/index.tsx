@@ -81,7 +81,9 @@ const Hero = () => {
 									>
 										<StarIcon
 											fontSize="small"
-											sx={{ color: (theme) => theme.palette.primary.main }}
+											sx={{
+												color: (theme) => theme.palette.primary.main,
+											}}
 										/>
 										Best Furniture For You
 									</Typography>
@@ -93,7 +95,12 @@ const Hero = () => {
 										{item.title}
 									</Typography>
 
-									<Typography variant="body1">{item.description}</Typography>
+									<Typography
+										variant="body1"
+										sx={{ display: { xs: "none", sm: "block" } }}
+									>
+										{item.description}
+									</Typography>
 									<Link to={"/" + ROUTING_TREE.SHOP}>
 										<Button
 											endIcon={<ArrowForwardIcon />}
