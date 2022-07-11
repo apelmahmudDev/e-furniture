@@ -69,7 +69,7 @@ const DrawerCart = () => {
 							<Box>
 								<Typography variant="subtitle1">{product.name}</Typography>
 								<Typography color="primary" variant="subtitle2">
-									1 x {product.price}
+									{product.quantity} x {product.price}
 								</Typography>
 							</Box>
 						</Box>

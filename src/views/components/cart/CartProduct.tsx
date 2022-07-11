@@ -84,15 +84,16 @@ const CartProduct = () => {
 									<TableRow>
 										<TableCell>Product</TableCell>
 										<TableCell align="center">Price</TableCell>
-										<TableCell align="center">Quantity(g)</TableCell>
+										<TableCell align="center">Quantity</TableCell>
 										<TableCell align="center">Total</TableCell>
 										<TableCell align="center">Actions</TableCell>
 									</TableRow>
 								</TableHead>
 
 								<TableBody>
-									{cart.cart.map((product, index) => (
+									{cart.cart.map((product) => (
 										<TableRow
+											key={product._id}
 											sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
 										>
 											<TableCell component="th" scope="row">
@@ -105,7 +106,7 @@ const CartProduct = () => {
 											<TableCell align="center">
 												<strong>৳ </strong> {product.price}
 											</TableCell>
-											<TableCell align="center">2</TableCell>
+											<TableCell align="center">{product.quantity}</TableCell>
 											<TableCell align="center">
 												<strong>৳ </strong> {product.price}
 											</TableCell>

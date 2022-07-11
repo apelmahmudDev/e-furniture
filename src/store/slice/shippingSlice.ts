@@ -41,7 +41,7 @@ export const shippingSlice = createSlice({
 	initialState,
 	reducers: {
 		updateShippingForm: (
-			state,
+			state: InitialState,
 			action: PayloadAction<{ field: string; value: string }>
 		) => {
 			state.shippingAddress = {
@@ -50,19 +50,28 @@ export const shippingSlice = createSlice({
 			};
 		},
 
-		updatePaymentMethod: (state, action: PayloadAction<string>) => {
+		updatePaymentMethod: (
+			state: InitialState,
+			action: PayloadAction<string>
+		) => {
 			state.paymentMethod = action.payload;
 		},
 
-		setShippingCart: (state, action: PayloadAction<ProductInterface[]>) => {
+		setShippingCart: (
+			state: InitialState,
+			action: PayloadAction<ProductInterface[]>
+		) => {
 			state.cart = action.payload;
 		},
 
-		setShippingSummary: (state, action: PayloadAction<SummaryInterface>) => {
+		setShippingSummary: (
+			state: InitialState,
+			action: PayloadAction<SummaryInterface>
+		) => {
 			state.checkoutSummary = action.payload;
 		},
 
-		resetShipping: (state) => {
+		resetShipping: (state: InitialState) => {
 			state.shippingAddress = initialState.shippingAddress;
 			state.checkoutSummary = initialState.checkoutSummary;
 			state.paymentMethod = initialState.paymentMethod;
