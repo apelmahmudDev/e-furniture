@@ -12,6 +12,7 @@ import routes from "./routes";
 import { SnackbarProvider } from "notistack";
 import LinearProgress from "@mui/material/LinearProgress";
 import ScrollTopOnTransitionPage from "./utils/helper/ScrollTopOnTransitionPage";
+import useAuthCheck from "./hooks/useAuthCheck";
 
 const PageLinearProgress = () => {
 	return <LinearProgress />;
@@ -19,12 +20,16 @@ const PageLinearProgress = () => {
 
 function App() {
 	const content = useRoutes(routes);
+	const isAuthCheck = useAuthCheck();
+
 	return (
 		<SnackbarProvider anchorOrigin={{ horizontal: "right", vertical: "top" }}>
 			<ThemeProvider theme={appTheme}>
 				{/* scroll to top every page transition */}
 				<ScrollTopOnTransitionPage />
-				<Suspense fallback={<PageLinearProgress />}>{content}</Suspense>
+				<Suspense fallback={<PageLinearProgress />}>
+					{isAuthCheck && content}
+				</Suspense>
 			</ThemeProvider>
 		</SnackbarProvider>
 	);

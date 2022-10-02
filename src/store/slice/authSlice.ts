@@ -36,6 +36,7 @@ export const authSlice = createSlice({
 		logout: (state) => {
 			state.isAuthenticated = initialState.isAuthenticated;
 			state.user = initialState.user;
+			localStorage.clear();
 		},
 	},
 });
