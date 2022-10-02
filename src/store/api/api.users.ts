@@ -1,6 +1,5 @@
 import { LoginUser } from "../../views/pages/auth/Login";
 import { User } from "../../views/pages/auth/SignUp";
-import { setAuth } from "../slice/authSlice";
 import { baseApiSlice } from "./api.base";
 
 export const usersApi = baseApiSlice.injectEndpoints({
@@ -22,7 +21,6 @@ export const usersApi = baseApiSlice.injectEndpoints({
 			async onQueryStarted(arg, { dispatch, queryFulfilled }) {
 				const result = await queryFulfilled;
 				localStorage.setItem("auth", JSON.stringify(result.data));
-				dispatch(setAuth(result.data));
 			},
 		}),
 	}),

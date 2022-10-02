@@ -27,9 +27,9 @@ function App() {
 			<ThemeProvider theme={appTheme}>
 				{/* scroll to top every page transition */}
 				<ScrollTopOnTransitionPage />
-				<Suspense fallback={<PageLinearProgress />}>
-					{isAuthCheck && content}
-				</Suspense>
+				{isAuthCheck && (
+					<Suspense fallback={<PageLinearProgress />}>{content}</Suspense>
+				)}
 			</ThemeProvider>
 		</SnackbarProvider>
 	);

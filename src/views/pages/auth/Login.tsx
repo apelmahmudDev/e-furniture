@@ -98,7 +98,7 @@ const Login = () => {
 					"success",
 					`${data.user.user_type} logged in successfully`
 				);
-
+				dispatch(setAuth(data.user));
 				navigate(from, { replace: true });
 			}
 

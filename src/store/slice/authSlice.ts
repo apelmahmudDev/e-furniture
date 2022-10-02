@@ -27,13 +27,16 @@ export const authSlice = createSlice({
 	name: "auth",
 	initialState,
 	reducers: {
-		setAuth: (state, action: PayloadAction<AuthInterface>) => {
+		setAuth: (
+			state: InitialStateInterFace,
+			action: PayloadAction<AuthInterface>
+		) => {
 			state.user = action.payload;
 			if (state.user._id) {
 				state.isAuthenticated = true;
 			}
 		},
-		logout: (state) => {
+		logout: (state: InitialStateInterFace) => {
 			state.isAuthenticated = initialState.isAuthenticated;
 			state.user = initialState.user;
 			localStorage.clear();
