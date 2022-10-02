@@ -1,18 +1,15 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
 	OrderApiInterface,
 	OrderGetApiInterface,
 } from "../../types/order/order.type";
+import { baseApiSlice } from "./api.base";
 
-export const orderApi = createApi({
-	reducerPath: "orderApi",
-	baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
+export const orderApi = baseApiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getOrders: builder.query<OrderGetApiInterface, void>({
-			// OrderGetApiInterface =  means that, what kinds of data comes from db / other server
-			// void = means that there is no data going to be passed
-			query: () => `/orders`,
+			query: () => "/orders",
 		}),
+
 		createOrder: builder.mutation<OrderApiInterface, OrderApiInterface>({
 			query: (body) => ({
 				url: `/order`,

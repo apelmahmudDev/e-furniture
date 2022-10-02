@@ -1,4 +1,5 @@
 // slice
+import { baseApiSlice } from "./api/api.base";
 import { configureStore } from "@reduxjs/toolkit";
 import GlobalReducer from "./slice/globalSlice";
 import CounterReducer from "./slice/counterSlice";
@@ -7,21 +8,13 @@ import CartReducer from "./slice/cartSlice";
 import wishlistReducer from "./slice/wishlistSlice";
 import authReducer from "./slice/authSlice";
 import shippingReducer from "./slice/shippingSlice";
-
-// api / services
 import { useDispatch } from "react-redux";
-import { productApi } from "./api/api.product";
-import { usersApi } from "./api/api.users";
-import { orderApi } from "./api/api.order";
 
 const store = configureStore({
 	reducer: {
-		// api / services
-		[productApi.reducerPath]: productApi.reducer,
-		[usersApi.reducerPath]: usersApi.reducer,
-		[orderApi.reducerPath]: orderApi.reducer,
+		[baseApiSlice.reducerPath]: baseApiSlice.reducer,
 
-		// slice
+		// slices
 		global: GlobalReducer,
 		counter: CounterReducer,
 		product: ProductReducer,
@@ -32,7 +25,7 @@ const store = configureStore({
 	},
 
 	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(productApi.middleware),
+		getDefaultMiddleware().concat(baseApiSlice.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

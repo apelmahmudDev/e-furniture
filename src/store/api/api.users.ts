@@ -1,10 +1,8 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { LoginUser } from "../../views/pages/auth/Login";
 import { User } from "../../views/pages/auth/SignUp";
+import { baseApiSlice } from "./api.base";
 
-export const usersApi = createApi({
-	reducerPath: "usersApi",
-	baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
+export const usersApi = baseApiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		signUp: builder.mutation<User, User>({
 			query: (body) => ({
