@@ -28,6 +28,7 @@
 - [x] User & admin handle
 - [x] Dashboard
 - [ ] Print order
+- [x] Use localStorage to save user cash data
 
 ## Technology used:
 
@@ -46,3 +47,7 @@
   - /admin/dashboard
   - /admin/orders
   - /admin/products
+
+## Relevent links
+
+- **Backend repository** - [https://github.com/apelmahmudDev/e-furniture-server](https://github.com/apelmahmudDev/e-furniture-server)
