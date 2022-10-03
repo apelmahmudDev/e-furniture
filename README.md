@@ -8,26 +8,26 @@
 
 ## Features Implemented
 
-[x] Awesome carousel by swiper-js on the hero section
-[x] Add to cart
-[x] Add to favorite / wishlist
-[x] Quick view
-[x] View Store/view all
-[ ] Interior ideas - blog section
-[x] Background Parallel scrolling image
-[ ] Live chat - optional
-[ ] Animation - optional
-[ ] Dynamic title change with page change - react helmet **(npm package)**
-[ ] About
-[x] Footer
-[ ] Dark theme
-[ ] ~~Loading skeleton~~ / loading sign
-[x] Related favicon
-[x] Code split react lazy
-[ ] React idle timer add to redirect or handle idle user **(npm package)**
-[x] User & admin handle
-[x] Dashboard
-[ ] Print order
+- [x] Awesome carousel by swiper-js on the hero section
+- [x] Add to cart
+- [x] Add to favorite / wishlist
+- [x] Quick view
+- [x] View Store/view all
+- [ ] Interior ideas - blog section
+- [x] Background Parallel scrolling image
+- [ ] Live chat - optional
+- [ ] Animation - optional
+- [ ] Dynamic title change with page change - react helmet **(npm package)**
+- [ ] About
+- [x] Footer
+- [ ] Dark theme
+- [ ] ~~Loading skeleton~~ / loading sign
+- [x] Related favicon
+- [x] Code split react lazy
+- [ ] React idle timer add to redirect or handle idle user **(npm package)**
+- [x] User & admin handle
+- [x] Dashboard
+- [ ] Print order
 
 ## Technology used:
 
