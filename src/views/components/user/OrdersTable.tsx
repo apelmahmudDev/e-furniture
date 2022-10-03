@@ -21,7 +21,10 @@ import {
 	CloseIcon,
 	ProductionQuantityLimitsOutlinedIcon,
 } from "../../../assets/icon";
-import { useGetOrdersQuery } from "../../../store/api/api.order";
+import {
+	useDeleteOrderMutation,
+	useGetOrdersQuery,
+} from "../../../store/api/api.order";
 import Spinner from "../common/Spinner";
 
 const productImgStyles = {
@@ -33,6 +36,12 @@ const productImgStyles = {
 
 const OrdersTable = () => {
 	const { data, isFetching } = useGetOrdersQuery();
+	const [deleteOrder, { isLoading }] = useDeleteOrderMutation();
+
+	// delete order
+	const handleDeleteOrder = (id: string) => {
+		deleteOrder(id);
+	};
 
 	return (
 		<AppCard>
@@ -121,7 +130,9 @@ const OrdersTable = () => {
 													</Box>
 												</AppTableCell>
 												<AppTableCell>
-													<AppIconButton>
+													<AppIconButton
+														onClick={() => handleDeleteOrder(order._id)}
+													>
 														<CloseIcon />
 													</AppIconButton>
 												</AppTableCell>

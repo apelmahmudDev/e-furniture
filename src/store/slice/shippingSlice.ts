@@ -6,6 +6,7 @@ import { SummaryInterface } from "../../types/shipping/checkoutSummary.type";
 import { ProductInterface } from "./cartSlice";
 
 export interface InitialState {
+	[x: string]: any;
 	shippingAddress: AddressInterface;
 	checkoutSummary: SummaryInterface;
 	paymentMethod: string;

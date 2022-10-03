@@ -17,7 +17,18 @@ export const orderApi = baseApiSlice.injectEndpoints({
 				body,
 			}),
 		}),
+
+		deleteOrder: builder.mutation<void, string>({
+			query: (id) => ({
+				url: `/order/${id}`,
+				method: "DELETE",
+			}),
+		}),
 	}),
 });
 
-export const { useGetOrdersQuery, useCreateOrderMutation } = orderApi;
+export const {
+	useGetOrdersQuery,
+	useCreateOrderMutation,
+	useDeleteOrderMutation,
+} = orderApi;
