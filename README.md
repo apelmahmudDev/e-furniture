@@ -39,7 +39,9 @@
 
 ## 🔐 Admin accessiblity
 
-📧 super.admin@gmail.com
+_👉 Go to login page enter this email & password: ⤵️_
+
+📧 super.admin@gmail.com,
 🔑 @super123
 
 - Admin can access all services as usual;
