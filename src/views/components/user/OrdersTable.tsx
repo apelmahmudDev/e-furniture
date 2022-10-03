@@ -26,6 +26,8 @@ import {
 	useGetOrdersQuery,
 } from "../../../store/api/api.order";
 import Spinner from "../common/Spinner";
+import Snackbar from "../common/Snackbar";
+import { useEffect } from "react";
 
 const productImgStyles = {
 	height: 60,
@@ -35,13 +37,32 @@ const productImgStyles = {
 };
 
 const OrdersTable = () => {
+	const handleClickVariant = Snackbar();
 	const { data, isFetching } = useGetOrdersQuery();
-	const [deleteOrder, { isLoading }] = useDeleteOrderMutation();
+	const [deleteOrder, { isLoading, isSuccess, isError }] =
+		useDeleteOrderMutation();
 
 	// delete order
 	const handleDeleteOrder = (id: string) => {
 		deleteOrder(id);
 	};
+
+	useEffect(() => {
+		if (isSuccess) {
+			handleClickVariant(
+				"success",
+				"Your order has been successfully deleted!"
+			);
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isSuccess]);
+
+	useEffect(() => {
+		if (isError) {
+			handleClickVariant("error", "Something went wrong!");
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isError]);
 
 	return (
 		<AppCard>
@@ -131,6 +152,7 @@ const OrdersTable = () => {
 												</AppTableCell>
 												<AppTableCell>
 													<AppIconButton
+														disabled={isLoading}
 														onClick={() => handleDeleteOrder(order._id)}
 													>
 														<CloseIcon />

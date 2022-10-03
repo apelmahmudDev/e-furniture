@@ -8,7 +8,7 @@ export const orderApi = baseApiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getOrders: builder.query<OrderGetApiInterface, void>({
 			query: () => "/orders",
-			providesTags: ["Order"],
+			providesTags: ["Orders"],
 		}),
 
 		createOrder: builder.mutation<OrderApiInterface, OrderApiInterface>({
@@ -17,6 +17,7 @@ export const orderApi = baseApiSlice.injectEndpoints({
 				method: "POST",
 				body,
 			}),
+			invalidatesTags: ["Orders"],
 		}),
 
 		deleteOrder: builder.mutation<void, string>({
@@ -24,7 +25,7 @@ export const orderApi = baseApiSlice.injectEndpoints({
 				url: `/order/${id}`,
 				method: "DELETE",
 			}),
-			invalidatesTags: ["Order"],
+			invalidatesTags: ["Orders"],
 		}),
 	}),
 });
