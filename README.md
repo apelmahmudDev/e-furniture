@@ -6,14 +6,43 @@
 
 - E-commerce
 
-## Features
+## Features Implemented
 
-- Scroll to top every page transitions
-- Fully Responsive
+[x] Awesome carousel by swiper-js on the hero section
+[x] Add to cart
+[x] Add to favorite / wishlist
+[x] Quick view
+[x] View Store/view all
+[ ] Interior ideas - blog section
+[x] Background Parallel scrolling image
+[ ] Live chat - optional
+[ ] Animation - optional
+[ ] Dynamic title change with page change - react helmet **(npm package)**
+[ ] About
+[x] Footer
+[ ] Dark theme
+[ ] ~~Loading skeleton~~ / loading sign
+[x] Related favicon
+[x] Code split react lazy
+[ ] React idle timer add to redirect or handle idle user **(npm package)**
+[x] User & admin handle
+[x] Dashboard
+[ ] Print order
 
 ## Technology used:
+
 - React.js + TypeScript
 - Redux toolkit
 - Rtk Query
-- Mui for bulding UI
+- MUI (Material UI) for bulding UI
 
+## 🔐 Admin accessiblity
+
+📧 super.admin@gmail.com
+🔑 @super123
+
+- Admin can access all services as usual;
+- **N.B - Only admin access the dashboard (Admin accessible route/link given below)**;
+  - /admin/dashboard
+  - /admin/orders
+  - /admin/products
