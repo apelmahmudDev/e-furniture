@@ -21,7 +21,10 @@ import ZoomOutMapOutlinedIcon from "@mui/icons-material/ZoomOutMapOutlined";
 import { useStyles } from "./styled";
 import Portion from "../../common/Portion";
 import { STYLES } from "../../../../styles/styles";
-import { handleProductDetails } from "../../../../store/slice/productSlice";
+import {
+	handleProductDetailsModal,
+	setProductToViewOnModal,
+} from "../../../../store/slice/productSlice";
 import { useGetFilteredProductsQuery } from "../../../../store/api/api.product";
 import { addToCart } from "../../../../store/slice/cartSlice";
 import { addToWishlist } from "../../../../store/slice/wishlistSlice";
@@ -113,7 +116,19 @@ const FeaturedProducts = () => {
 												)}
 											</IconButton>
 											<IconButton
-												onClick={() => dispatch(handleProductDetails(true))}
+												onClick={() => {
+													dispatch(handleProductDetailsModal(true));
+													dispatch(
+														setProductToViewOnModal({
+															category: product.category,
+															description: product.description,
+															image: product.image,
+															name: product.name,
+															price: product.price,
+															_id: product._id,
+														})
+													);
+												}}
 												size="small"
 												sx={{ ...STYLES.icon }}
 											>

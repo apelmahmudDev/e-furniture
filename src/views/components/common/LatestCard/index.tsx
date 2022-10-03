@@ -10,7 +10,10 @@ import { useStyles } from "./styled";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { STYLES } from "../../../../styles/styles";
-import { handleProductDetails } from "../../../../store/slice/productSlice";
+import {
+	handleProductDetailsModal,
+	setProductToViewOnModal,
+} from "../../../../store/slice/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import ZoomOutMapOutlinedIcon from "@mui/icons-material/ZoomOutMapOutlined";
 import { addToCart } from "../../../../store/slice/cartSlice";
@@ -64,7 +67,19 @@ const LatestCard = ({ product }: ProductInterface) => {
 						)}
 					</IconButton>
 					<IconButton
-						onClick={() => dispatch(handleProductDetails(true))}
+						onClick={() => {
+							dispatch(handleProductDetailsModal(true));
+							dispatch(
+								setProductToViewOnModal({
+									category: product.category,
+									description: product.description,
+									image: product.image,
+									name: product.name,
+									price: product.price,
+									_id: product._id,
+								})
+							);
+						}}
 						size="small"
 						sx={{ ...STYLES.icon }}
 					>

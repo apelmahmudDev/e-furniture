@@ -16,26 +16,44 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../store";
-import { handleProductDetails } from "../../../../store/slice/productSlice";
+import { handleProductDetailsModal } from "../../../../store/slice/productSlice";
 
 const ProductDetails = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const [productHeroImg, setProductHeroImg] = useState<string | null>(null);
-	const product = useSelector((state: RootState) => state.product);
+	const { product, product_details_open } =
+		useSelector((state: RootState) => state.product) || {};
+	const { name, category, description, price, image } = product || {};
+
 	const handleProductHeroImage = (img: string) => setProductHeroImg(img);
+
+	const itemData = [
+		{
+			img: image && image,
+			title: name,
+		},
+		{
+			img: IMAGES.HeroTwoImg,
+			title: "purple sofa",
+		},
+		{
+			img: IMAGES.HeroThreeImg,
+			title: "chair",
+		},
+	];
 
 	return (
 		<Dialog
 			maxWidth="md"
-			open={product.product_details_open}
-			onClose={() => dispatch(handleProductDetails(false))}
+			open={product_details_open}
+			onClose={() => dispatch(handleProductDetailsModal(false))}
 			aria-labelledby="alert-dialog-title"
 			aria-describedby="alert-dialog-description"
 		>
 			<DialogActions sx={{ position: "absolute", top: 0, right: 0 }}>
 				<IconButton
-					onClick={() => dispatch(handleProductDetails(false))}
+					onClick={() => dispatch(handleProductDetailsModal(false))}
 					autoFocus
 					sx={{ ...STYLES.icon, zIndex: "tooltip" }}
 					size="small"
@@ -51,7 +69,7 @@ const ProductDetails = () => {
 								<ImageList className={classes.imageList} cols={3}>
 									{itemData.map((item, idx) => (
 										<ImageListItem
-											key={item.img}
+											key={idx}
 											onClick={() => handleProductHeroImage(item.img)}
 										>
 											<img
@@ -67,7 +85,7 @@ const ProductDetails = () => {
 							<Grid item sm={9}>
 								<img
 									className={classes.productHeroImg}
-									src={productHeroImg ? productHeroImg : IMAGES.HeroThreeImg}
+									src={image}
 									alt="product"
 									loading="lazy"
 								/>
@@ -77,7 +95,7 @@ const ProductDetails = () => {
 					<Grid item xs={12} md={6}>
 						<Box>
 							<Typography gutterBottom variant="h5" sx={{ fontWeight: "bold" }}>
-								Polo Green Chair
+								{name}
 							</Typography>
 							<Box display="flex" alignItems="center" gap={1}>
 								<Stack spacing={1} direction="row">
@@ -95,16 +113,15 @@ const ProductDetails = () => {
 								</Typography>
 							</Box>
 							<Typography mt={1} sx={{ fontFamily: "Titillium Web" }}>
-								$45
+								${price}
 							</Typography>
 							<Typography mt={1} variant="body2" color="text.secondary">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-								accusamus iusto.
+								{description}
 							</Typography>
 							<Typography mt={1} sx={{ fontFamily: "Titillium Web" }}>
-								Categories: {"Chair"}
+								Categories: {category}
 							</Typography>
-							<Box my={2}>
+							{/* <Box my={2}>
 								<Button
 									startIcon={<ShoppingCartOutlinedIcon />}
 									variant="outlined"
@@ -115,7 +132,7 @@ const ProductDetails = () => {
 								<IconButton size="small" sx={{ ...STYLES.icon, ml: 2 }}>
 									<FavoriteBorderIcon />
 								</IconButton>
-							</Box>
+							</Box> */}
 						</Box>
 					</Grid>
 				</Grid>
@@ -125,18 +142,3 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
-
-const itemData = [
-	{
-		img: IMAGES.HeroOneImg,
-		title: "red sofa",
-	},
-	{
-		img: IMAGES.HeroTwoImg,
-		title: "purple sofa",
-	},
-	{
-		img: IMAGES.HeroThreeImg,
-		title: "chair",
-	},
-];
