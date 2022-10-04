@@ -21,6 +21,7 @@
 - [ ] About
 - [x] Footer
 - [ ] Dark theme
+- [ ] infinity scrolling for table **(npm package)**
 - [ ] ~~Loading skeleton~~ / loading sign
 - [x] Related favicon
 - [x] Code split react lazy
