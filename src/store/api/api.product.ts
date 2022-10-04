@@ -22,11 +22,11 @@ export const productApi = baseApiSlice.injectEndpoints({
 			invalidatesTags: ["Products"],
 		}),
 		deleteProduct: builder.mutation<void, string>({
-			query: (product_id) => ({
-				url: `/products/${product_id}`,
+			query: (id) => ({
+				url: `/products/${id}`,
 				method: "DELETE",
-				invalidatesTags: ["Products"],
 			}),
+			invalidatesTags: ["Products"],
 		}),
 	}),
 });
