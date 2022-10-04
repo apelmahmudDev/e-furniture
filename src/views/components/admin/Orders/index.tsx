@@ -114,15 +114,13 @@ const OrdersTable = () => {
 							</TableRow>
 						)}
 						{/* no data found message */}
-						{data?.data?.length
-							? data?.data.length <= 0 && (
-									<TableRow>
-										<TableCell sx={{ height: 100 }} align="center" colSpan={7}>
-											<NoData />
-										</TableCell>
-									</TableRow>
-							  )
-							: null}
+						{data?.data?.length === 0 && (
+							<TableRow>
+								<TableCell sx={{ height: 100 }} align="center" colSpan={7}>
+									<NoData />
+								</TableCell>
+							</TableRow>
+						)}
 
 						{/* data show */}
 						{data?.data?.map((order, idx) => (

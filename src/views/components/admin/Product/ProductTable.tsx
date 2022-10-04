@@ -69,6 +69,7 @@ const ProductTable = () => {
 
 	// get products
 	const { data, isLoading } = useGetProductsQuery();
+
 	return (
 		<Paper sx={{ p: 2, ...STYLES.boxShadow1 }}>
 			<Typography gutterBottom variant="h6">
@@ -96,15 +97,13 @@ const ProductTable = () => {
 							</TableRow>
 						)}
 						{/* no data found message */}
-						{data?.data?.length
-							? data?.data.length <= 0 && (
-									<TableRow>
-										<TableCell sx={{ height: 100 }} align="center" colSpan={7}>
-											<NoData />
-										</TableCell>
-									</TableRow>
-							  )
-							: null}
+						{data?.data?.length && data?.data?.length < 1 && (
+							<TableRow>
+								<TableCell sx={{ height: 100 }} align="center" colSpan={7}>
+									<NoData />
+								</TableCell>
+							</TableRow>
+						)}
 
 						{/*table data show */}
 						{data?.data.map((product, idx) => (
