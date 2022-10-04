@@ -9,7 +9,10 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { Avatar, IconButton } from "@mui/material";
 import { useState } from "react";
-import { useGetProductsQuery } from "../../../../store/api/api.product";
+import {
+	useDeleteProductMutation,
+	useGetProductsQuery,
+} from "../../../../store/api/api.product";
 
 // icons
 import { Visibility, Edit, DeleteOutlined } from "../../../../assets/icon";
@@ -69,11 +72,19 @@ const ProductTable = () => {
 
 	// get products
 	const { data, isLoading } = useGetProductsQuery();
+	// delete products
+	const [deleteProduct, { isLoading: isDeleting }] = useDeleteProductMutation();
+
+	const handleDelete = (id: string) => {
+		if (id) {
+			deleteProduct(id);
+		}
+	};
 
 	return (
 		<Paper sx={{ p: 2, ...STYLES.boxShadow1 }}>
 			<Typography gutterBottom variant="h6">
-				Product List
+				Product List ({data?.data?.length})
 			</Typography>
 			<TableContainer sx={{ maxHeight: 440 }}>
 				<Table size="small" stickyHeader aria-label="sticky table">
@@ -143,7 +154,12 @@ const ProductTable = () => {
 											<IconButton size="small" sx={{ ...STYLES.icon }}>
 												<Edit />
 											</IconButton>
-											<IconButton size="small" sx={{ ...STYLES.icon }}>
+											<IconButton
+												size="small"
+												disabled={isDeleting}
+												sx={{ ...STYLES.icon }}
+												onClick={() => handleDelete(product._id)}
+											>
 												<DeleteOutlined />
 											</IconButton>
 										</Stack>
