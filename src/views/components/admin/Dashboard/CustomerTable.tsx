@@ -12,6 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { STYLES } from "../../../../styles/styles";
 import {
 	Avatar,
+	Box,
 	IconButton,
 	SelectChangeEvent,
 	Typography,
@@ -147,16 +148,18 @@ const CustomerTable = () => {
 								<TableCell>{order.shippingAddress.country}</TableCell>
 								<TableCell>1</TableCell>
 								<TableCell>
-									<FormControl size="small">
-										<Select
-											defaultValue={order.status}
-											onChange={(e) => handleOrderStatus(e, order._id)}
-										>
-											<MenuItem value="Pending">Pending</MenuItem>
-											<MenuItem value="Cancel">Cancel</MenuItem>
-											<MenuItem value="Done">Done</MenuItem>
-										</Select>
-									</FormControl>
+									<Box sx={{ maxWidth: 110 }}>
+										<FormControl size="small" fullWidth>
+											<Select
+												defaultValue={order.status}
+												onChange={(e) => handleOrderStatus(e, order._id)}
+											>
+												<MenuItem value="Pending">Pending</MenuItem>
+												<MenuItem value="Cancel">Cancel</MenuItem>
+												<MenuItem value="Done">Done</MenuItem>
+											</Select>
+										</FormControl>
+									</Box>
 								</TableCell>
 								<TableCell>
 									<IconButton
