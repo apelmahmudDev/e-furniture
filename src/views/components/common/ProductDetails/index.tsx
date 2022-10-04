@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Button from "@mui/material/Button";
+// import { useState } from "react";
+// import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -12,8 +12,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import { STYLES } from "../../../../styles/styles";
 import StarIcon from "@mui/icons-material/Star";
 import Stack from "@mui/material/Stack";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+// import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+// import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../store";
 import { handleProductDetailsModal } from "../../../../store/slice/productSlice";
@@ -21,12 +21,12 @@ import { handleProductDetailsModal } from "../../../../store/slice/productSlice"
 const ProductDetails = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
-	const [productHeroImg, setProductHeroImg] = useState<string | null>(null);
+	// const [productHeroImg, setProductHeroImg] = useState<string | null>(null);
 	const { product, product_details_open } =
 		useSelector((state: RootState) => state.product) || {};
 	const { name, category, description, price, image } = product || {};
 
-	const handleProductHeroImage = (img: string) => setProductHeroImg(img);
+	// const handleProductHeroImage = (img: string) => setProductHeroImg(img);
 
 	const itemData = [
 		{
@@ -70,7 +70,7 @@ const ProductDetails = () => {
 									{itemData.map((item, idx) => (
 										<ImageListItem
 											key={idx}
-											onClick={() => handleProductHeroImage(item.img)}
+											// onClick={() => handleProductHeroImage(item.img)}
 										>
 											<img
 												src={`${item.img}?w=164&h=164&fit=crop&auto=format`}

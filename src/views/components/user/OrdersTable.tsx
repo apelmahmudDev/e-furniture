@@ -23,11 +23,13 @@ import {
 } from "../../../assets/icon";
 import {
 	useDeleteOrderMutation,
-	useGetOrdersQuery,
+	useGetOrdersByEmailQuery,
 } from "../../../store/api/api.order";
 import Spinner from "../common/Spinner";
 import Snackbar from "../common/Snackbar";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
 
 const productImgStyles = {
 	height: 60,
@@ -38,7 +40,11 @@ const productImgStyles = {
 
 const OrdersTable = () => {
 	const handleClickVariant = Snackbar();
-	const { data, isFetching } = useGetOrdersQuery();
+	const { user } = useSelector((state: RootState) => state.auth) || {};
+	const { email } = user || {};
+
+	const { data, isFetching } = useGetOrdersByEmailQuery(email);
+
 	const [deleteOrder, { isLoading, isSuccess, isError }] =
 		useDeleteOrderMutation();
 
