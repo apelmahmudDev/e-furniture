@@ -16,6 +16,11 @@ export const orderApi = baseApiSlice.injectEndpoints({
 			providesTags: ["Orders"],
 		}),
 
+		getOrderByStatus: builder.query<OrderGetApiInterface, string>({
+			query: (status) => `/order/${status}`,
+			providesTags: ["Orders"],
+		}),
+
 		createOrder: builder.mutation<OrderApiInterface, OrderApiInterface>({
 			query: (body) => ({
 				url: `/order`,
@@ -53,4 +58,5 @@ export const {
 	useCreateOrderMutation,
 	useDeleteOrderMutation,
 	useUpdateOrderMutation,
+	useGetOrderByStatusQuery,
 } = orderApi;

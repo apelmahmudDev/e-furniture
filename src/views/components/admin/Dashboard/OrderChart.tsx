@@ -1,8 +1,16 @@
 import Chart from "react-apexcharts";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import { STYLES } from "../../../../styles/styles";
+import {
+	useGetOrderByStatusQuery,
+	useGetOrdersQuery,
+} from "../../../../store/api/api.order";
 
 const OrderChart = () => {
+	const { data: allOrders } = useGetOrdersQuery();
+	const { data: pendingOrder } = useGetOrderByStatusQuery("Pending");
+	const { data: deliveredOrder } = useGetOrderByStatusQuery("Done");
+
 	const chart = {
 		options: {
 			chart: {
@@ -25,7 +33,11 @@ const OrderChart = () => {
 				},
 			],
 		},
-		series: [44, 55, 13],
+		series: [
+			allOrders?.data?.length || 0,
+			pendingOrder?.data?.length || 0,
+			deliveredOrder?.data?.length || 0,
+		],
 	};
 
 	return (
