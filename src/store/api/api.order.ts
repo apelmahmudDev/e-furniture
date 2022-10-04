@@ -25,6 +25,17 @@ export const orderApi = baseApiSlice.injectEndpoints({
 			invalidatesTags: ["Orders"],
 		}),
 
+		updateOrder: builder.mutation<
+			void,
+			{ id: string; body: { status: string } }
+		>({
+			query: ({ id, body }) => ({
+				url: `/order/${id}`,
+				method: "PUT",
+				body,
+			}),
+		}),
+
 		deleteOrder: builder.mutation<void, string>({
 			query: (id) => ({
 				url: `/order/${id}`,
@@ -40,4 +51,5 @@ export const {
 	useGetOrdersByEmailQuery,
 	useCreateOrderMutation,
 	useDeleteOrderMutation,
+	useUpdateOrderMutation,
 } = orderApi;

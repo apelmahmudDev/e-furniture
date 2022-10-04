@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -6,12 +7,25 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { STYLES } from "../../../../styles/styles";
-import { Avatar, IconButton, Typography } from "@mui/material";
+import {
+	Avatar,
+	FormControl,
+	IconButton,
+	MenuItem,
+	Select,
+	SelectChangeEvent,
+	Typography,
+} from "@mui/material";
 import { DeleteOutlined } from "@mui/icons-material";
-import { useGetOrdersQuery } from "../../../../store/api/api.order";
-import { StatusChip } from "../../common/StyledComponent";
+import {
+	orderApi,
+	useDeleteOrderMutation,
+	useGetOrdersQuery,
+} from "../../../../store/api/api.order";
 import Spinner from "../../common/Spinner";
 import NoData from "../../common/NoData";
+import Snackbar from "../../common/Snackbar";
+import { useAppDispatch } from "../../../../store";
 
 const styles = {
 	display: "flex",
@@ -21,7 +35,56 @@ const styles = {
 };
 
 const OrdersTable = () => {
+	const dispatch = useAppDispatch();
+	const handleClickVariant = Snackbar();
+	const [status, setStatus] = useState("");
+	const [orderId, setOrderId] = useState("");
+
 	const { data, isFetching } = useGetOrdersQuery();
+	const [deleteOrder, { isLoading, isSuccess, isError }] =
+		useDeleteOrderMutation();
+
+	// delete order
+	const handleDeleteOrder = (id: string) => {
+		deleteOrder(id);
+	};
+
+	useEffect(() => {
+		if (isSuccess) {
+			handleClickVariant("success", "Order has been successfully deleted!");
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isSuccess]);
+
+	useEffect(() => {
+		if (isError) {
+			handleClickVariant("error", "Something went wrong!");
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isError]);
+
+	const handleOrderStatus = (event: SelectChangeEvent, orderId: string) => {
+		setStatus(event.target.value as string);
+		setOrderId(orderId as string);
+	};
+
+	// update order status
+	useEffect(() => {
+		if (status && orderId) {
+			dispatch(
+				orderApi.endpoints.updateOrder.initiate({
+					id: orderId,
+					body: { status: status },
+				})
+			)
+				.unwrap()
+				.then(() => {
+					handleClickVariant("success", "Status Update Successfull!");
+				})
+				.catch(() => handleClickVariant("error", "Something went wrong!"));
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [status, orderId, dispatch]);
 
 	return (
 		<Paper sx={{ overflow: "hidden", ...STYLES.boxShadow1 }}>
@@ -84,12 +147,24 @@ const OrdersTable = () => {
 								<TableCell>{order.shippingAddress.country}</TableCell>
 								<TableCell>1</TableCell>
 								<TableCell>
-									<StatusChip status={order.status.toLowerCase()}>
-										{order.status}
-									</StatusChip>
+									<FormControl size="small">
+										<Select
+											defaultValue={order.status}
+											onChange={(e) => handleOrderStatus(e, order._id)}
+										>
+											<MenuItem value="Pending">Pending</MenuItem>
+											<MenuItem value="Cancel">Cancel</MenuItem>
+											<MenuItem value="Done">Done</MenuItem>
+										</Select>
+									</FormControl>
 								</TableCell>
 								<TableCell>
-									<IconButton size="small" sx={{ ...STYLES.icon }}>
+									<IconButton
+										size="small"
+										sx={{ ...STYLES.icon }}
+										disabled={isLoading}
+										onClick={() => handleDeleteOrder(order._id)}
+									>
 										<DeleteOutlined />
 									</IconButton>
 								</TableCell>
