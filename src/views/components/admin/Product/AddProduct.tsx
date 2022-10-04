@@ -41,6 +41,10 @@ const categories = [
 		value: "book_self",
 		label: "Book self",
 	},
+	{
+		value: "bed",
+		label: "Bed",
+	},
 ];
 const subCategories = [
 	{
