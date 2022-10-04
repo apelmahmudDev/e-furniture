@@ -24,6 +24,7 @@ import { logout } from "../../../store/slice/authSlice";
 
 // icons
 import {
+	DashboardIcon,
 	FavoriteBorderOutlinedIcon,
 	MallIcon,
 	MenuIcon,
@@ -67,9 +68,25 @@ const User = (props: Props) => {
 			</Box>
 			<Divider />
 			<List>
+				{/* Dashboard link item (only available for admin) */}
+				{auth.user.user_type === "admin" && (
+					<Link
+						to={`/${ROUTING_TREE.ADMIN.ADMIN}/${ROUTING_TREE.ADMIN.DASHBOARD}`}
+					>
+						<ListItem disablePadding>
+							<ListItemButton>
+								<ListItemIcon>
+									<DashboardIcon color="primary" />
+								</ListItemIcon>
+								<ListItemText primary="Dashboard" />
+							</ListItemButton>
+						</ListItem>
+					</Link>
+				)}
+
 				{userItems.map((item, index) => (
 					<Link key={index} to={item.link}>
-						<ListItem key={index} disablePadding>
+						<ListItem disablePadding>
 							<ListItemButton>
 								<ListItemIcon>{item.icon}</ListItemIcon>
 								<ListItemText primary={item.item} />
@@ -77,6 +94,7 @@ const User = (props: Props) => {
 						</ListItem>
 					</Link>
 				))}
+
 				{/* logout item */}
 				<ListItem disablePadding>
 					<ListItemButton onClick={() => dispatch(logout())}>
