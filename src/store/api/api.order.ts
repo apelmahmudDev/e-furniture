@@ -34,6 +34,7 @@ export const orderApi = baseApiSlice.injectEndpoints({
 				method: "PUT",
 				body,
 			}),
+			invalidatesTags: ["Orders"],
 		}),
 
 		deleteOrder: builder.mutation<void, string>({
