@@ -8,16 +8,21 @@ import { StyledTypography } from "./styledComponents/StyledTypography";
 import ProductSalesChart from "./ProductSalesChart";
 import OrderChart from "./OrderChart";
 import CustomerTable from "./CustomerTable";
+import { useGetOrdersQuery } from "../../../../store/api/api.order";
+import { useGetUsersQuery } from "../../../../store/api/api.users";
 
 const Dashboard = () => {
+	const { data: orders } = useGetOrdersQuery();
+	const { data: users } = useGetUsersQuery();
+
 	return (
 		<>
 			{/* dashboard top section - card*/}
 			<Box>
 				<Grid container spacing={2}>
 					{[
-						{ title: "Order Receive", amount: 393 },
-						{ title: "Total Customers", amount: 22 },
+						{ title: "Order Receive", amount: orders?.data?.length || 0 },
+						{ title: "Total Customers", amount: users?.data?.length || 0 },
 						{ title: "Total Earning", amount: 345 },
 					].map((item, idx) => (
 						<Grid key={idx} item xs={12} sm={6} md={4}>

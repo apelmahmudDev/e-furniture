@@ -1,3 +1,4 @@
+import { IGetUser } from "../../types/user/user.types";
 import { LoginUser } from "../../views/pages/auth/Login";
 import { User } from "../../views/pages/auth/SignUp";
 import { baseApiSlice } from "./api.base";
@@ -23,7 +24,12 @@ export const usersApi = baseApiSlice.injectEndpoints({
 				localStorage.setItem("auth", JSON.stringify(result.data));
 			},
 		}),
+
+		getUsers: builder.query<IGetUser, void>({
+			query: () => `/users`,
+		}),
 	}),
 });
 
-export const { useSignUpMutation, useLoginMutation } = usersApi;
+export const { useSignUpMutation, useLoginMutation, useGetUsersQuery } =
+	usersApi;
