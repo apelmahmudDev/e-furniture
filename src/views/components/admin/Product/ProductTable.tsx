@@ -106,44 +106,50 @@ const ProductTable = () => {
 						)}
 
 						{/*table data show */}
-						{data?.data.map((product, idx) => (
-							<TableRow key={idx} hover role="checkbox" tabIndex={-1}>
-								<TableCell>{idx + 1}</TableCell>
-								<TableCell
-									sx={{
-										display: "flex",
-										alignItems: "center",
-										gap: 1,
-										whiteSpace: "noWrap",
-									}}
-								>
-									<Avatar
-										sx={{ borderRadius: 0 }}
-										src={product.image}
-										alt="product-image"
-									/>
-									{product.name}
-								</TableCell>
-								<TableCell sx={{ whiteSpace: "noWrap" }}>
-									{product.price}
-								</TableCell>
-								<TableCell>{product.category}</TableCell>
-								{/* <TableCell>{product.subCategory}</TableCell> */}
-								<TableCell align="right">
-									<Stack spacing={1} direction="row" justifyContent="flex-end">
-										<IconButton size="small" sx={{ ...STYLES.icon }}>
-											<Visibility />
-										</IconButton>
-										<IconButton size="small" sx={{ ...STYLES.icon }}>
-											<Edit />
-										</IconButton>
-										<IconButton size="small" sx={{ ...STYLES.icon }}>
-											<DeleteOutlined />
-										</IconButton>
-									</Stack>
-								</TableCell>
-							</TableRow>
-						))}
+						{data?.data
+							// .sort((a, b) => a.timestamps - b.timestamps)
+							.map((product, idx) => (
+								<TableRow key={idx} hover role="checkbox" tabIndex={-1}>
+									<TableCell>{idx + 1}</TableCell>
+									<TableCell
+										sx={{
+											display: "flex",
+											alignItems: "center",
+											gap: 1,
+											whiteSpace: "noWrap",
+										}}
+									>
+										<Avatar
+											sx={{ borderRadius: 0 }}
+											src={product.image}
+											alt="product-image"
+										/>
+										{product.name}
+									</TableCell>
+									<TableCell sx={{ whiteSpace: "noWrap" }}>
+										{product.price}
+									</TableCell>
+									<TableCell>{product.category}</TableCell>
+									{/* <TableCell>{product.subCategory}</TableCell> */}
+									<TableCell align="right">
+										<Stack
+											spacing={1}
+											direction="row"
+											justifyContent="flex-end"
+										>
+											<IconButton size="small" sx={{ ...STYLES.icon }}>
+												<Visibility />
+											</IconButton>
+											<IconButton size="small" sx={{ ...STYLES.icon }}>
+												<Edit />
+											</IconButton>
+											<IconButton size="small" sx={{ ...STYLES.icon }}>
+												<DeleteOutlined />
+											</IconButton>
+										</Stack>
+									</TableCell>
+								</TableRow>
+							))}
 					</TableBody>
 				</Table>
 			</TableContainer>

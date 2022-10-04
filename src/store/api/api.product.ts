@@ -2,17 +2,16 @@ import { ProductInterface } from "../../types/product.types";
 import { baseApiSlice } from "./api.base";
 
 export const productApi = baseApiSlice.injectEndpoints({
-	// tagTypes: ["Product"],
 	endpoints: (builder) => ({
 		getProducts: builder.query<ProductInterface, void>({
 			query: () => `/products`,
-			// providesTags: ["Product"],
+			providesTags: ["Products"],
 		}),
 		getFilteredProducts: builder.query<ProductInterface, { category: string }>({
 			query: ({ category }) => ({
 				url: `/products/filter/${category}`,
 			}),
-			// providesTags: ["Product"],
+			providesTags: ["Products"],
 		}),
 		addProducts: builder.mutation<any, any>({
 			query: (body) => ({
@@ -20,7 +19,7 @@ export const productApi = baseApiSlice.injectEndpoints({
 				method: "POST",
 				body,
 			}),
-			// invalidatesTags: ["Product"],
+			invalidatesTags: ["Products"],
 		}),
 	}),
 });
