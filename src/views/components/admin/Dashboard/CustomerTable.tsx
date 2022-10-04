@@ -8,10 +8,15 @@ import TableRow from "@mui/material/TableRow";
 import { STYLES } from "../../../../styles/styles";
 import { Avatar, IconButton, Typography } from "@mui/material";
 import { DeleteOutlined } from "@mui/icons-material";
-import { useGetOrdersQuery } from "../../../../store/api/api.order";
+import {
+	useDeleteOrderMutation,
+	useGetOrdersQuery,
+} from "../../../../store/api/api.order";
 import { StatusChip } from "../../common/StyledComponent";
 import Spinner from "../../common/Spinner";
 import NoData from "../../common/NoData";
+import { useEffect } from "react";
+import Snackbar from "../../common/Snackbar";
 
 const styles = {
 	display: "flex",
@@ -21,7 +26,29 @@ const styles = {
 };
 
 const CustomerTable = () => {
+	const handleClickVariant = Snackbar();
 	const { data, isFetching } = useGetOrdersQuery();
+	const [deleteOrder, { isLoading, isSuccess, isError }] =
+		useDeleteOrderMutation();
+
+	// delete order
+	const handleDeleteOrder = (id: string) => {
+		deleteOrder(id);
+	};
+
+	useEffect(() => {
+		if (isSuccess) {
+			handleClickVariant("success", "Order has been successfully deleted!");
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isSuccess]);
+
+	useEffect(() => {
+		if (isError) {
+			handleClickVariant("error", "Something went wrong!");
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isError]);
 
 	return (
 		<Paper sx={{ overflow: "hidden", ...STYLES.boxShadow1 }}>
@@ -89,7 +116,12 @@ const CustomerTable = () => {
 									</StatusChip>
 								</TableCell>
 								<TableCell>
-									<IconButton size="small" sx={{ ...STYLES.icon }}>
+									<IconButton
+										size="small"
+										sx={{ ...STYLES.icon }}
+										disabled={isLoading}
+										onClick={() => handleDeleteOrder(order._id)}
+									>
 										<DeleteOutlined />
 									</IconButton>
 								</TableCell>
