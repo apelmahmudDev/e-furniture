@@ -8,12 +8,21 @@ import { StyledTypography } from "./styledComponents/StyledTypography";
 import ProductSalesChart from "./ProductSalesChart";
 import OrderChart from "./OrderChart";
 import CustomerTable from "./CustomerTable";
-import { useGetOrdersQuery } from "../../../../store/api/api.order";
+import {
+	useGetOrderByStatusQuery,
+	useGetOrdersQuery,
+} from "../../../../store/api/api.order";
 import { useGetUsersQuery } from "../../../../store/api/api.users";
 
 const Dashboard = () => {
 	const { data: orders } = useGetOrdersQuery();
 	const { data: users } = useGetUsersQuery();
+	const { data: completeOrders } = useGetOrderByStatusQuery("Done");
+
+	const totalEarnings = completeOrders?.data?.reduce(
+		(acc, order) => acc + order.checkoutSummary.total,
+		0
+	);
 
 	return (
 		<>
@@ -23,7 +32,10 @@ const Dashboard = () => {
 					{[
 						{ title: "Order Receive", amount: orders?.data?.length || 0 },
 						{ title: "Total Customers", amount: users?.data?.length || 0 },
-						{ title: "Total Earning", amount: 345 },
+						{
+							title: "Total Earning",
+							amount: Math.ceil(Number(totalEarnings)) || 0,
+						},
 					].map((item, idx) => (
 						<Grid key={idx} item xs={12} sm={6} md={4}>
 							<Card sx={{ ...STYLES.boxShadow1 }}>

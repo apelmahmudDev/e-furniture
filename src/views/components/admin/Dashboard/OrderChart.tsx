@@ -5,6 +5,7 @@ import {
 	useGetOrderByStatusQuery,
 	useGetOrdersQuery,
 } from "../../../../store/api/api.order";
+import NoData from "../../common/NoData";
 
 const OrderChart = () => {
 	const { data: allOrders } = useGetOrdersQuery();
@@ -56,12 +57,18 @@ const OrderChart = () => {
 						justifyContent: "center",
 					}}
 				>
-					<Chart
-						options={chart.options}
-						series={chart.series}
-						type="donut"
-						width={370}
-					/>
+					{chart.series.every((s) => s === 0) ? (
+						<div>
+							<NoData />
+						</div>
+					) : (
+						<Chart
+							options={chart.options}
+							series={chart.series}
+							type="donut"
+							width={370}
+						/>
+					)}
 				</Box>
 			</CardContent>
 		</Card>
