@@ -20,9 +20,13 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import HomeIcon from "@mui/icons-material/Home";
 import GrainIcon from "@mui/icons-material/Grain";
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import EditIcon from "@mui/icons-material/Edit";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 
 export {
+	CalendarTodayIcon,
+	EditIcon,
 	FavoriteIcon,
 	GrainIcon,
 	HomeIcon,

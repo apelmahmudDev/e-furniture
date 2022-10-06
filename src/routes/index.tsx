@@ -8,6 +8,7 @@ import OrderCompleteMsgLayout from "../views/layout/OrderCompleteMsgLayout";
 import RequireAdmin from "../utils/security/RequireAdmin";
 import Cart from "../views/pages/cart";
 import Shop from "../views/pages/shop";
+import Blogs from "../views/pages/blogs";
 
 const MainLayout = lazy(() => import("../views/layout/MainLayout"));
 const NotFound = lazy(() => import("../views/pages/page404"));
@@ -25,6 +26,7 @@ const AdminOrders = lazy(() => import("../views/pages/admin/orders"));
 const Wishlist = lazy(() => import("../views/pages/user/wishlist"));
 const ShopLayout = lazy(() => import("../views/layout/ShopLayout"));
 const ShippingLayout = lazy(() => import("../views/layout/ShippingLayout"));
+const BlogsLayout = lazy(() => import("../views/layout/BlogsLayout"));
 
 const routes = [
 	{
@@ -36,6 +38,11 @@ const routes = [
 		element: <ShopLayout />,
 		path: ROUTING_TREE.SHOP,
 		children: [{ path: "", element: <Shop /> }],
+	},
+	{
+		element: <BlogsLayout />,
+		path: ROUTING_TREE.BLOGS,
+		children: [{ path: "", element: <Blogs /> }],
 	},
 	// crate account & login
 	{ element: <Login />, path: ROUTING_TREE.AUTH.LOGIN },

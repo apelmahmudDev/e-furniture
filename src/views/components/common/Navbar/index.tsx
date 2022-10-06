@@ -30,7 +30,7 @@ const navbarData = [
 	{ page: "Home", link: ROUTING_TREE.HOME },
 	{ page: "Shop", link: ROUTING_TREE.SHOP },
 	{ page: "About Us", link: ROUTING_TREE.SHOP },
-	{ page: "Blog", link: ROUTING_TREE.SHOP },
+	{ page: "Blog", link: ROUTING_TREE.BLOGS },
 ];
 
 const Navbar = (props: any) => {

@@ -1,4 +1,4 @@
-import { Card, IconButton } from "@mui/material";
+import { Card, Chip, IconButton } from "@mui/material";
 import { styled } from "@mui/system";
 import { STYLES } from "../../../../styles/styles";
 import Badge, { BadgeProps } from "@mui/material/Badge";
@@ -31,6 +31,12 @@ const AppIconButton = styled(IconButton)(({ theme }) => ({
 	},
 }));
 
+const StyledChip = styled(Chip)(({ theme }) => ({
+	background: theme.palette.secondary.light,
+	color: theme.palette.primary.main,
+	minWidth: 100,
+}));
+
 const StatusChip = styled("div")(({ status }: { status: string }) => ({
 	backgroundColor:
 		status === "pending"
@@ -53,4 +59,11 @@ const AppTableCell = ({ children }: { children: React.ReactNode }) => {
 	);
 };
 
-export { AppCard, StyledBadge, AppIconButton, StatusChip, AppTableCell };
+export {
+	AppCard,
+	StyledBadge,
+	AppIconButton,
+	StatusChip,
+	AppTableCell,
+	StyledChip,
+};
