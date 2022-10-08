@@ -1,9 +1,11 @@
 import { Avatar, Box, Button, Typography } from "@mui/material";
 import { CalendarTodayIcon, EditIcon } from "../../../../assets/icon";
+
 import { useStyles } from "./styled";
 
 const Blog = () => {
 	const classes = useStyles();
+
 	return (
 		<Box my={5}>
 			{/* image */}
@@ -12,7 +14,7 @@ const Blog = () => {
 				sx={{
 					"& > img": {
 						width: "100%",
-						height: 450,
+						height: "auto",
 						display: "block",
 						objectFit: "cover",
 					},
