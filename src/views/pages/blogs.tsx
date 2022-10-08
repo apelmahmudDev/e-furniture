@@ -1,6 +1,6 @@
 import { Box, Container, Grid } from "@mui/material";
 import Blog from "../components/blogs/Blog/Blog";
-import BlogsRelate from "../components/blogs/BlogsRelate/BlogsRelate";
+import BlogsRelative from "../components/blogs/BlogsRelate/BlogsRelative";
 
 const Blogs = () => {
 	return (
@@ -13,7 +13,7 @@ const Blogs = () => {
 					</Grid>
 					<Grid item xs={12} sm={4}>
 						{/* blogs related activities */}
-						<BlogsRelate />
+						<BlogsRelative />
 					</Grid>
 				</Grid>
 			</Container>

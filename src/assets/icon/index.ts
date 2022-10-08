@@ -23,8 +23,14 @@ import GrainIcon from "@mui/icons-material/Grain";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import EditIcon from "@mui/icons-material/Edit";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 export {
+	TwitterIcon,
+	InstagramIcon,
+	FacebookIcon,
 	CalendarTodayIcon,
 	EditIcon,
 	FavoriteIcon,
