@@ -5,7 +5,7 @@ import { useStyles } from "./styled";
 const Blog = () => {
 	const classes = useStyles();
 	return (
-		<div>
+		<Box my={5}>
 			{/* image */}
 			<Box
 				className={classes.gradientBg}
@@ -55,7 +55,7 @@ const Blog = () => {
 
 				<Button sx={{ mt: 1, px: 0 }}>Read More *</Button>
 			</Box>
-		</div>
+		</Box>
 	);
 };
 

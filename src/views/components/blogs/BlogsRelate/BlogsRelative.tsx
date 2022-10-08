@@ -23,7 +23,7 @@ const BlogsRelate = () => {
 	return (
 		<div>
 			{/* search input */}
-			<Box my={5} component="section">
+			<Box mb={5} component="section">
 				<InputLabel
 					sx={{
 						mb: 1.25,
@@ -73,8 +73,8 @@ const BlogsRelate = () => {
 			<Box my={5} component="section">
 				<Grid container spacing={2.5}>
 					{[...Array(4)].map((_, idx) => (
-						<Grid item xs={6}>
-							<OfferProduct key={idx} />
+						<Grid key={idx} item xs={6}>
+							<OfferProduct />
 						</Grid>
 					))}
 				</Grid>
@@ -95,8 +95,8 @@ const BlogsRelate = () => {
 					</IconButton>
 				</Stack>
 			</Box>
-			{/* follow */}
 
+			{/* tags */}
 			<Box my={5} component="section">
 				<Typography variant="h5">Tags</Typography>
 				<Box
