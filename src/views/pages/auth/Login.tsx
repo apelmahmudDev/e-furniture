@@ -108,12 +108,18 @@ const Login = () => {
 		}
 
 		if (error) {
-			if ("error" in error) {
-				handleClickVariant("error", "There is an error occurred");
-			}
-			if ("data" in error) {
-				if (error.data) {
-					handleClickVariant("error", "Bad credentials, Please try agian");
+			if ("status" in error) {
+				// unknown
+				if (error.status === 399) {
+					handleClickVariant("error", "User email not match!");
+				}
+				// forbidden
+				else if (error.status === 403) {
+					handleClickVariant("error", "User password is incorrect!");
+				}
+				// others
+				else {
+					handleClickVariant("error", "There is an error occurred");
 				}
 			}
 		}
