@@ -2,6 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles(() => ({
 	gradientBg: {
+		maxHeight: 350,
 		position: "relative",
 		"&::before": {
 			content: "''",
