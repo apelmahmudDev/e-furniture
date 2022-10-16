@@ -29,7 +29,7 @@ import { StyledBadge } from "../StyledComponent";
 const navbarData = [
 	{ page: "Home", link: ROUTING_TREE.HOME },
 	{ page: "Shop", link: ROUTING_TREE.SHOP },
-	{ page: "About Us", link: ROUTING_TREE.SHOP },
+	{ page: "About Us", link: "about-us" },
 	{ page: "Blogs", link: ROUTING_TREE.BLOGS },
 ];
 
