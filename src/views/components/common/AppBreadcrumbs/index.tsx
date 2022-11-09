@@ -2,7 +2,7 @@ import { Box, Typography, Breadcrumbs, Container } from "@mui/material";
 import Link, { LinkProps } from "@mui/material/Link";
 import { Theme } from "@mui/system";
 
-// icons
+// icons for blogs
 import { HomeIcon, MenuBookIcon, GrainIcon } from "../../../../assets/icon";
 
 import {
