@@ -1,7 +1,10 @@
 // hero
-import HeroOneImg from "../assets/images/hero/hero-1.png";
 import HeroTwoImg from "../assets/images/hero/hero-2.png";
 import HeroThreeImg from "../assets/images/hero/hero-3.png";
+import HeroFourImg from "../assets/images/hero/hero-4.jpg";
+import HeroFiveImg from "../assets/images/hero/hero-5.jpg";
+import HeroSixImg from "../assets/images/hero/hero-6.jpg";
+import HeroSevenImg from "../assets/images/hero/hero-7.jpg";
 
 // banner
 import ParallaxBanner from "../assets/images/banner/parallex-bg.png";
@@ -47,9 +50,12 @@ const IMAGES = {
 	NagadImg,
 	AuthBg,
 	AutImg,
-	HeroOneImg,
 	HeroTwoImg,
 	HeroThreeImg,
+	HeroFourImg,
+	HeroFiveImg,
+	HeroSixImg,
+	HeroSevenImg,
 	ParallaxBanner,
 	CashBackIcon,
 	ChatIcon,

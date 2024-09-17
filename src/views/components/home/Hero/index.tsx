@@ -18,31 +18,28 @@ import { ROUTING_TREE } from "../../../../constants/siteUrls";
 // heroData
 const heroData = [
 	{
-		image: IMAGES.HeroOneImg,
-		title: "Brown realistic sofa with decorative cushions",
-		description: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-		Veniam assumenda consequatur esse nisi dolorem repellendus,
-		autem inventore eius qui eaque molestiae tempore
-		perspiciatis ipsum corrupti tenetur excepturi voluptate ut
-		illo.`,
+		image: IMAGES.HeroSevenImg,
+		title: "Dream Big with Our Large Beds",
+		subtitle: "Luxury Furniture for You",
+		description: `Unwind in the luxury of spacious comfort. Our large beds are crafted to deliver both elegance and ultimate relaxation, making every night feel like a retreat.`,
 	},
 	{
-		image: IMAGES.HeroTwoImg,
-		title: "Two-seater gray sofa with two cushions",
-		description: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Veniam assumenda consequatur esse nisi dolorem repellendus,
-					autem inventore eius qui eaque molestiae tempore
-					perspiciatis ipsum corrupti tenetur excepturi voluptate ut
-					illo.`,
+		image: IMAGES.HeroFiveImg,
+		title: "Digital-Lavender Dream",
+		subtitle: "New Arrival",
+		description: `Step into the future of relaxation with our Digital-Lavender Pillow Chair. Combining ergonomic design and chic interior aesthetics, it’s the perfect blend of comfort and contemporary style.`,
 	},
 	{
-		image: IMAGES.HeroThreeImg,
-		title: "Chair and pillow",
-		description: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Veniam assumenda consequatur esse nisi dolorem repellendus,
-					autem inventore eius qui eaque molestiae tempore
-					perspiciatis ipsum corrupti tenetur excepturi voluptate ut
-					illo.`,
+		image: IMAGES.HeroSixImg,
+		title: "Luxurious Sofas for Every Living Space",
+		subtitle: "Elevate Your Home",
+		description: `Indulge in the perfect blend of comfort and elegance with our premium sofas. Designed to elevate your living space, these stylish pieces offer plush seating and timeless appeal, creating a cozy retreat for relaxation and gatherings.`,
+	},
+	{
+		image: IMAGES.HeroFourImg,
+		title: "Laptop Desks for Modern Living",
+		subtitle: "Upgrade Your Workspace",
+		description: `Upgrade your workspace with our stylish laptop desks. Designed to balance function and elegance, these desks enhance your productivity while complementing your home’s aesthetic.`,
 	},
 ];
 
@@ -63,12 +60,18 @@ const Hero = () => {
 						delay: 5000,
 						disableOnInteraction: false,
 					}}
+					spaceBetween={100}
 					className={classes.mySwiper}
 				>
 					{heroData.map((item, idx) => (
 						<SwiperSlide key={idx}>
 							<Grid container spacing={3} alignItems="center">
-								<Grid item xs={12} md={6}>
+								<Grid item xs={12} md={6} sx={{ position: "relative" }}>
+									{/*  */}
+									<div className={classes.propertyOne}></div>
+									<div className={classes.propertyTwo}></div>
+									<div className={classes.propertyThree}></div>
+									{/*  */}
 									<Typography
 										gutterBottom
 										variant="body1"
@@ -85,7 +88,7 @@ const Hero = () => {
 												color: (theme) => theme.palette.primary.main,
 											}}
 										/>
-										Best Furniture For You
+										{item.subtitle}
 									</Typography>
 									<Typography
 										gutterBottom
@@ -111,7 +114,12 @@ const Hero = () => {
 										</Button>
 									</Link>
 								</Grid>
-								<Grid item xs={12} md={6}>
+								<Grid
+									item
+									xs={12}
+									md={6}
+									sx={{ display: "flex", justifyContent: "center" }}
+								>
 									<Avatar
 										className={classes.heroAvatar}
 										src={item.image}
