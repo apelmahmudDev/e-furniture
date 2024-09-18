@@ -36,6 +36,9 @@ import DocgChairImg from "../assets/images/top-categories/docg-min-chair.png";
 import MinimalistChairImg from "../assets/images/top-categories/minimalist-chair.png";
 import ModerChairImg from "../assets/images/top-categories/modern-Chair.png";
 
+// products
+import UniqueImg from "../assets/images/unique.png";
+
 const IMAGES = {
 	DocgChairImg, //test
 	ModerChairImg,
@@ -61,6 +64,7 @@ const IMAGES = {
 	ChatIcon,
 	FastDeliveryIcon,
 	GiftIcon,
+	UniqueImg,
 };
 
 export { IMAGES };

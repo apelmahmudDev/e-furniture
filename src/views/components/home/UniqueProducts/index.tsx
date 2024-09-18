@@ -7,6 +7,7 @@ import {
 	Button,
 } from "@mui/material";
 import { useStyles } from "./styled";
+import { IMAGES } from "../../../../constants/themeData";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 const UniqueProducts = () => {
@@ -23,8 +24,8 @@ const UniqueProducts = () => {
 					<Grid item xs={12} md={6}>
 						<Avatar
 							className={classes.uniqueAvatar}
-							src="https://k4j3j2s7.rocketcdn.me/furnob/wp-content/uploads/2022/01/banner-image-22.jpg"
-							alt="unique products"
+							src={IMAGES.UniqueImg}
+							alt="Unique products"
 						/>
 					</Grid>
 					<Grid item xs={12} md={6}>
