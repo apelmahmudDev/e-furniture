@@ -54,8 +54,8 @@ const Login = () => {
 	let from = location.state?.from?.pathname || "/";
 
 	const [values, setValues] = useState<State>({
-		email: "",
-		password: "",
+		email: "super.admin@gmail.com",
+		password: "@super123",
 		showPassword: false,
 	});
 
@@ -167,6 +167,7 @@ const Login = () => {
 										fullWidth
 										label="Email"
 										type="email"
+										value={values.email}
 										onChange={handleChange("email")}
 										required
 										// helperText="Incorrect entry."
