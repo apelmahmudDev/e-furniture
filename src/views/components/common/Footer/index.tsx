@@ -22,6 +22,23 @@ const explorArr = [
 	{ id: "ex_2", name: "Shop", link: ROUTING_TREE.SHOP },
 	{ id: "ex_3", name: "About Us", link: "/about-us" },
 ];
+const quickLinks = [
+	{
+		id: "ex_1",
+		name: "Profile",
+		link: `${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.PROFILE}`,
+	},
+	{
+		id: "ex_2",
+		name: "Orders",
+		link: `${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.ORDERS}`,
+	},
+	{
+		id: "ex_3",
+		name: "Wishlist",
+		link: `${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.WISHLIST}`,
+	},
+];
 const flollowArr = [
 	{
 		id: "fl_1",
@@ -57,7 +74,7 @@ const Footer = () => {
 		>
 			<Container>
 				<Grid container spacing={5}>
-					<Grid item xs={12} sm={6} md={4}>
+					<Grid item xs={12} sm={6} md={3} lg={4}>
 						<>
 							<Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
 								<ChairIcon
@@ -79,12 +96,24 @@ const Footer = () => {
 									e-furniture
 								</Typography>
 							</Box>
-							<Box mt={1.25}>
+							{/* <Box mt={1.25}>
 								<DateContent />
-							</Box>
+							</Box> */}
+							<Typography
+								sx={{
+									color: "text.secondary",
+									mt: 2,
+									fontSize: 14,
+									maxWidth: 300,
+								}}
+							>
+								We provide the best quality furniture for your home and office.
+								Upgrade your space with our top-quality furniture. Stylish and
+								durable pieces for both home and office.
+							</Typography>
 						</>
 					</Grid>
-					<Grid item xs={12} sm={6} md={4}>
+					<Grid item xs={12} sm={6} md={3} lg={3}>
 						<FooterTitle>Explor</FooterTitle>
 						<nav aria-label="footer-explor-link">
 							<List
@@ -100,7 +129,23 @@ const Footer = () => {
 							</List>
 						</nav>
 					</Grid>
-					<Grid item xs={12} sm={6} md={4}>
+					<Grid item xs={12} sm={6} md={3} lg={3}>
+						<FooterTitle>Quick Links</FooterTitle>
+						<nav aria-label="footer-explor-link">
+							<List
+								sx={{ "& .MuiTypography-root:hover": { color: "#f1f1f1" } }}
+							>
+								{quickLinks.map((item) => (
+									<ListItem disablePadding key={item.id}>
+										<Link to={item.link}>
+											<ListItemText secondary={item.name} />
+										</Link>
+									</ListItem>
+								))}
+							</List>
+						</nav>
+					</Grid>
+					<Grid item xs={12} sm={6} md={3} lg={2}>
 						<FooterTitle>Follow</FooterTitle>
 						<nav aria-label="follow-us">
 							<List
@@ -109,7 +154,9 @@ const Footer = () => {
 								{flollowArr.map((item) => (
 									<Link to={item.link} key={item.id}>
 										<ListItem disablePadding sx={{ my: 0.5 }}>
-											<ListItemIcon>{item.icon}</ListItemIcon>
+											<ListItemIcon sx={{ minWidth: "35px" }}>
+												{item.icon}
+											</ListItemIcon>
 											<ListItemText secondary={item.name} />
 										</ListItem>
 									</Link>
@@ -118,6 +165,19 @@ const Footer = () => {
 						</nav>
 					</Grid>
 				</Grid>
+
+				<Box sx={{ mt: { xs: 5, sm: 10 }, mb: { xs: 2, md: 0 } }}>
+					<Typography
+						sx={{
+							color: "text.secondary",
+							fontSize: 14,
+							display: "flex",
+							gap: 0.5,
+						}}
+					>
+						&copy; All rights reserved | <DateContent />
+					</Typography>
+				</Box>
 			</Container>
 		</Box>
 	);
@@ -132,8 +192,8 @@ const DateContent = () => {
 
 	if (currentYear > passingYear) {
 		return (
-			<Typography sx={{ fontSize: 18 }} color="text.secondary">
-				&copy; {`${passingYear}-${new Date().getFullYear()}`}
+			<Typography sx={{ fontSize: 14 }} color="text.secondary">
+				{`${passingYear}-${new Date().getFullYear()}`}
 			</Typography>
 		);
 	} else {
