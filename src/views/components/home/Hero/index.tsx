@@ -86,6 +86,7 @@ const Hero = () => {
 											fontSize="small"
 											sx={{
 												color: (theme) => theme.palette.primary.main,
+												position: "relative",
 											}}
 										/>
 										{item.subtitle}
@@ -93,14 +94,17 @@ const Hero = () => {
 									<Typography
 										gutterBottom
 										variant="h4"
-										sx={{ fontFamily: "Titillium Web" }}
+										sx={{ fontFamily: "Titillium Web", position: "relative" }}
 									>
 										{item.title}
 									</Typography>
 
 									<Typography
 										variant="body1"
-										sx={{ display: { xs: "none", sm: "block" } }}
+										sx={{
+											position: "relative",
+											display: { xs: "none", sm: "block" },
+										}}
 									>
 										{item.description}
 									</Typography>

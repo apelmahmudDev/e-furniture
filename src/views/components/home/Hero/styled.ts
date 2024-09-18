@@ -50,6 +50,10 @@ export const useStyles = makeStyles((theme) => ({
 		background: "#fe9c22",
 		borderRadius: 30,
 		animation: "$float 5s ease-in-out infinite",
+
+		[theme.breakpoints.down("md")]: {
+			top: 400,
+		},
 	},
 	propertyTwo: {
 		position: "absolute",
@@ -60,7 +64,12 @@ export const useStyles = makeStyles((theme) => ({
 		background: "#d9d9d9",
 		borderRadius: 30,
 		transform: "rotate(130deg)",
-		animation: "$float 5s ease-in-out infinite",
+		animation: "$float 5.5s ease-in-out infinite",
+		zIndex: 0,
+
+		[theme.breakpoints.down("md")]: {
+			top: 30,
+		},
 	},
 	propertyThree: {
 		position: "absolute",
@@ -72,5 +81,15 @@ export const useStyles = makeStyles((theme) => ({
 		borderRadius: 30,
 		transform: "rotate(130deg)",
 		animation: "$float 5s ease-in-out infinite",
+		[theme.breakpoints.down("md")]: {
+			bottom: -400,
+			right: 0,
+			left: "auto",
+		},
+		[theme.breakpoints.down("sm")]: {
+			bottom: -350,
+			right: 0,
+			left: "auto",
+		},
 	},
 }));
