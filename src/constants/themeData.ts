@@ -42,8 +42,16 @@ import ModerChairImg from "../assets/images/top-categories/modern-Chair.png";
 // products
 import UniqueImg from "../assets/images/unique.png";
 
+// blogs
+import blogOneImg from "../assets/images/blogs/blog-1.jpg";
+import blogTwoImg from "../assets/images/blogs/blog-2.jpg";
+import blogThreeImg from "../assets/images/blogs/blog-3.jpg";
+
 const IMAGES = {
-	DocgChairImg, //test
+	blogOneImg,
+	blogTwoImg,
+	blogThreeImg,
+	DocgChairImg,
 	ModerChairImg,
 	MinimalistChairImg,
 	ChairOneImg,
