@@ -8,6 +8,9 @@ import HeroSevenImg from "../assets/images/hero/hero-7.jpg";
 
 // banner
 import ParallaxBanner from "../assets/images/banner/parallex-bg.png";
+import AboutHelloImg from "../assets/images/hello.jpg";
+import gradientCircle from "../assets/images/gradient-circle.png";
+import furnisher from "../assets/images/furnishers.svg";
 
 // services-icon
 import CashBackIcon from "../assets/icon/services/cash-back.png";
@@ -65,6 +68,9 @@ const IMAGES = {
 	FastDeliveryIcon,
 	GiftIcon,
 	UniqueImg,
+	AboutHelloImg,
+	gradientCircle,
+	furnisher,
 };
 
 export { IMAGES };

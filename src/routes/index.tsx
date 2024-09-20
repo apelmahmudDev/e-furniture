@@ -9,6 +9,7 @@ import RequireAdmin from "../utils/security/RequireAdmin";
 import Cart from "../views/pages/cart";
 import Shop from "../views/pages/shop";
 import Blogs from "../views/pages/blogs";
+import AboutUs from "../views/pages/about-us";
 
 const MainLayout = lazy(() => import("../views/layout/MainLayout"));
 const NotFound = lazy(() => import("../views/pages/page404"));
@@ -38,6 +39,10 @@ const routes = [
 		element: <ShopLayout />,
 		path: ROUTING_TREE.SHOP,
 		children: [{ path: "", element: <Shop /> }],
+	},
+	{
+		element: <AboutUs />,
+		path: ROUTING_TREE.ABOUT_US
 	},
 	{
 		element: <BlogsLayout />,

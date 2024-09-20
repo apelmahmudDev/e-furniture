@@ -1,6 +1,7 @@
 export const ROUTING_TREE = {
 	HOME: "",
 	SHOP: "shop",
+	ABOUT_US: "about-us",
 	BLOGS: "blogs",
 	CART: "cart",
 	ORDER: {

@@ -10,22 +10,27 @@ const serviceData = [
 	{
 		icon: IMAGES.FastDeliveryIcon,
 		title: "Fast Delivery",
-		description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic impedit inventore enim.`,
+		// write a real description for the service not lorem
+		description:
+			"We are providing fast delivery service to our customers and committed to deliver your product within 24 hours.",
 	},
 	{
 		icon: IMAGES.ChatIcon,
 		title: "24 / 7 Support",
-		description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic impedit inventore enim.`,
+		description:
+			"We are providing 24/7 support to our customers. You can contact us anytime for any query.",
 	},
 	{
 		icon: IMAGES.CashBackIcon,
 		title: "Cash back",
-		description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic impedit inventore enim.`,
+		description:
+			"If you are not satisfied with our product, we will give you cash back. within 7 days.",
 	},
 	{
 		icon: IMAGES.GiftIcon,
 		title: "Best Offer",
-		description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic impedit inventore enim.`,
+		description:
+			"We are providing best offer to our customers. Keep visiting our website to get the best offer.",
 	},
 ];
 

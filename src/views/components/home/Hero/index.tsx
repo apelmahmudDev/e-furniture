@@ -124,10 +124,10 @@ const Hero = () => {
 									md={6}
 									sx={{ display: "flex", justifyContent: "center" }}
 								>
-									<Avatar
+									<img
 										className={classes.heroAvatar}
 										src={item.image}
-										alt="image of hero"
+										alt={item?.subtitle}
 									/>
 								</Grid>
 							</Grid>
