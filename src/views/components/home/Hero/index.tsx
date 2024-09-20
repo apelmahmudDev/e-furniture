@@ -1,11 +1,4 @@
-import {
-	Box,
-	Grid,
-	Avatar,
-	Typography,
-	Container,
-	Button,
-} from "@mui/material";
+import { Box, Grid, Typography, Container, Button } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
 import { useStyles } from "./styled";
