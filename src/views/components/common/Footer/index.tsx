@@ -18,25 +18,25 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 
 const explorArr = [
-	{ id: "ex_1", name: "Home", link: ROUTING_TREE.HOME },
-	{ id: "ex_2", name: "Shop", link: ROUTING_TREE.SHOP },
-	{ id: "ex_3", name: "About Us", link: "/about-us" },
+	{ id: "ex_1", name: "Home", link: `/${ROUTING_TREE.HOME}` },
+	{ id: "ex_2", name: "Shop", link: `/${ROUTING_TREE.SHOP}` },
+	{ id: "ex_3", name: "About Us", link: `/${ROUTING_TREE.ABOUT_US}` },
 ];
 const quickLinks = [
 	{
 		id: "ex_1",
 		name: "Profile",
-		link: `${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.PROFILE}`,
+		link: `/${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.PROFILE}`,
 	},
 	{
 		id: "ex_2",
 		name: "Orders",
-		link: `${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.ORDERS}`,
+		link: `/${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.ORDERS}`,
 	},
 	{
 		id: "ex_3",
 		name: "Wishlist",
-		link: `${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.WISHLIST}`,
+		link: `/${ROUTING_TREE.USER.USER}/${ROUTING_TREE.USER.WISHLIST}`,
 	},
 ];
 const flollowArr = [

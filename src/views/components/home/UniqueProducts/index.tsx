@@ -15,7 +15,7 @@ const UniqueProducts = () => {
 	return (
 		<Box
 			my={5}
-			py={5}
+			pt={5}
 			component="section"
 			sx={{ bgcolor: (theme) => theme.palette.secondary.light }}
 		>
