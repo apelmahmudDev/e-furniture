@@ -5,9 +5,18 @@ import Navbar from "../components/common/Navbar";
 
 const CartLayout = () => {
 	return (
-		<Box sx={{ background: (theme) => theme.palette.secondary.light }}>
+		<Box
+			sx={{
+				background: (theme) => theme.palette.secondary.light,
+				minHeight: "100vh",
+				display: "flex",
+				flexDirection: "column",
+			}}
+		>
 			<Navbar />
-			<Outlet />
+			<Box sx={{ flex: 1 }}>
+				<Outlet />
+			</Box>
 			<Footer />
 		</Box>
 	);
